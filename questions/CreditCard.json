@@ -1,0 +1,170 @@
+[
+    {
+        "question": "Calculate the mean, median, and mode of the current_age column.",
+        "ground_truth": "Mean Age: 45.57 years, Median Age: 43.00 years, Mode Age: 18 years",
+        "derivation": "df['current_age'].mean(); df['current_age'].median(); df['current_age'].mode()",
+        "difficulty":"easy",
+        "question_type":"Descriptive Statistics",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Determine the range of credit_score and calculate its standard deviation",
+        "ground_truth": "Range: 370, Std: 67.22",
+        "derivation": "range = df['credit_score'].max() - df['credit_score'].min(); std = df['credit_score'].std()",
+        "difficulty":"medium",
+        "question_type":"Descriptive Statistics",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Find the interquartile range (IQR) of yearly_income and total_debt and compare them to identify which has a wider spread.",
+        "ground_truth": "Yearly Income:\nQ1: $32,818.50\nQ3: $52,698.50\nIQR: $19,880.00\n\nTotal Debt:\nQ1: $23,986.75\nQ3: $89,070.50\nIQR: $65,083.75\n\nIQR Difference (Income - Debt): $-45,203.75", 
+        "derivation": "df['yearly_income'] = df['yearly_income'].str.replace('$', '').str.replace(',', '').astype(float); df['total_debt'] = df['total_debt'].str.replace('$', '').str.replace(',', '').astype(float); q1_income = df['yearly_income'].quantile(0.25); q3_income = df['yearly_income'].quantile(0.75); iqr_income = q3_income - q1_income; q1_debt = df['total_debt'].quantile(0.25); q3_debt = df['total_debt'].quantile(0.75); iqr_debt = q3_debt - q1_debt",
+        "difficulty":"hard",
+        "question_type":"Descriptive Statistics",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Count the frequency of each gender value in the dataset.",
+        "ground_truth": "Female 1016, Male 984",
+        "derivation": "gender_counts = df['gender'].value_counts()",
+        "difficulty":"easy",
+        "question_type":"Frequency and Distribution Analysis",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Calculate the percentage of individuals with a credit_score above 750.",
+        "ground_truth": "26.2%",
+        "derivation": "df[df['credit_score'] > 750] / len(df)",
+        "difficulty":"medium",
+        "question_type":"Frequency and Distribution Analysis",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Analyze the seasonality of births, by grouping into seasons, and calculate the percent distribution, and determine if there is statistical significance between peak and low seasons with a chi2 test.",
+        "ground_truth": "Seasonal Distribution:
+                            Winter: 27.7%
+                            Fall: 25.9%
+                            Spring: 23.6%
+                            Summer: 22.8%
+
+                            Peak Season: Winter
+                            Low Season: Summer
+
+                            Chi-square test results:
+                            Chi-square statistic: 11.74
+                            p-value: 0.0083
+                            Significant difference from uniform distribution: True",
+        "derivation": """season_mapping = {
+            12: 'Winter', 1: 'Winter', 2: 'Winter',
+            3: 'Spring', 4: 'Spring', 5: 'Spring',
+            6: 'Summer', 7: 'Summer', 8: 'Summer',
+            9: 'Fall', 10: 'Fall', 11: 'Fall'
+            }
+
+            df['season'] = df['birth_month'].map(season_mapping)
+
+            season_counts = df['season'].value_counts()
+            season_percentages = df['season'].value_counts(normalize=True) * 100
+
+            peak_season = season_counts.index[0]
+            low_season = season_counts.index[-1]
+
+            expected_freq = len(df) / 4  # Expected frequency if uniform
+            chi2_stat, p_value = stats.chisquare(season_counts, [expected_freq] * 4)""",
+        "difficulty":"hard",
+        "question_type":"Frequency and Distribution Analysis",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Calculate the correlation between current_age and retirement_age.",
+        "ground_truth": "0.0048",
+        "derivation": "correlation = df['current_age'].corr(df['retirement_age'])",
+        "difficulty":"easy",
+        "question_type":"Correlation and Association",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Calculate the correlation between current_age and retirement_age.",
+        "ground_truth": "0.0048",
+        "derivation": "correlation = df['current_age'].corr(df['retirement_age'])",
+        "difficulty":"medium",
+        "question_type":"Correlation and Association",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Analyze whether there is a correlation between yearly_income, total_debt, and credit_score by computing a correlation matrix for these variables.",
+        "ground_truth": "yearly_income  total_debt  credit_score
+yearly_income          1.000       0.551         0.000
+total_debt             0.551       1.000        -0.105
+credit_score           0.000      -0.105         1.000",
+        "derivation": "df[['yearly_income', 'total_debt', 'credit_score']].corr()",
+        "difficulty":"hard",
+        "question_type":"Correlation and Association",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Identify trends in credit score based on current age.",
+        "ground_truth": "There is not really trends between these two as the correlation is -0.005.",
+        "derivation": "correlation = df['current_age'].corr(data_cleaned['credit_score'])",
+        "difficulty":"easy",
+        "question_type":"Trend Analysis",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Group individuals by birth_month and analyze seasonal patterns in credit_score and total_debt. Determine if these patterns are statistically significant and quantify the extent to which birth_month explains the variability in these two columns using an ANOVA test.",
+        "ground_truth": "Both credit score and total debt show no statistically significant seasonal patterns based on birth month (p-values > 0.05). The ANOVA F-Statistic for credit score is 1.56 with a p-value of 0.105, and birth month explains only 0.9% of its variability (R-squared: 0.009). Similarly, the ANOVA F-Statistic for total debt is 1.24 with a p-value of 0.256, and birth month explains only 0.8% of its variability (R-squared: 0.008)",
+        "derivation": "
+        from scipy.stats import f_oneway
+df['total_debt'] = pd.to_numeric(df['total_debt'].str.replace('[^\d.]', ''), errors='coerce')
+data_cleaned = df.dropna(subset=['birth_month', 'credit_score', 'total_debt'])
+
+anova_credit_score = f_oneway(*[group['credit_score'] for _, group in data_cleaned.groupby('birth_month')])
+anova_total_debt = f_oneway(*[group['total_debt'] for _, group in data_cleaned.groupby('birth_month')])
+
+credit_score_r_squared = data_cleaned.groupby('birth_month')['credit_score'].mean().var() / data_cleaned['credit_score'].var()
+total_debt_r_squared = data_cleaned.groupby('birth_month')['total_debt'].mean().var() / data_cleaned['total_debt'].var()
+",
+        "difficulty":"hard",
+        "question_type":"Trend Analysis",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Test if the mean credit_score differs significantly between males and females using a t-test.",
+        "ground_truth": "t-statistic: 0.38, p-value: 0.704. Since the p-value is much greater than the common significance level of 0.05, we fail to reject the null hypothesis.",
+        "derivation": "from scipy.stats import ttest_ind
+males = df[df['gender'] == 'Male']['credit_score']
+females = df[df['gender'] == 'Female']['credit_score']
+t_stat, p_value = ttest_ind(males, females, equal_var=False)
+",
+        "difficulty":"easy",
+        "question_type":"Hypothesis Testing",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Perform a chi-square test to see if gender and having num_credit_cards > 3 are independent.",
+        "ground_truth": "Chi-square statistic: 0.416, p-value: 0.519, Degrees of freedom: 1. Since the p-value is greater than the common significance level of 0.05, we fail to reject the null hypothesis. This suggests that gender and having more than 3 credit cards are independent in this dataset.",
+        "derivation": "from scipy.stats import chi2_contingency
+df['num_credit_cards_gt_3'] = df['num_credit_cards'] > 3
+contingency_table = pd.crosstab(data['gender'], df['num_credit_cards_gt_3'])
+chi2_stat, p_value, dof, expected = chi2_contingency(contingency_table)
+",
+        "difficulty":"medium",
+        "question_type":"Hypothesis Testing",
+        "table_path": "./datasets/demographics/users_data.csv"
+    },
+    {
+        "question": "Test if the variance in yearly_income is significantly different between individuals with credit_score above and below 700.",
+        "ground_truth": "Levene statistic: 0.141, p-value: 0.707. Since the p-value is greater than the common significance level of 0.05, we fail to reject the null hypothesis. ",
+        "derivation": "from scipy.stats import levene
+        above_700 = df[df['credit_score'] > 700]['yearly_income']
+below_700 = df[df['credit_score'] <= 700]['yearly_income']
+levene_stat, p_value_levene = levene(above_700, below_700, center='mean')
+",
+        "difficulty":"medium",
+        "question_type":"Hypothesis Testing",
+        "table_path": "./datasets/demographics/users_data.csv"
+    }
+    {
+
+    }
+]
