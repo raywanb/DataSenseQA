@@ -5,7 +5,8 @@
         "derivation" : "",
         "difficulty" : "easy",
         "type" : "data curation",
-        "subtype" : "data quality assessment"
+        "subtype" : "data quality assessment",
+        "table_path" : ""
     },
     {
         "question": "Check if there are any duplicate rows and count them. Print the result as 'Number of Duplicates:' and 'Integer'.",
