@@ -2,7 +2,7 @@ from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 
-anthropic_model = ChatAnthropic(model='claude-3-opus-20240229', api_key="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")
+anthropic_model = ChatAnthropic(model='claude-3-opus-20240229')
 openai_model = ChatOpenAI(model="gpt-4o")
 
 import pandas as pd
