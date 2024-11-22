@@ -145,7 +145,7 @@
         "difficulty": "medium"
     },
     {
-        "question": "Get the top countries for each region that have the highest confirmed cases to active cases ratio and rank them descending.",
+        "question": "Calculate the highest confirmed cases to active cases for each region ratio and rank them descending.",
         "ground_truth": "Eastern Mediterranean: 210.79, Africa: 172.00, Europe: 88.29, Western Pacific: 74.14, Americas: 26.94, South-East Asia: 25.76",
         "derivation": "df[df['Active'] > 0].assign(Confirmed_to_Active_Ratio=lambda df: df['Confirmed'] / df['Active']).sort_values(by='Confirmed_to_Active_Ratio', ascending=False).groupby('WHO Region').head(1).sort_values(by='Confirmed_to_Active_Ratio', ascending=False)[['WHO Region', 'Confirmed to Active Ratio']]",
         "type": "information retrieval",
