@@ -109,7 +109,7 @@ to make sure that all questions pass all acception criteria (_from: InfiAgent-DA
 - **Value:** Assesses the practical usefulness of the questions generated.
 - **Restrictiveness:** Checks if constraints are strict enough to ensure unique answers.
 - **Alignment:** Verifies that questions align with the data’s content, type, and range.
-- **Correctness:** Confirms that question labels are accurate.
+- **Difficulty:** Confirms that the questions difficulty is labeled correctly.
 
 
 
