@@ -7,21 +7,23 @@ import openai
 from typing import List, Dict
 
 
-def set_system_role(role_description: str, conversation_history: List[Dict[str, str]]) -> None:
+def set_system_role(role_description: str, conversation_history: List[Dict[str, str]]) -> List[Dict[str, str]]:
     """
     Set the role of the assistant by modifying the system message.
     """
     conversation_history[0] = {"role": "system", "content": role_description}
+    return conversation_history
 
 
-def add_message_to_history(role: str, content: str, conversation_history: List[Dict[str, str]]) -> None:
+def add_message_to_history(role: str, content: str, conversation_history: List[Dict[str, str]]) -> List[Dict[str, str]]:
     """
     Add a message to the conversation history.
     """
     conversation_history.append({"role": role, "content": content})
+    return conversation_history
 
 
-def chat_with_gpt(prompt: str, conversation_history: List[Dict[str, str]], model: str = "gpt-4", max_tokens: int = 200, temperature: float = 0.7) -> str:
+def chat_with_gpt(prompt: str, conversation_history: List[Dict[str, str]], model: str = "gpt-4", max_tokens: int = 1000, temperature: float = 0) -> (str, List[Dict[str, str]]):
     """
     Send a message to ChatGPT and get a response.
 
@@ -49,7 +51,7 @@ def chat_with_gpt(prompt: str, conversation_history: List[Dict[str, str]], model
     # Extract and return the assistant's response
     assistant_response = response['choices'][0]['message']['content']
     add_message_to_history("assistant", assistant_response, conversation_history)
-    return assistant_response
+    return assistant_response, conversation_history
 
 
 def clear_conversation_history() -> List[Dict[str, str]]:

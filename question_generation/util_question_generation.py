@@ -1,12 +1,11 @@
 import pandas as pd
 import json
-import openai
 import sys
-import os
 
-from questions.question_generation.chatGPT_interactions import set_system_role
+from question_generation.chatGPT_interactions import set_system_role, add_message_to_history, \
+    display_conversation_history, chat_with_gpt
 
-sys.path.append("../../test_agents/chatGPT")
+sys.path.append("../test_agents/chatGPT")
 
 import chatGPT_interactions as gpt
 from importlib import reload
@@ -85,9 +84,6 @@ class FileAnalysis:
             print(f"Error: File not found at path: {file_path}")
             return None
 
-    import pandas as pd
-    import json
-
     @staticmethod
     def get_table_top_rows(file_path, file_name="CSV File", n_rows=10):
         """
@@ -139,10 +135,22 @@ class FileAnalysis:
     # print(json_data)
 
     @staticmethod
-    def get_table_description(prompt: str = ""):
-        conversation_history = [{"role": "system", "content": "You are a helpful assistant that specializes in technical and general queries."}]
-        
-        role_description = ""
-        set_system_role()
-        return "answer"
+    def get_table_description(table_info,column_info, dataset_header) -> str:
+        conversation_history = [{"role": "system", "content": ""}]
+
+        role_description = "You are a helpful agent who is responsible for designing benchmark questions about tabular data who reads the prompts carefully."
+
+        conversation_history = set_system_role(role_description, conversation_history)
+        conversation_history = add_message_to_history(role_description, f"These are some rows of the dataset in JSON format: {dataset_header}", conversation_history)
+        conversation_history = add_message_to_history(role_description, f"This is some general information about the table : {table_info}",conversation_history)
+        conversation_history = add_message_to_history(role_description, f"This is some general information about the columns : {column_info}",conversation_history)
+
+        display_conversation_history(conversation_history)
+
+        prompt = (f"Generate a description for the csv. sheet in text format and a description for each column of the csv. sheet. "
+                  f"Each column description should contain: 1) the column name, 2) a column description, 3) missing values 4) number of unique values "
+                  f"5) number of total values. Use the information given to you in the conversation history.")
+
+        answer = 
+        return chat_with_gpt(prompt, conversation_history)
 
