@@ -17,6 +17,7 @@ The domains are the following:
 - **Research:** demographic, genomic and survey datasets
   - Crimes reported in Chicago in 2019 (`Crimes_-_2019.csv`)
   - Covid-19 infection case data for various countries (`COVID19.csv`)
+  - Glioma (type of brian cancer) grades and associated genes (`Glioma.csv`)
 - **Application:** datasets of varíous different applications
   - DATA
 
@@ -112,4 +113,6 @@ to make sure that all questions pass all acception criteria (_from: InfiAgent-DA
 - **Difficulty:** Confirms that the questions difficulty is labeled correctly.
 
 
+### Agent Evaluation
 
+The outputed predictions from the agents were evalutation thorouhly by integrating NORM and Mix self-consistency mechanisms. The basic evaluator (exact_match_eval.py) implements a straightforward exact match evaluation with basic normalization and difficulty-weighted scoring. Features include : Basic string normalization (lowercase, whitespace, numbers) , Difficulty-based scoring (Hard: 3 points, Medium: 2 points, Easy: 1 point) , Detailed evaluation metrics by difficulty level and question type. The WTQ-style evaluator (wtq_eval.py) implements a more sophisticated evaluation approach based on the WikiTableQuestions methodology. Features include : Advanced NORM mechanism for answer normalization , Mix self-consistency evaluation using 5 samples per question , Unit and date standardization , Confidence scoring based on prediction agreement.
