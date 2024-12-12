@@ -1,0 +1,182 @@
+[
+    {
+        "question":"Count the frequency of each scheme category based on 'Regular TER Group'.",
+        "ground_truth":"Regular TER Group: {'>1%': 800, '<0.5%': 418, '0.5%-1%': 336}",
+        "derivation":"df['Regular TER Group'].value_counts()",
+        "difficulty":"easy",
+        "subtype":"Frequency and Distribution Analysis",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Count the frequency of each scheme category based on 'Direct TER Group'.",
+        "ground_truth":"Direct TER Group: {'<0.5%': 917, '0.5%-1%': 433, '>1%': 90}",
+        "derivation":"df['Direct TER Group'].value_counts()",
+        "difficulty":"easy",
+        "subtype":"Frequency and Distribution Analysis",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Determine the correlation between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)'.",
+        "ground_truth":"Correlation: 0.8051",
+        "derivation":"df['Regular Plan - Total TER (%)'].corr(df['Direct Plan - Total TER (%)'])",
+        "difficulty":"easy",
+        "subtype":"Correlation and Association",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Calculate the average 'Regular Plan - Base TER (%)' and compare it to the average 'Direct Plan - Base TER (%)'.",
+        "ground_truth":"Regular Avg: 1.11, Direct Avg: 0.41",
+        "derivation":"df['Regular Plan - Base TER (%)'].mean(); df['Direct Plan - Base TER (%)'].mean()",
+        "difficulty":"medium",
+        "subtype":"Descriptive Statistics",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Compute the total count of schemes with 'Regular Plan - Total TER (%)' greater than 1%.",
+        "ground_truth":"Count: 872",
+        "derivation":"len(df[df['Regular Plan - Total TER (%)'] > 1])",
+        "difficulty":"medium",
+        "subtype":"Conditional Retrieval and Filtering",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Compute the total count of schemes with 'Direct Plan - Total TER (%)' less than 0.5%.",
+        "ground_truth":"Count: 954",
+        "derivation":"len(df[df['Direct Plan - Total TER (%)'] < 0.5])",
+        "difficulty":"medium",
+        "subtype":"Conditional Retrieval and Filtering",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Group schemes by 'Regular TER Group' and calculate the average 'Regular Plan - Total TER (%)' for each group.",
+        "ground_truth":"Average by Group: {'<0.5%': 0.30521531100478466, '0.5%-1%': 0.8398214285714286, '>1%': 1.8852000000000002}",
+        "derivation":"df.groupby('Regular TER Group')['Regular Plan - Total TER (%)'].mean()",
+        "difficulty":"medium",
+        "subtype":"Data Aggregation, Grouping and Classification",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Identify the scheme with the highest 'Regular Plan - Total TER (%)'.",
+        "ground_truth":"Scheme: Taurus Flexi Cap Fund",
+        "derivation":"df.loc[df['Regular Plan - Total TER (%)'].idxmax(), 'Scheme Name']",
+        "difficulty":"easy",
+        "subtype":"Direct Value Retrieval",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Identify the scheme with the lowest 'Direct Plan - Total TER (%)'.",
+        "ground_truth":"Scheme: Aditya Birla Sun Life BSE SENSEX ETF",
+        "derivation":"df.loc[df['Direct Plan - Total TER (%)'].idxmin(), 'Scheme Name']",
+        "difficulty":"easy",
+        "subtype":"Direct Value Retrieval",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Find the top 5 schemes with the highest 'Direct Plan - Base TER (%)'.",
+        "ground_truth":"Top Schemes: ['Taurus Flexi Cap Fund', 'Taurus Large Cap Fund', 'Taurus Mid Cap Fund', 'Taurus Infrastructure Fund', 'Tata Young Citizens Fund']",
+        "derivation":"df.nlargest(5, 'Direct Plan - Base TER (%)')['Scheme Name']",
+        "difficulty":"medium",
+        "subtype":"Comparison and Ranking",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Compute the interquartile range (IQR) of 'Regular Plan - Total TER (%)'.",
+        "ground_truth":"IQR: 1.46",
+        "derivation":"df['Regular Plan - Total TER (%)'].quantile(0.75) - df['Regular Plan - Total TER (%)'].quantile(0.25)",
+        "difficulty":"hard",
+        "subtype":"Descriptive Statistics",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Test if 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)' are significantly different using a t-test.",
+        "ground_truth":null,
+        "derivation":"from scipy.stats import ttest_ind; ttest_ind(df['Regular Plan - Total TER (%)'], df['Direct Plan - Total TER (%)'])",
+        "difficulty":"hard",
+        "subtype":"Hypothesis Testing",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Calculate the percentage of schemes with 'Regular Plan - Total TER (%)' above 2%.",
+        "ground_truth":"Percentage: 20.22%",
+        "derivation":"len(df[df['Regular Plan - Total TER (%)'] > 2]) \/ len(df) * 100",
+        "difficulty":"medium",
+        "subtype":"Frequency and Distribution Analysis",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Identify any trends between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)'.",
+        "ground_truth":"Correlation: 0.8051",
+        "derivation":"df['Regular Plan - Total TER (%)'].corr(df['Direct Plan - Total TER (%)'])",
+        "difficulty":"medium",
+        "subtype":"Trend Analysis",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Test if the variance in 'Regular Plan - Base TER (%)' is significantly different from 'Direct Plan - Base TER (%)' using an F-test.",
+        "ground_truth":null,
+        "derivation":"from scipy.stats import levene; levene(df['Regular Plan - Base TER (%)'], df['Direct Plan - Base TER (%)'])",
+        "difficulty":"hard",
+        "subtype":"Hypothesis Testing",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Compute the variance of 'Regular Plan - Total TER (%)'.",
+        "ground_truth":"Variance: 0.60",
+        "derivation":"df['Regular Plan - Total TER (%)'].var()",
+        "difficulty":"easy",
+        "subtype":"Variance and Standard Deviation",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Compute the 90% confidence interval for the mean 'Direct Plan - Total TER (%)'.",
+        "ground_truth":null,
+        "derivation":"from scipy.stats import norm; mean = df['Direct Plan - Total TER (%)'].mean(); std_dev = df['Direct Plan - Total TER (%)'].std(); n = len(df['Direct Plan - Total TER (%)']); margin = norm.ppf(0.95) * (std_dev \/ np.sqrt(n)); (mean - margin, mean + margin)",
+        "difficulty":"medium",
+        "subtype":"Confidence Interval",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Analyze the distribution of 'Direct Plan - Total TER (%)' by plotting a histogram.",
+        "ground_truth":null,
+        "derivation":"df['Direct Plan - Total TER (%)'].plot(kind='hist', bins=10)",
+        "difficulty":"easy",
+        "subtype":"Visualization",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Compare the median 'Regular Plan - Base TER (%)' and 'Direct Plan - Base TER (%)'.",
+        "ground_truth":"Regular Median: 1.00, Direct Median: 0.34",
+        "derivation":"df['Regular Plan - Base TER (%)'].median(); df['Direct Plan - Base TER (%)'].median()",
+        "difficulty":"easy",
+        "subtype":"Descriptive Statistics",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    },
+    {
+        "question":"Find the top 3 schemes with the lowest 'Regular Plan - Base TER (%)'.",
+        "ground_truth":"Top Schemes: ['Aditya Birla Sun Life CRISIL Liquid Overnight ETF', 'Bharat Bond ETF - April 2030', 'Bharat Bond ETF - April 2032']",
+        "derivation":"df.nsmallest(3, 'Regular Plan - Base TER (%)')['Scheme Name']",
+        "difficulty":"medium",
+        "subtype":"Comparison and Ranking",
+        "type":"statistics",
+        "table_path":"\/mnt\/data\/data.csv"
+    }
+]
