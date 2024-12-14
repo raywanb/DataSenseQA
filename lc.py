@@ -52,7 +52,7 @@ class DataFrameAgentProcessor:
         results = []
         cwd = os.getcwd()  # Get the current working directory
 
-        for i, question_data in enumerate(data[:3]):
+        for i, question_data in enumerate(data):
             dataset_path = question_data.get('table_path')
             if not dataset_path:
                 data[i]['result'] = "Table path is invalid or missing."
@@ -165,7 +165,7 @@ class DataFrameAgentProcessor:
 
 processor = DataFrameAgentProcessor(
     model_type="anthropic",
-    questions_path="./questions/statistics_1_credit_card.json"
+    questions_path="./questions/information_retrieval_2_crm.json"
 )
 processor.process_questions(output_path="./questions/CreditCard_with_results.json")
 # processor.process_questions_folder(
