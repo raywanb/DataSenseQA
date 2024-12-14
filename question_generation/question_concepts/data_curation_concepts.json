@@ -33,39 +33,7 @@
     "Constraints": "",
     "Format": ""
   },
-  {
-    "Type": "Data Curation",
-    "Subtype": "Metadata Curation",
-    "Short Explanation": "Evaluate the ability to create, update, and maintain accurate metadata for datasets.",
-    "Examples": [
-      "Create metadata for the given dataset, including descriptions of columns like 'Account Balance' and 'Transaction Date.'",
-      "Update metadata for the given genomics dataset to include the sequencing technology used and the date of collection."
-    ],
-    "Constraints": "",
-    "Format": ""
-  },
-  {
-    "Type": "Data Curation",
-    "Subtype": "Data Enrichment",
-    "Short Explanation": "Assess the ability to enhance data by integrating additional context or attributes.",
-    "Examples": [
-      "Add weather data to the dataset to analyze the impact of weather conditions on delivery delays.",
-      "Integrate social media sentiment data into a product review dataset to enhance customer feedback analysis."
-    ],
-    "Constraints": "",
-    "Format": ""
-  },
-  {
-    "Type": "Data Curation",
-    "Subtype": "Data Profiling and Annotation",
-    "Short Explanation": "Evaluate the ability to analyze datasets to understand their structure, distribution, anomalies, and label data accurately for better categorization.",
-    "Examples": [
-      "Profile a demographic dataset to understand distributions of 'Age' and 'Income' and detect outliers.",
-      "Manually annotate images in a training dataset with labels like 'cat,' 'dog,' or 'tree' for a machine learning model."
-    ],
-    "Constraints": "",
-    "Format": ""
-  },
+
   {
     "Type": "Data Curation",
     "Subtype": "Data Filtering and Partitioning",
@@ -76,6 +44,20 @@
     ],
     "Constraints": "",
     "Format": ""
+  },
+  {
+    "Type": "Data Curation",
+    "Subtype": "Data Transformation and Aggregation",
+    "Short Explanation": "Manipulate the existing data through transformations and aggregation techniques to create new insights or consolidate information.",
+    "Examples": [
+      "Aggregate sales data by month and calculate total revenue for each month.",
+      "Transform customer data by splitting full names into 'First Name' and 'Last Name' columns.",
+      "Create a new feature by calculating the ratio of 'Purchase Amount' to 'Income' in a financial dataset.",
+      "Group sales transactions by 'Product ID' and 'Store ID' to compute total units sold for each combination.",
+      "Apply logarithmic transformation to normalize skewed data in the 'Price' column of a product dataset."
+    ],
+    "Constraints": "Ensure no data loss occurs during aggregation, and transformations should maintain data interpretability.",
+    "Format": "All transformations and aggregations should be clearly documented with steps and logic to ensure reproducibility."
   },
   {
     "Type": "Data Curation",
