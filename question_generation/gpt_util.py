@@ -3,9 +3,7 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from typing import List, Dict
-#os.environ["OPENAI_API_KEY"] =
 load_dotenv()
-
 # Retrieve the API key from the .env file
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 #conversation_history = [ {"role": "system", "content": "You are a helpful assistant that specializes in technical and general queries."}
