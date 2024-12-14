@@ -1,0 +1,179 @@
+[
+{
+    "question": "How many patients in the dataset have Grade 1 gliomas?",
+    "ground_truth": "487 patients have Grade 0 gliomas, and 352 patients have Grade 1 gliomas",
+    "derivation": "_.countBy(data, 'Grade')",
+    "difficulty": "easy",
+    "subtype": "Direct Value Retrieval",
+    "type": "counting",
+    "table_path": "./datasets/research/Glioma.csv"
+},
+{
+    "question": "List the number of patients who have both IDH1 and TP53 mutations (where both values are 1).",
+    "ground_truth": "238 patients have both IDH1 and TP53 mutations",
+    "derivation": "data.filter(row => row.IDH1 === 1 && row.TP53 === 1).length",
+    "difficulty": "medium",
+    "subtype": "Conditional Retrieval and Filtering",
+    "type": "filtering",
+    "table_path": "./datasets/research/Glioma.csv"
+},
+{
+    "question": "Which genetic mutation (among all recorded mutations) appears most frequently in the dataset?",
+    "ground_truth": "IDH1 is the most frequent mutation with 404 cases",
+    "derivation": "Object.entries(mutationCounts).sort((a,b) => b[1] - a[1])[0]",
+    "difficulty": "medium",
+    "subtype": "Comparison and Ranking",
+    "type": "ranking",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Group patients by Grade and calculate the average age at diagnosis for each grade.",
+    "ground_truth": "Grade 0: 43.87 years, Grade 1: 60.70 years",
+    "derivation": "_.groupBy(data, 'Grade').map(group => calculateMean(group.map(p => p.Age_at_diagnosis)))",
+    "difficulty": "medium",
+    "subtype": "Data Aggregation",
+    "type": "aggregation",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "What is the probability of having an EGFR mutation given that a patient has a Grade 4 glioma?",
+    "ground_truth": "31.8% (112 EGFR mutations out of 352 Grade 4 cases)",
+    "derivation": "data.filter(row => row.Grade === 4 && row.EGFR === 1).length / data.filter(row => row.Grade === 4).length",
+    "difficulty": "hard",
+    "subtype": "Probability and Risk Analysis",
+    "type": "probability",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "What is the mean, median, and standard deviation of Age_at_diagnosis in the dataset?",
+    "ground_truth": "Mean: 50.94 years, Standard Deviation: 15.69 years",
+    "derivation": "const ages = data.map(row => row.Age_at_diagnosis).filter(age => age != null); calculateMean(ages); standardDeviation(ages)",
+    "difficulty": "medium",
+    "subtype": "Descriptive Statistics",
+    "type": "statistics",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Is there a noticeable pattern in the co-occurrence of IDH1 and IDH2 mutations across different age groups?",
+    "ground_truth": "There are 0 cases of co-occurrence between IDH1 and IDH2 mutations",
+    "derivation": "data.filter(row => row.IDH1 === 1 && row.IDH2 === 1).length",
+    "difficulty": "hard",
+    "subtype": "Pattern and Trend Recognition",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Calculate the variance in age at diagnosis across different glioma grades.",
+    "ground_truth": "IDH1-mutated variance: 149.78, IDH1-wildtype variance: 182.16",
+    "derivation": "const agesByIdh1 = _.groupBy(data, 'IDH1'); standardDeviation(agesByIdh1[1]) ** 2",
+    "difficulty": "hard",
+    "subtype": "Variance and Standard Deviation",
+    "type": "statistics",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Is there a correlation between EGFR mutation status and glioma grade?",
+    "ground_truth": "Grade 0: 6.37% EGFR mutation rate, Grade 1: 23.01% EGFR mutation rate",
+    "derivation": "const egfrByGrade = _.groupBy(data, 'Grade'); Object.entries(egfrByGrade).map(([grade, patients]) => ({grade, egfrRate: patients.filter(p => p.EGFR === 1).length / patients.length}))",
+    "difficulty": "hard",
+    "subtype": "Correlation and Association",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Provide a summary of the patient population including grade distribution, gender ratio, and most common mutations.",
+    "ground_truth": "Total patients: 839; Grade 0: 487, Grade 1: 352; Males in Grade 0: 271, Females in Grade 0: 216; Males in Grade 1: 217, Females in Grade 1: 135; Most common mutation: IDH1 (404 cases)",
+    "derivation": "Multiple analyses combined",
+    "difficulty": "medium",
+    "subtype": "Summary and Reporting",
+    "type": "summary",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Calculate the 95% confidence interval for the mean age at diagnosis for patients with IDH1 mutations.",
+    "ground_truth": "Mean: 41.67 years, 95% CI: [40.48, 42.87] years",
+    "derivation": "confidenceInterval(data.filter(row => row.IDH1 === 1).map(row => row.Age_at_diagnosis))",
+    "difficulty": "hard",
+    "subtype": "Confidence Intervals",
+    "type": "statistics",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Group patients into clusters based on their mutation profiles (IDH1, TP53, ATRX, PTEN, EGFR) and analyze the characteristics of each cluster.",
+    "ground_truth": "Most common patterns: No mutations (170 patients, avg age 59.94), ATRX-IDH1-TP53 (167 patients, avg age 38.41), IDH1 only (146 patients, avg age 46.38)",
+    "derivation": "Complex clustering analysis of mutation patterns",
+    "difficulty": "hard",
+    "subtype": "Classification and Clustering",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Analyze the trend of mutation frequencies (IDH1, TP53, ATRX) across different age groups.",
+    "ground_truth": "Age <30: IDH1 (82.9%), TP53 (72.4%), ATRX (63.2%); Age 30-45: IDH1 (83.3%), TP53 (59.8%), ATRX (44.3%); Age 45-60: IDH1 (38.0%), TP53 (30.2%), ATRX (15.3%); Age 60+: IDH1 (14.9%), TP53 (26.3%), ATRX (8.0%)",
+    "derivation": "Mutation frequencies calculated by age group using groupBy and frequency counts",
+    "difficulty": "hard",
+    "subtype": "Trend Analysis",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Based on the mutation data, what might explain the relationship between IDH1 mutation status and patient age at diagnosis?",
+    "ground_truth": "IDH1 mutated patients are significantly younger (mean 41.67 years) compared to wild-type (mean ~60 years), with different age distributions and clinical characteristics",
+    "derivation": "Analysis of age distributions and confidence intervals by mutation status",
+    "difficulty": "hard",
+    "subtype": "Contextual Interpretation",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "What is the relationship between age, gender, and mutation patterns?",
+    "ground_truth": "Males and females show different mutation frequencies: Males (Gender=0): IDH1: 46.1%, TP53: 41.4%, ATRX: 23.8%; Females (Gender=1): IDH1: 51.0%, TP53: 41.6%, ATRX: 28.8%",
+    "derivation": "Analyzed gender-specific mutation rates using data grouping and frequency calculations",
+    "difficulty": "hard",
+    "subtype": "Multi-variable Analysis",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Analyze the distribution of risk profiles based on mutation combinations.",
+    "ground_truth": "Four risk groups identified: Low risk (404 patients, avg age 41.64), High risk (203 patients, avg age 60.89), Mixed (12 patients, avg age 41.39), No risk mutations (220 patients, avg age 59.35)",
+    "derivation": "Created risk profiles based on combinations of high-risk (EGFR, PTEN) and low-risk (IDH1, CIC) mutations",
+    "difficulty": "hard",
+    "subtype": "Pattern Recognition",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "What are the racial differences in mutation frequencies, if any?",
+    "ground_truth": "Race 0 (n=765): IDH1 49.8%, TP53 42.7%, ATRX 26.3%; Race 1 (n=59): IDH1 25.4%, TP53 30.5%, ATRX 22.0%; Race 2 (n=14): IDH1 57.1%, TP53 21.4%, ATRX 21.4%",
+    "derivation": "Calculated mutation rates by racial groups using groupBy and frequency analysis",
+    "difficulty": "hard",
+    "subtype": "Demographic Analysis",
+    "type": "analysis",
+    "table_path": "./datasets/research/Glioma.csv"
+
+},
+{
+    "question": "Calculate the mutation burden distribution across the dataset.",
+    "ground_truth": "Distribution of number of mutations per patient: 0: 124 patients, 1: 213 patients, 2: 262 patients, 3: 201 patients, 4: 35 patients, 5-7: 4 patients",
+    "derivation": "Counted total number of mutations per patient and created frequency distribution",
+    "difficulty": "medium",
+    "subtype": "Distribution Analysis",
+    "type": "statistics",
+    "table_path": "./datasets/research/Glioma.csv"
+}
+]
