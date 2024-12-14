@@ -6,7 +6,7 @@
         "difficulty":"easy",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Count the frequency of each season in the dataset.",
@@ -15,7 +15,7 @@
         "difficulty":"easy",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Count the number of players who have scored more than 10 goals in a season.",
@@ -24,7 +24,7 @@
         "difficulty":"medium",
         "subtype":"Conditional Retrieval and Filtering",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Identify the player with the highest number of assists in a single season.",
@@ -33,7 +33,7 @@
         "difficulty":"easy",
         "subtype":"Direct Value Retrieval",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Calculate the average seasonal rating across all players.",
@@ -42,7 +42,7 @@
         "difficulty":"easy",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Determine the range of matches played in a single season.",
@@ -51,7 +51,7 @@
         "difficulty":"medium",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Identify the season with the most goals scored across all players.",
@@ -60,7 +60,7 @@
         "difficulty":"medium",
         "subtype":"Data Aggregation, Grouping and Classification",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Find the top 5 players with the most matches played.",
@@ -69,7 +69,7 @@
         "difficulty":"medium",
         "subtype":"Comparison and Ranking",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Calculate the median number of goals scored per season.",
@@ -78,7 +78,7 @@
         "difficulty":"easy",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Compute the total number of goals scored by Lionel Messi across all seasons.",
@@ -87,7 +87,7 @@
         "difficulty":"easy",
         "subtype":"Direct Value Retrieval",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Determine the correlation between goals and assists across all players.",
@@ -96,7 +96,7 @@
         "difficulty":"medium",
         "subtype":"Correlation and Association",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Group players by team and calculate the total number of goals scored for each team.",
@@ -105,7 +105,7 @@
         "difficulty":"medium",
         "subtype":"Data Aggregation, Grouping and Classification",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Identify the player with the most matches played for InterMiami.",
@@ -114,7 +114,7 @@
         "difficulty":"easy",
         "subtype":"Direct Value Retrieval",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Compute the interquartile range (IQR) of assists across all players.",
@@ -123,7 +123,7 @@
         "difficulty":"hard",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Calculate the percentage of players with a seasonal rating above 8.0.",
@@ -132,7 +132,7 @@
         "difficulty":"medium",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Identify the top 3 teams with the highest average seasonal ratings.",
@@ -141,7 +141,7 @@
         "difficulty":"medium",
         "subtype":"Comparison and Ranking",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Find the player with the highest goals-to-matches ratio.",
@@ -150,7 +150,7 @@
         "difficulty":"hard",
         "subtype":"Comparison and Ranking",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Compute the 95% confidence interval for the mean seasonal rating.",
@@ -159,7 +159,7 @@
         "difficulty":"hard",
         "subtype":"Confidence Interval",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Analyze the frequency distribution of seasonal ratings by grouping into ranges (<7.0, 7.0-8.0, >8.0).",
@@ -168,7 +168,7 @@
         "difficulty":"medium",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     },
     {
         "question":"Determine the variance of the number of matches played across all players.",
@@ -177,6 +177,6 @@
         "difficulty":"easy",
         "subtype":"Variance and Standard Deviation",
         "type":"statistics",
-        "table_path":"\/mnt\/data\/Latest Football  Players 2024 Data.csv"
+        "table_path":"./datasets/demographics/Football_Data.csv"
     }
 ]
