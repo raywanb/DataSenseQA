@@ -15,7 +15,7 @@
     "ground_truth": "Malignant: 212, Benign: 357",
     "derivation": "data.reduce((acc, row) => { acc[row.diagnosis] = (acc[row.diagnosis] || 0) + 1; return acc; }, {})",
     "difficulty": "easy",
-    "subtype": "Frequency Analysis",
+    "subtype": "Frequency and Distribution Analysis",
     "type": "data_quality",
     "table_path": "./datasets/research/breastcancer.csv"
 },
@@ -25,7 +25,7 @@
     "ground_truth": "Yes, there appears to be a strong positive correlation. The first five pairs show that larger radii correspond to larger areas: (17.99, 1001), (20.57, 1326), (19.69, 1203), (11.42, 386.1), (20.29, 1297)",
     "derivation": "data.map(row => ({radius: row.radius_mean, area: row.area_mean})).slice(0, 5)",
     "difficulty": "medium",
-    "subtype": "Correlation Analysis",
+    "subtype": "Correlation and Association",
     "type": "statistics",
     "table_path": "./datasets/research/breastcancer.csv"
 },
@@ -35,7 +35,7 @@
     "ground_truth": "7 outliers",
     "derivation": "Calculate Q1, Q3, IQR, then count values > Q3 + 1.5 * IQR",
     "difficulty": "hard",
-    "subtype": "Outlier Detection",
+    "subtype": "Anomaly and Outlier Identification",
     "type": "data_quality",
     "table_path": "./datasets/research/breastcancer.csv"
 },
