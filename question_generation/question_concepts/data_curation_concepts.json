@@ -1,6 +1,7 @@
 [
   {
-    "Concept": "Data Quality Assessment and Validation",
+    "Type": "Data Curation",
+    "Subtype": "Data Quality Assessment and Validation",
     "Short Explanation": "Assess the ability to detect and address data quality issues, such as duplicates, missing values, outliers, and ensure data meets predefined quality standards.",
     "Examples": [
       "Identify and flag rows in a sales dataset where the 'Price' column contains negative values.",
@@ -10,7 +11,8 @@
     "Format": ""
   },
   {
-    "Concept": "Data Cleaning and Deduplication",
+    "Type": "Data Curation",
+    "Subtype": "Data Cleaning and Deduplication",
     "Short Explanation": "Test the ability to apply cleaning techniques to address missing, inconsistent, or incorrect data, and to identify and remove duplicate records in datasets.",
     "Examples": [
       "Fill missing values in a weather dataset's 'Temperature' column using the average temperature of the respective day.",
@@ -20,7 +22,8 @@
     "Format": ""
   },
   {
-    "Concept": "Data Normalization and Standardization",
+    "Type": "Data Curation",
+    "Subtype": "Data Normalization and Standardization",
     "Short Explanation": "Assess the ability to standardize data formats, units, values, column names, and data types for consistency and uniformity.",
     "Examples": [
       "Normalize product prices in a dataset by converting all currencies to USD using current exchange rates.",
@@ -31,7 +34,8 @@
     "Format": ""
   },
   {
-    "Concept": "Metadata Curation",
+    "Type": "Data Curation",
+    "Subtype": "Metadata Curation",
     "Short Explanation": "Evaluate the ability to create, update, and maintain accurate metadata for datasets.",
     "Examples": [
       "Create metadata for the given dataset, including descriptions of columns like 'Account Balance' and 'Transaction Date.'",
@@ -41,7 +45,8 @@
     "Format": ""
   },
   {
-    "Concept": "Data Enrichment",
+    "Type": "Data Curation",
+    "Subtype": "Data Enrichment",
     "Short Explanation": "Assess the ability to enhance data by integrating additional context or attributes.",
     "Examples": [
       "Add weather data to the dataset to analyze the impact of weather conditions on delivery delays.",
@@ -51,7 +56,8 @@
     "Format": ""
   },
   {
-    "Concept": "Data Profiling and Annotation",
+    "Type": "Data Curation",
+    "Subtype": "Data Profiling and Annotation",
     "Short Explanation": "Evaluate the ability to analyze datasets to understand their structure, distribution, anomalies, and label data accurately for better categorization.",
     "Examples": [
       "Profile a demographic dataset to understand distributions of 'Age' and 'Income' and detect outliers.",
@@ -61,7 +67,8 @@
     "Format": ""
   },
   {
-    "Concept": "Data Filtering and Partitioning",
+    "Type": "Data Curation",
+    "Subtype": "Data Filtering and Partitioning",
     "Short Explanation": "Test the ability to selectively include or exclude data based on specific criteria and divide datasets into meaningful segments for targeted analysis or processing.",
     "Examples": [
       "Filter a transactions dataset to include only rows where the 'Transaction Amount' exceeds $1000.",
@@ -71,7 +78,8 @@
     "Format": ""
   },
   {
-    "Concept": "Data Mapping",
+    "Type": "Data Curation",
+    "Subtype": "Data Mapping",
     "Short Explanation": "Evaluate the ability to link data from different sources or formats through semantic relationships.",
     "Examples": [
       "Map customer IDs from a CRM system to their corresponding transaction IDs in a payment system.",

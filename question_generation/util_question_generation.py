@@ -1,13 +1,11 @@
 import pandas as pd
 import json
 import sys
+import os
 
-from question_generation.chatGPT_interactions import set_system_role, add_message_to_history, \
-    display_conversation_history, chat_with_gpt
+sys.path.append(os.getcwd() + "/question_generation")
 
-sys.path.append("../test_agents/chatGPT")
-
-import chatGPT_interactions as gpt
+from question_generation import gpt_util as gpt
 from importlib import reload
 reload(gpt)
 
@@ -135,22 +133,51 @@ class FileAnalysis:
     # print(json_data)
 
     @staticmethod
-    def get_table_description(table_info,column_info, dataset_header) -> str:
+    def generate_table_description(table_info, column_info, dataset_header) -> str:
         conversation_history = [{"role": "system", "content": ""}]
 
-        role_description = "You are a helpful agent who is responsible for designing benchmark questions about tabular data who reads the prompts carefully."
+        role_description = "tool"
 
-        conversation_history = set_system_role(role_description, conversation_history)
-        conversation_history = add_message_to_history(role_description, f"These are some rows of the dataset in JSON format: {dataset_header}", conversation_history)
-        conversation_history = add_message_to_history(role_description, f"This is some general information about the table : {table_info}",conversation_history)
-        conversation_history = add_message_to_history(role_description, f"This is some general information about the columns : {column_info}",conversation_history)
+        conversation_history = gpt.set_system_role(role_description, conversation_history)
+        conversation_history = gpt.add_message_to_history(role_description, f"These are some rows of the dataset in JSON format: {dataset_header}", conversation_history)
+        conversation_history = gpt.add_message_to_history(role_description, f"This is some general information about the table : {table_info}",conversation_history)
+        conversation_history = gpt.add_message_to_history(role_description, f"This is some general information about the columns : {column_info}",conversation_history)
 
-        display_conversation_history(conversation_history)
+        #gpt.display_conversation_history(conversation_history)
 
         prompt = (f"Generate a description for the csv. sheet in text format and a description for each column of the csv. sheet. "
                   f"Each column description should contain: 1) the column name, 2) a column description, 3) missing values 4) number of unique values "
                   f"5) number of total values. Use the information given to you in the conversation history.")
 
-        answer = 
-        return chat_with_gpt(prompt, conversation_history)
+        return gpt.chat_with_gpt(prompt, conversation_history)
+
+    @staticmethod
+    def generate_questions(csv_file_path, dataset_header, table_description, question_concepts, existing_questions="", n_questions=10) -> str:
+        conversation_history = [{"role": "system", "content": ""}]
+
+        role_description = "tool"
+
+        conversation_history = gpt.set_system_role(role_description, conversation_history)
+        conversation_history = gpt.add_message_to_history(role_description,f"[INFO] This is the table description: {table_description}",conversation_history)
+        #conversation_history = gpt.add_message_to_history(role_description,f"[INFO] These are some rows of the dataset in JSON format: {dataset_header}", conversation_history)
+        conversation_history = gpt.add_message_to_history(role_description,f"[INFO] These are the question concepts : {question_concepts}", conversation_history)
+        conversation_history = gpt.add_message_to_history(role_description,f"[INFO] These questions already exist : {existing_questions}",conversation_history)
+
+        output_format = (
+            'The questions should be generated in JSON format with each question formatting looking like this: '
+            '{'
+            '"question": "", '
+            '"ground_truth": "", '
+            '"derivation": "", '
+            '"type": "", '
+            '"subtype": "", '
+            '"difficulty": "", '
+            f'"table_path": {csv_file_path}]'
+            '}. The derivation should be pandas code used to solve the problem and arrive at the ground truth')
+
+        conversation_history = gpt.add_message_to_history(role_description,f"[INFO] This is the format for the questions : {output_format}",conversation_history)
+
+        prompt = f"Generate {n_questions} by analysing the background information. Output them in a JSON format, following the given output format."
+
+        return gpt.chat_with_gpt(prompt, conversation_history)
 

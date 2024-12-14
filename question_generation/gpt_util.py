@@ -1,6 +1,13 @@
 import openai
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
 from typing import List, Dict
+#os.environ["OPENAI_API_KEY"] =
+load_dotenv()
 
+# Retrieve the API key from the .env file
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 #conversation_history = [ {"role": "system", "content": "You are a helpful assistant that specializes in technical and general queries."}
 
 import openai
@@ -23,7 +30,7 @@ def add_message_to_history(role: str, content: str, conversation_history: List[D
     return conversation_history
 
 
-def chat_with_gpt(prompt: str, conversation_history: List[Dict[str, str]], model: str = "gpt-4", max_tokens: int = 1000, temperature: float = 0) -> (str, List[Dict[str, str]]):
+def chat_with_gpt(prompt: str, conversation_history: List[Dict[str, str]], model: str = "gpt-4", max_tokens: int = 4000, temperature: float = 0) -> (str, List[Dict[str, str]]):
     """
     Send a message to ChatGPT and get a response.
 
@@ -35,22 +42,30 @@ def chat_with_gpt(prompt: str, conversation_history: List[Dict[str, str]], model
         temperature: Creativity level of the response.
 
     Returns:
-        ChatGPT's response as a string.
+        Tuple containing:
+        - ChatGPT's response as a string.
+        - Updated conversation history.
     """
-    # Add user message to conversation history
-    add_message_to_history("user", prompt, conversation_history)
+    # Add the user's message to the conversation history
+    conversation_history.append({"role": "user", "content": prompt})
 
-    # Send the conversation history to the model
-    response = openai.ChatCompletion.create(
+    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
+
+    # Use the updated API to send the conversation to the model
+    response = client.chat.completions.create(
         model=model,
         messages=conversation_history,
         max_tokens=max_tokens,
         temperature=temperature
     )
 
-    # Extract and return the assistant's response
-    assistant_response = response['choices'][0]['message']['content']
-    add_message_to_history("assistant", assistant_response, conversation_history)
+    # Extract the assistant's response
+    assistant_response = response.choices[0].message.content
+
+    # Add the assistant's response to the conversation history
+    conversation_history.append({"role": "assistant", "content": assistant_response})
+
+    # Return the response and updated conversation history
     return assistant_response, conversation_history
 
 
