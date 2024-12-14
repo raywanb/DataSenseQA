@@ -78,7 +78,7 @@
         "difficulty":"easy",
         "subtype":"Direct Value Retrieval",
         "type":"statistics",
-        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Find the top 5 schemes with the highest 'Direct Plan - Base TER (%)'.",
