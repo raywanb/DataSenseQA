@@ -5,7 +5,7 @@ import pandas as pd
 import json
 
 
-anthropic_model = ChatAnthropic(model='claude-3-5-sonnet-latest', api_key="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", temperature=0.0)
+anthropic_model = ChatAnthropic(model='claude-3-5-sonnet-latest', api_key="", temperature=0.0)
 openai_model = ChatOpenAI(model="gpt-4o")
 
 with open('./questions/CreditCard.json', 'r') as f:
