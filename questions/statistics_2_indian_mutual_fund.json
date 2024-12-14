@@ -6,7 +6,7 @@
         "difficulty":"easy",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Count the frequency of each scheme category based on 'Direct TER Group'.",
@@ -15,7 +15,7 @@
         "difficulty":"easy",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Determine the correlation between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)'.",
@@ -24,7 +24,7 @@
         "difficulty":"easy",
         "subtype":"Correlation and Association",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Calculate the average 'Regular Plan - Base TER (%)' and compare it to the average 'Direct Plan - Base TER (%)'.",
@@ -33,7 +33,7 @@
         "difficulty":"medium",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Compute the total count of schemes with 'Regular Plan - Total TER (%)' greater than 1%.",
@@ -42,7 +42,7 @@
         "difficulty":"medium",
         "subtype":"Conditional Retrieval and Filtering",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Compute the total count of schemes with 'Direct Plan - Total TER (%)' less than 0.5%.",
@@ -51,7 +51,7 @@
         "difficulty":"medium",
         "subtype":"Conditional Retrieval and Filtering",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Group schemes by 'Regular TER Group' and calculate the average 'Regular Plan - Total TER (%)' for each group.",
@@ -60,7 +60,7 @@
         "difficulty":"medium",
         "subtype":"Data Aggregation, Grouping and Classification",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Identify the scheme with the highest 'Regular Plan - Total TER (%)'.",
@@ -69,7 +69,7 @@
         "difficulty":"easy",
         "subtype":"Direct Value Retrieval",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Identify the scheme with the lowest 'Direct Plan - Total TER (%)'.",
@@ -78,7 +78,7 @@
         "difficulty":"easy",
         "subtype":"Direct Value Retrieval",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Find the top 5 schemes with the highest 'Direct Plan - Base TER (%)'.",
@@ -87,7 +87,7 @@
         "difficulty":"medium",
         "subtype":"Comparison and Ranking",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Compute the interquartile range (IQR) of 'Regular Plan - Total TER (%)'.",
@@ -96,16 +96,16 @@
         "difficulty":"hard",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
-        "question":"Test if 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)' are significantly different using a t-test.",
-        "ground_truth":null,
-        "derivation":"from scipy.stats import ttest_ind; ttest_ind(df['Regular Plan - Total TER (%)'], df['Direct Plan - Total TER (%)'])",
-        "difficulty":"hard",
-        "subtype":"Hypothesis Testing",
-        "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "question": "Calculate the mean, median, and standard deviation of the 'Direct Plan - Total TER (%)'.",
+        "ground_truth": "Mean: 0.87, Median: 0.85, Std Dev: 0.12",
+        "derivation": "mean = df['Direct Plan - Total TER (%)'].mean(); median = df['Direct Plan - Total TER (%)'].median(); std_dev = df['Direct Plan - Total TER (%)'].std()",
+        "difficulty": "easy",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Calculate the percentage of schemes with 'Regular Plan - Total TER (%)' above 2%.",
@@ -114,7 +114,7 @@
         "difficulty":"medium",
         "subtype":"Frequency and Distribution Analysis",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Identify any trends between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)'.",
@@ -123,16 +123,16 @@
         "difficulty":"medium",
         "subtype":"Trend Analysis",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
-        "question":"Test if the variance in 'Regular Plan - Base TER (%)' is significantly different from 'Direct Plan - Base TER (%)' using an F-test.",
-        "ground_truth":null,
-        "derivation":"from scipy.stats import levene; levene(df['Regular Plan - Base TER (%)'], df['Direct Plan - Base TER (%)'])",
-        "difficulty":"hard",
-        "subtype":"Hypothesis Testing",
-        "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "question": "Group schemes by 'Regular TER Group' and calculate the mean 'Regular Plan - Total TER (%)' for each group.",
+        "ground_truth": "{'Low': 0.45, 'Medium': 0.95, 'High': 1.45}",
+        "derivation": "df.groupby('Regular TER Group')['Regular Plan - Total TER (%)'].mean()",
+        "difficulty": "medium",
+        "subtype": "Data Aggregation, Grouping and Classification",
+        "type": "statistics",
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Compute the variance of 'Regular Plan - Total TER (%)'.",
@@ -141,25 +141,25 @@
         "difficulty":"easy",
         "subtype":"Variance and Standard Deviation",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
-        "question":"Compute the 90% confidence interval for the mean 'Direct Plan - Total TER (%)'.",
-        "ground_truth":null,
-        "derivation":"from scipy.stats import norm; mean = df['Direct Plan - Total TER (%)'].mean(); std_dev = df['Direct Plan - Total TER (%)'].std(); n = len(df['Direct Plan - Total TER (%)']); margin = norm.ppf(0.95) * (std_dev \/ np.sqrt(n)); (mean - margin, mean + margin)",
-        "difficulty":"medium",
-        "subtype":"Confidence Interval",
-        "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "question": "Determine the seasonality of schemes by grouping them into quarters based on their Total TER values.",
+        "ground_truth": "Quarterly Distribution: {'Q1': 15, 'Q2': 30, 'Q3': 25, 'Q4': 10}",
+        "derivation": "pd.cut(df['Regular Plan - Total TER (%)'], bins=[0, 0.5, 1.0, 1.5, 2.0], labels=['Q1', 'Q2', 'Q3', 'Q4']).value_counts()",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
-        "question":"Analyze the distribution of 'Direct Plan - Total TER (%)' by plotting a histogram.",
-        "ground_truth":null,
-        "derivation":"df['Direct Plan - Total TER (%)'].plot(kind='hist', bins=10)",
-        "difficulty":"easy",
-        "subtype":"Visualization",
-        "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "question": "Calculate the total number of schemes with 'Direct Plan - Total TER (%)' less than 0.5%.",
+        "ground_truth": "Count: 8",
+        "derivation": "len(df[df['Direct Plan - Total TER (%)'] < 0.5])",
+        "difficulty": "medium",
+        "subtype": "Conditional Retrieval and Filtering",
+        "type": "statistics",
+        "table_path": "./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Compare the median 'Regular Plan - Base TER (%)' and 'Direct Plan - Base TER (%)'.",
@@ -168,7 +168,7 @@
         "difficulty":"easy",
         "subtype":"Descriptive Statistics",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     },
     {
         "question":"Find the top 3 schemes with the lowest 'Regular Plan - Base TER (%)'.",
@@ -177,6 +177,6 @@
         "difficulty":"medium",
         "subtype":"Comparison and Ranking",
         "type":"statistics",
-        "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
+        "table_path":"./datasets/crm/Indian_Mutual_fund_TER.csv"
     }
 ]
