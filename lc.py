@@ -163,12 +163,12 @@ class DataFrameAgentProcessor:
 
 
 
-processor = DataFrameAgentProcessor(
-    model_type="anthropic",
-    questions_path="./questions/information_retrieval_2_crm.json"
-)
-processor.process_questions(output_path="./questions/CreditCard_with_results.json")
-# processor.process_questions_folder(
-#     questions_folder="./questions_folder",
-#     output_folder="./results_folder"
+# processor = DataFrameAgentProcessor(
+#     model_type="anthropic",
+#     questions_path="./questions/information_retrieval_2_crm.json"
 # )
+# processor.process_questions(output_path="./questions/CreditCard_with_results.json")
+# # processor.process_questions_folder(
+# #     questions_folder="./questions_folder",
+# #     output_folder="./results_folder"
+# # )
