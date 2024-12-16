@@ -1,0 +1,202 @@
+[
+    {
+        "question": "Count the frequency of each scheme category based on 'Regular TER Group'.",
+        "ground_truth": "Regular TER Group: {'>1%': 800, '<0.5%': 418, '0.5%-1%': 336}",
+        "derivation": "df['Regular TER Group'].value_counts()",
+        "difficulty": "easy",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "Here's the frequency distribution of schemes based on Regular Plan Total TER:\n- 0-1% TER: 687 schemes\n- 1-2% TER: 544 schemes\n- 2-3% TER: 328 schemes\n- >3% TER: 0 schemes\n\nThis shows that most mutual fund schemes (687) have a Regular Plan Total TER of less than 1%, followed by schemes with TER between 1-2% (544 schemes). There are 328 schemes with TER between 2-3%, and interestingly, no schemes have a TER greater than 3%."
+    },
+    {
+        "question": "Count the frequency of each scheme category based on 'Direct TER Group'.",
+        "ground_truth": "Direct TER Group: {'<0.5%': 917, '0.5%-1%': 433, '>1%': 90}",
+        "derivation": "df['Direct TER Group'].value_counts()",
+        "difficulty": "easy",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "Here's the frequency distribution of schemes based on Direct Plan Total TER:\n1. 0-0.5%: 792 schemes\n2. 0.5-1.0%: 488 schemes\n3. 1.0-1.5%: 138 schemes\n4. 1.5-2.0%: 24 schemes\n5. >2.0%: 5 schemes\n\nThis shows that the majority of schemes (792) have a Direct Plan Total TER of less than 0.5%, followed by schemes with TER between 0.5-1.0% (488 schemes). Very few schemes (5) have a Direct Plan Total TER exceeding 2.0%. This distribution indicates that most mutual fund schemes maintain relatively low expense ratios in their Direct Plans."
+    },
+    {
+        "question": "Determine the correlation between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)'.",
+        "ground_truth": "Correlation: 0.8051",
+        "derivation": "df['Regular Plan - Total TER (%)'].corr(df['Direct Plan - Total TER (%)'])",
+        "difficulty": "easy",
+        "subtype": "Correlation and Association",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The correlation coefficient between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)' is approximately 0.805 (or 80.5%). This indicates a strong positive correlation between the two variables, meaning that as the Regular Plan Total TER increases, the Direct Plan Total TER tends to increase as well. However, since the correlation is not perfect (1.0), there is still some variation in how the two move together."
+    },
+    {
+        "question": "Calculate the average 'Regular Plan - Base TER (%)' and Compare it to the average 'Direct Plan - Base TER (%)'.",
+        "ground_truth": "Regular Avg: 1.11, Direct Avg: 0.41",
+        "derivation": "df['Regular Plan - Base TER (%)'].mean(); df['Direct Plan - Base TER (%)'].mean()",
+        "difficulty": "medium",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "Compute the total count of schemes with 'Regular Plan - Total TER (%)' greater than 1%.",
+        "ground_truth": "Count: 872",
+        "derivation": "len(df[df['Regular Plan - Total TER (%)'] > 1])",
+        "difficulty": "medium",
+        "subtype": "Conditional Retrieval and Filtering",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "There are 872 schemes that have a 'Regular Plan - Total TER (%)' greater than 1%."
+    },
+    {
+        "question": "Compute the total count of schemes with 'Direct Plan - Total TER (%)' less than 0.5%.",
+        "ground_truth": "Count: 954",
+        "derivation": "len(df[df['Direct Plan - Total TER (%)'] < 0.5])",
+        "difficulty": "medium",
+        "subtype": "Conditional Retrieval and Filtering",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "There are 954 schemes that have a Direct Plan - Total TER (%) less than 0.5%."
+    },
+    {
+        "question": "Group schemes by 'Regular TER Group' and calculate the average 'Regular Plan - Total TER (%)' for each group.",
+        "ground_truth": "Average by Group: {'<0.5%': 0.30521531100478466, '0.5%-1%': 0.8398214285714286, '>1%': 1.8852000000000002}",
+        "derivation": "df.groupby('Regular TER Group')['Regular Plan - Total TER (%)'].mean()",
+        "difficulty": "medium",
+        "subtype": "Data Aggregation, Grouping and Classification",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "Identify the scheme with the highest 'Regular Plan - Total TER (%)'.",
+        "ground_truth": "Scheme: Taurus Flexi Cap Fund",
+        "derivation": "df.loc[df['Regular Plan - Total TER (%)'].idxmax(), 'Scheme Name']",
+        "difficulty": "easy",
+        "subtype": "Direct Value Retrieval",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "Identify the scheme with the lowest 'Direct Plan - Total TER (%)'.",
+        "ground_truth": "Scheme: Aditya Birla Sun Life BSE SENSEX ETF",
+        "derivation": "df.loc[df['Direct Plan - Total TER (%)'].idxmin(), 'Scheme Name']",
+        "difficulty": "easy",
+        "subtype": "Direct Value Retrieval",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The scheme with the lowest Direct Plan - Total TER (%) is \"Invesco India Gold Exchange Traded Fund\" with a TER of 0.0%."
+    },
+    {
+        "question": "Find the top 5 schemes with the highest 'Direct Plan - Base TER (%)'.",
+        "ground_truth": "Top Schemes: ['Taurus Flexi Cap Fund', 'Taurus Large Cap Fund', 'Taurus Mid Cap Fund', 'Taurus Infrastructure Fund', 'Tata Young Citizens Fund']",
+        "derivation": "df.nlargest(5, 'Direct Plan - Base TER (%)')['Scheme Name']",
+        "difficulty": "medium",
+        "subtype": "Comparison and Ranking",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The top 5 schemes with the highest Direct Plan - Base TER (%) are:\n1. Taurus Flexi Cap Fund (2.19%)\n2. Taurus Large Cap Fund (2.09%)\n3. Taurus Mid Cap Fund (1.87%)\n4. Taurus Infrastructure Fund (1.85%)\n5. Tata Young Citizens Fund (1.70%)"
+    },
+    {
+        "question": "Compute the interquartile range (IQR) of 'Regular Plan - Total TER (%)'.",
+        "ground_truth": "IQR: 1.46",
+        "derivation": "df['Regular Plan - Total TER (%)'].quantile(0.75) - df['Regular Plan - Total TER (%)'].quantile(0.25)",
+        "difficulty": "hard",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The interquartile range (IQR) of 'Regular Plan - Total TER (%)' is 1.46."
+    },
+    {
+        "question": "Calculate the mean, median, and standard deviation of the 'Direct Plan - Total TER (%)'.",
+        "ground_truth": "Mean: 0.87, Median: 0.85, Std Dev: 0.12",
+        "derivation": "mean = df['Direct Plan - Total TER (%)'].mean(); median = df['Direct Plan - Total TER (%)'].median(); std_dev = df['Direct Plan - Total TER (%)'].std()",
+        "difficulty": "easy",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "For the 'Direct Plan - Total TER (%)':\n- Mean: 0.48% (or 0.482152%)\n- Median: 0.395%\n- Standard Deviation: 0.39% (or 0.390877%)\n\nThese values indicate that the average Direct Plan Total TER is about 0.48%, with the middle value (median) being slightly lower at 0.395%. The standard deviation of 0.39% suggests moderate variability in the TER values around the mean."
+    },
+    {
+        "question": "Calculate the percentage of schemes with 'Regular Plan - Total TER (%)' above 2%.",
+        "ground_truth": "Percentage: 20.22%",
+        "derivation": "len(df[df['Regular Plan - Total TER (%)'] > 2]) / len(df) * 100",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "20.22% of schemes have a 'Regular Plan - Total TER (%)' above 2%."
+    },
+    {
+        "question": "Identify any trends between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)'.",
+        "ground_truth": "Correlation: 0.8051",
+        "derivation": "df['Regular Plan - Total TER (%)'].corr(df['Direct Plan - Total TER (%)'])",
+        "difficulty": "medium",
+        "subtype": "Trend Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "Based on the analysis of the data, there are clear trends between Regular Plan and Direct Plan Total TER:\n\n1. Direct Plan TER is consistently and significantly lower than Regular Plan TER across all schemes shown.\n\n2. The difference between Regular and Direct Plan TER varies but is substantial:\n   - The smallest difference observed is 0.25 percentage points (for Dynamic Bond Fund and ELSS Tax Saver)\n   - The largest difference observed is 1.70 percentage points (for Flexicap Fund)\n   - On average, Regular Plans have a TER that is 0.70 percentage points higher than Direct Plans\n\n3. The pattern suggests that Direct Plans are more cost-efficient for investors, as they consistently have lower expense ratios compared to their Regular Plan counterparts.\n\n4. The magnitude of the difference appears to be larger for equity-oriented schemes (like Flexicap Fund and Balanced Hybrid Fund) compared to debt-oriented schemes (like Dynamic Bond Fund).\n\nThis consistent pattern of lower Direct Plan TERs aligns with the general understanding that Direct Plans eliminate intermediary/distribution costs, resulting in lower expense ratios for investors who choose to invest directly."
+    },
+    {
+        "question": "Group schemes by 'Regular TER Group' and calculate the mean 'Regular Plan - Total TER (%)' for each group.",
+        "ground_truth": "{'Low': 0.45, 'Medium': 0.95, 'High': 1.45}",
+        "derivation": "df.groupby('Regular TER Group')['Regular Plan - Total TER (%)'].mean()",
+        "difficulty": "medium",
+        "subtype": "Data Aggregation, Grouping and Classification",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "Here are the average Regular Plan Total TER percentages for each TER group:\n- 0-1% group: 0.487%\n- 1-2% group: 1.565%\n- 2-3% group: 2.231%\n- 3%+ group: No schemes in this category (NaN)\n\nThis shows that most schemes fall into the lower TER categories, with no schemes having a TER above 3%. The lowest TER group (0-1%) has an average of 0.487%, the middle group (1-2%) averages 1.565%, and the higher group (2-3%) averages 2.231%."
+    },
+    {
+        "question": "Compute the variance of 'Regular Plan - Total TER (%)'.",
+        "ground_truth": "Variance: 0.60",
+        "derivation": "df['Regular Plan - Total TER (%)'].var()",
+        "difficulty": "easy",
+        "subtype": "Variance and Standard Deviation",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The variance of 'Regular Plan - Total TER (%)' is approximately 0.602 or 0.6017 when expressed with more decimal places. This value indicates how spread out the Total TER values are from their mean in the Regular Plan."
+    },
+    {
+        "question": "Determine the seasonality of schemes by grouping them into quarters based on their Total TER values.",
+        "ground_truth": "Quarterly Distribution: {'Q1': 15, 'Q2': 30, 'Q3': 25, 'Q4': 10}",
+        "derivation": "pd.cut(df['Regular Plan - Total TER (%)'], bins=[0, 0.5, 1.0, 1.5, 2.0], labels=['Q1', 'Q2', 'Q3', 'Q4']).value_counts()",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "I apologize, but it is not possible to determine the seasonality of schemes based on their Total TER values using this dataset. This is because:\n\n1. The dataset is a static snapshot of mutual fund schemes and their expense ratios\n2. There are no time-based columns (dates, quarters, or periods) in the data\n3. We only have one observation per scheme, rather than multiple observations over time\n\nTo analyze seasonality, we would need:\n- Time series data with dates\n- Multiple observations of the same schemes across different time periods\n- Data points that show how TER values change over different seasons/quarters\n\nIf you'd like to analyze the TER values, we could instead:\n- Compare Regular vs Direct plan TERs\n- Analyze the distribution of TER values\n- Group schemes by TER ranges\n\nPlease let me know if you'd like to explore any of these alternative analyses that are more suitable for this dataset's structure."
+    },
+    {
+        "question": "Calculate the total number of schemes with 'Direct Plan - Total TER (%)' less than 0.5%.",
+        "ground_truth": "Count: 8",
+        "derivation": "len(df[df['Direct Plan - Total TER (%)'] < 0.5])",
+        "difficulty": "medium",
+        "subtype": "Conditional Retrieval and Filtering",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "There are 954 schemes that have a Direct Plan - Total TER (%) less than 0.5%."
+    },
+    {
+        "question": "Compare the median 'Regular Plan - Base TER (%)' and 'Direct Plan - Base TER (%)'.",
+        "ground_truth": "Regular Median: 1.00, Direct Median: 0.34",
+        "derivation": "df['Regular Plan - Base TER (%)'].median(); df['Direct Plan - Base TER (%)'].median()",
+        "difficulty": "easy",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The median Base TER for Regular Plans (1.00%) is significantly higher than the median Base TER for Direct Plans (0.34%). Specifically, the Regular Plan median Base TER is about 2.94 times higher than the Direct Plan median Base TER. This indicates that, typically, investors pay considerably higher base expense ratios when investing through Regular Plans compared to Direct Plans."
+    },
+    {
+        "question": "Find the top 3 schemes with the lowest 'Regular Plan - Base TER (%)'.",
+        "ground_truth": "Top Schemes: ['Aditya Birla Sun Life CRISIL Liquid Overnight ETF', 'Bharat Bond ETF - April 2030', 'Bharat Bond ETF - April 2032']",
+        "derivation": "df.nsmallest(3, 'Regular Plan - Base TER (%)')['Scheme Name']",
+        "difficulty": "medium",
+        "subtype": "comparison and Ranking",
+        "type": "statistics",
+        "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
+        "result": "The three schemes with the lowest Regular Plan - Base TER (%) are:\n1. Aditya Birla Sun Life CRISIL Liquid Overnight ETF (0.0%)\n2. Bharat Bond ETF - April 2030 (0.0%)\n3. Bharat Bond ETF - April 2032 (0.0%)\n\nAll three schemes have a Base TER of 0.0% for their Regular Plans."
+    }
+]

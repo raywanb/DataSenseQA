@@ -1,0 +1,422 @@
+[
+    {
+        "question": "How many patients in the dataset have Grade 1 gliomas?",
+        "ground_truth": "487 patients have Grade 0 gliomas, and 352 patients have Grade 1 gliomas",
+        "derivation": "_.countBy(data, 'Grade')",
+        "type": "Information Retrieval",
+        "subtype": "Direct Value Retrieval",
+        "difficulty": "easy",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "There are 352 patients in the dataset who have Grade 1 gliomas."
+    },
+    {
+        "question": "List the number of patients who have both IDH1 and TP53 mutations (where both values are 1).",
+        "ground_truth": "238 patients have both IDH1 and TP53 mutations",
+        "derivation": "data.filter(row => row.IDH1 === 1 && row.TP53 === 1).length",
+        "type": "Information Retrieval",
+        "subtype": "Conditional Retrieval and Filtering",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "238 patients have both IDH1 and TP53 mutations."
+    },
+    {
+        "question": "Which genetic mutation (among all recorded mutations) appears most frequently in the dataset?",
+        "ground_truth": "IDH1 is the most frequent mutation with 404 cases",
+        "derivation": "Object.entries(mutationCounts).sort((a,b) => b[1] - a[1])[0]",
+        "type": "Information Retrieval",
+        "subtype": "Comparison and Ranking",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "Group patients by Grade and calculate the average age at diagnosis for each grade.",
+        "ground_truth": "Grade 0: 43.87 years, Grade 1: 60.70 years",
+        "derivation": "_.groupBy(data, 'Grade').map(group => calculateMean(group.map(p => p.Age_at_diagnosis)))",
+        "type": "Statistics",
+        "subtype": "Descriptive Statistics",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The average age at diagnosis for each grade is:\n- Grade 0: 43.87 years\n- Grade 1: 60.70 years\n\nThis shows that patients with Grade 1 tumors tend to be diagnosed at a later age (around 61 years) compared to those with Grade 0 tumors (around 44 years)."
+    },
+    {
+        "question": "What is the probability of having an EGFR mutation given that a patient has a Grade 4 glioma?",
+        "ground_truth": "31.8% (112 EGFR mutations out of 352 Grade 4 cases)",
+        "derivation": "data.filter(row => row.Grade === 4 && row.EGFR === 1).length / data.filter(row => row.Grade === 4).length",
+        "type": "Statistics",
+        "subtype": "Probability and Risk Analysis",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "I cannot calculate the specific probability of EGFR mutation in Grade 4 glioma with this dataset because the Grade variable is binary encoded (0 and 1) rather than showing the standard glioma grades (I-IV or 1-4). What we can see is that for Grade 1 (which likely represents higher-grade gliomas) the probability of EGFR mutation is 23.01%, and for Grade 0 (likely representing lower-grade gliomas) the probability is 6.37%. Without knowing how the original grades were mapped to this binary classification, we cannot determine the specific probability for Grade 4 gliomas."
+    },
+    {
+        "question": "What is the mean, median, and standard deviation of Age_at_diagnosis in the dataset?",
+        "ground_truth": "Mean: 50.94 years, Standard Deviation: 15.69 years",
+        "derivation": "const ages = data.map(row => row.Age_at_diagnosis).filter(age => age != null); calculateMean(ages); standardDeviation(ages)",
+        "type": "Statistics",
+        "subtype": "Descriptive Statistics",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "- Mean age at diagnosis: 50.94 years\n- Median age at diagnosis (50th percentile): 51.55 years\n- Standard deviation of age at diagnosis: 15.70 years"
+    },
+    {
+        "question": "Is there a noticeable pattern in the co-occurrence of IDH1 and IDH2 mutations across different age groups?",
+        "ground_truth": "There are 0 cases of co-occurrence between IDH1 and IDH2 mutations",
+        "derivation": "data.filter(row => row.IDH1 === 1 && row.IDH2 === 1).length",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, there is a clear pattern in the co-occurrence of IDH1 and IDH2 mutations across age groups. Both mutations show a strong age-dependent pattern, being significantly more common in younger patients (particularly under 45 years old) and becoming progressively rarer in older age groups. IDH1 mutations are much more frequent overall compared to IDH2 mutations, but both follow a similar age-related trend. This suggests that these mutations might be particularly relevant in the pathogenesis of gliomas in younger patients."
+    },
+    {
+        "question": "Calculate the variance in age at diagnosis across different glioma grades.",
+        "ground_truth": "IDH1-mutated variance: 149.78, IDH1-wildtype variance: 182.16",
+        "derivation": "const agesByIdh1 = _.groupBy(data, 'IDH1'); standardDeviation(agesByIdh1[1]) ** 2",
+        "type": "Statistics",
+        "subtype": "Variance and Standard Deviation",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The variance in age at diagnosis differs between the two glioma grades:\n- Grade 0: variance = 175.87 years\u00b2\n- Grade 1: variance = 180.29 years\u00b2\n\nThis indicates that there is slightly more variability in the age at diagnosis for Grade 1 gliomas compared to Grade 0 gliomas, though the difference in variance is relatively small (about 4.4 years\u00b2). Both grades show substantial variation in age at diagnosis, suggesting that these tumors can occur across a wide age range regardless of grade."
+    },
+    {
+        "question": "Is there a correlation between EGFR mutation status and glioma grade?",
+        "ground_truth": "Grade 0: 6.37% EGFR mutation rate, Grade 1: 23.01% EGFR mutation rate",
+        "derivation": "const egfrByGrade = _.groupBy(data, 'Grade'); Object.entries(egfrByGrade).map(([grade, patients]) => ({grade, egfrRate: patients.filter(p => p.EGFR === 1).length / patients.length}))",
+        "type": "Statistics",
+        "subtype": "Correlation and Association",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, there is a significant correlation between EGFR mutation status and glioma grade. The analysis shows that:\n\n1. In lower-grade gliomas (Grade 0):\n   - EGFR mutations are relatively rare (31 out of 487 cases, or about 6.4%)\n\n2. In higher-grade gliomas (Grade 1):\n   - EGFR mutations are more common (81 out of 352 cases, or about 23%)\n\nThis relationship is statistically significant (p-value = 5.46e-12, which is much smaller than 0.05), indicating that EGFR mutations are significantly more prevalent in higher-grade gliomas. This suggests that EGFR mutations might be associated with more aggressive forms of glioma.\n\nThis finding aligns with existing medical literature that often associates EGFR mutations with more aggressive and higher-grade gliomas."
+    },
+    {
+        "question": "Provide a summary of the patient population including grade distribution, gender ratio, and most common mutations.",
+        "ground_truth": "Total patients: 839; Grade 0: 487, Grade 1: 352; Males in Grade 0: 271, Females in Grade 0: 216; Males in Grade 1: 217, Females in Grade 1: 135; Most common mutation: IDH1 (404 cases)",
+        "derivation": "Multiple analyses combined",
+        "type": "Information Retrieval",
+        "subtype": "Summary and Reporting from Tables",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Here's a summary of the patient population:\n\nGrade Distribution:\n- Grade 0: 487 patients (58.0%)\n- Grade 1: 352 patients (42.0%)\n\nGender Distribution:\n- Gender 0: 488 patients (58.2%)\n- Gender 1: 351 patients (41.8%)\n\nMost Common Mutations (top 5):\n1. IDH1: 404 patients (48.1%)\n2. TP53: 348 patients (41.4%)\n3. ATRX: 217 patients (25.8%)\n4. PTEN: 141 patients (16.8%)\n5. EGFR: 112 patients (13.3%)\n\nThe patient population shows a relatively balanced distribution between grades and genders, with a slight majority in Grade 0 and Gender 0. The most prevalent mutation by far is IDH1, present in nearly half of all patients, followed by TP53 in about 41% of patients. ATRX is the third most common mutation, present in about a quarter of the patients. PTEN and EGFR mutations are less common but still significant, occurring in 16.8% and 13.3% of patients respectively."
+    },
+    {
+        "question": "Calculate the 95% confidence interval for the mean age at diagnosis for patients with IDH1 mutations.",
+        "ground_truth": "Mean: 41.67 years, 95% CI: [40.48, 42.87] years",
+        "derivation": "confidenceInterval(data.filter(row => row.IDH1 === 1).map(row => row.Age_at_diagnosis))",
+        "type": "Statistics",
+        "subtype": "Confidence Intervals",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "For patients with IDH1 mutations (n=404), the mean age at diagnosis is approximately 41.67 years, with a 95% confidence interval of (40.47, 42.87) years. This means we can be 95% confident that the true population mean age at diagnosis for patients with IDH1 mutations falls between 40.47 and 42.87 years."
+    },
+    {
+        "question": "Group patients into clusters based on their mutation profiles (IDH1, TP53, ATRX, PTEN, EGFR) and analyze the characteristics of each cluster.",
+        "ground_truth": "Most common patterns: No mutations (170 patients, avg age 59.94), ATRX-IDH1-TP53 (167 patients, avg age 38.41), IDH1 only (146 patients, avg age 46.38)",
+        "derivation": "Complex clustering analysis of mutation patterns",
+        "type": "Statistics",
+        "subtype": "Classification and Clustering",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The analysis reveals four distinct mutation profile groups with the following characteristics:\n\n1. IDH1 and TP53 co-mutated group (IDH1_TP53):\n- Youngest average age at diagnosis (38.8 years)\n- Characterized by mutations in both IDH1 and TP53\n- Based on the first few rows, often associated with ATRX mutations\n\n2. IDH1-only mutated group (IDH1_only):\n- Relatively young average age at diagnosis (45.8 years)\n- Characterized by IDH1 mutation without TP53 mutation\n- From the sample data, may be associated with other mutations like PIK3CA and FUBP1\n\n3. TP53-only mutated group (TP53_only):\n- Older average age at diagnosis (58.6 years)\n- Characterized by TP53 mutation without IDH1 mutation\n\n4. Other group (no IDH1 or TP53 mutations):\n- Oldest average age at diagnosis (59.9 years)\n- Lacks both IDH1 and TP53 mutations\n\nKey findings:\n- There is a clear age association with mutation patterns, with IDH1-mutated groups being significantly younger at diagnosis\n- The presence of IDH1 mutations appears to be a key distinguishing factor between younger and older age groups\n- The combination of IDH1 and TP53 mutations identifies the youngest patient group\n- Patients without either IDH1 or TP53 mutations tend to be diagnosed at a later age\n\nThis clustering reveals distinct molecular subtypes that could have implications for prognosis and treatment strategies."
+    },
+    {
+        "question": "Analyze the trend of mutation frequencies (IDH1, TP53, ATRX) across different age groups.",
+        "ground_truth": "Age <30: IDH1 (82.9%), TP53 (72.4%), ATRX (63.2%); Age 30-45: IDH1 (83.3%), TP53 (59.8%), ATRX (44.3%); Age 45-60: IDH1 (38.0%), TP53 (30.2%), ATRX (15.3%); Age 60+: IDH1 (14.9%), TP53 (26.3%), ATRX (8.0%)",
+        "derivation": "Mutation frequencies calculated by age group using groupBy and frequency counts",
+        "type": "Statistics",
+        "subtype": "Trend Analysis and Smoothing",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Here's the analysis of mutation frequencies for IDH1, TP53, and ATRX across age groups:\n\nIDH1 Mutations:\n- Highest in younger age groups: 83.3% (31-45) and 82.9% (0-30)\n- Dramatically decreases with age: 38.0% (46-60) and 14.9% (60+)\n- Shows a clear negative correlation with age\n\nTP53 Mutations:\n- Highest in youngest age group: 72.4% (0-30)\n- Moderately high in 31-45 age group: 59.8%\n- Lower in older age groups: 30.2% (46-60) and 26.3% (60+)\n- Shows a consistent decrease with age\n\nATRX Mutations:\n- Highest in youngest age group: 63.2% (0-30)\n- Decreases steadily with age: 44.3% (31-45), 15.3% (46-60), and 8.0% (60+)\n- Shows the most dramatic decline across age groups\n\nKey Patterns:\n1. All three mutations are most frequent in younger patients (under 45)\n2. There's a sharp decline in mutation frequencies after age 45\n3. The oldest age group (60+) has the lowest frequency of all three mutations\n4. The pattern suggests these mutations might be characteristic of early-onset disease\n\nThis analysis is based on a good sample size across age groups (76-262 patients per group), making the findings statistically meaningful."
+    },
+    {
+        "question": "Based on the mutation data, what might explain the relationship between IDH1 mutation status and patient age at diagnosis?",
+        "ground_truth": "IDH1 mutated patients are significantly younger (mean 41.67 years) compared to wild-type (mean ~60 years), with different age distributions and clinical characteristics",
+        "derivation": "Analysis of age distributions and confidence intervals by mutation status",
+        "type": "Information Retrieval",
+        "subtype": "Contextual Interpretation and Explanation",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The data suggests that IDH1 mutations are strongly associated with younger age at diagnosis, with IDH1-mutated patients being diagnosed approximately 18 years earlier on average than those without IDH1 mutations. This pattern indicates that IDH1 mutations might be characteristic of a distinct molecular subtype of glioma that tends to develop earlier in life. This finding is consistent with existing literature that identifies IDH1 mutations as a marker of secondary glioblastomas, which typically occur in younger patients compared to primary glioblastomas that lack IDH1 mutations."
+    },
+    {
+        "question": "What is the relationship between age, gender, and mutation patterns?",
+        "ground_truth": "Males and females show different mutation frequencies: Males (Gender=0): IDH1: 46.1%, TP53: 41.4%, ATRX: 23.8%; Females (Gender=1): IDH1: 51.0%, TP53: 41.6%, ATRX: 28.8%",
+        "derivation": "Analyzed gender-specific mutation rates using data grouping and frequency calculations",
+        "type": "Statistics",
+        "subtype": "Correlation and Association",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The analysis reveals several important relationships between age, gender, and mutation patterns:\n1. Age is strongly associated with mutation patterns, particularly for IDH1 mutations which are more common in younger patients\n2. Gender differences exist for several mutations:\n   - Females have higher rates of IDH1 and ATRX mutations\n   - Males have slightly higher rates of PTEN mutations\n   - Some mutations (like TP53) show similar frequencies across genders\n3. The data suggests the existence of distinct molecular subtypes that may be influenced by both age and gender, which could have implications for treatment strategies and prognosis.\n\nThese patterns suggest that age and gender are important factors in determining the molecular characteristics of the disease, which could be relevant for personalized treatment approaches."
+    },
+    {
+        "question": "Analyze the distribution of risk profiles based on mutation combinations.",
+        "ground_truth": "Four risk groups identified: Low risk (404 patients, avg age 41.64), High risk (203 patients, avg age 60.89), Mixed (12 patients, avg age 41.39), No risk mutations (220 patients, avg age 59.35)",
+        "derivation": "Created risk profiles based on combinations of high-risk (EGFR, PTEN) and low-risk (IDH1, CIC) mutations",
+        "type": "Statistics",
+        "subtype": "Classification and Clustering",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Based on the analysis of mutation combinations in this dataset, we can identify several key risk profiles:\n\n1. Mutation Load Distribution:\n- Most patients (652/839 or ~78%) have 1-3 mutations\n- A moderate group (113/839 or ~13%) has 4-5 mutations\n- Very few patients (7/839 or <1%) have 6 or more mutations\n- Some patients (67/839 or ~8%) have no detected mutations\n\n2. Common Mutation Patterns:\n- High-Risk Profile 1: IDH1 + TP53 is the most common combination (238 cases), often associated with more aggressive disease\n- High-Risk Profile 2: TP53 + ATRX (189 cases) and IDH1 + ATRX (188 cases) are the next most frequent combinations\n- Intermediate-Risk Profile: IDH1 + CIC (99 cases) represents a distinct molecular subgroup\n- Lower-Risk Profiles: Various combinations involving single mutations with MUC16, FUBP1, or NOTCH1 (30-40 cases each)\n\n3. Key Risk Factors:\n- IDH1, TP53, and ATRX mutations appear in most of the common combinations, suggesting these are key drivers in disease progression\n- Secondary mutations like PTEN + EGFR (38 cases) may indicate alternative progression pathways\n\nThis distribution suggests a spectrum of risk profiles, from lower-risk cases with single mutations to high-risk cases with multiple mutations in key driver genes, which could be valuable for treatment stratification and prognosis."
+    },
+    {
+        "question": "What are the racial differences in mutation frequencies, if any?",
+        "ground_truth": "Race 0 (n=765): IDH1 49.8%, TP53 42.7%, ATRX 26.3%; Race 1 (n=59): IDH1 25.4%, TP53 30.5%, ATRX 22.0%; Race 2 (n=14): IDH1 57.1%, TP53 21.4%, ATRX 21.4%",
+        "derivation": "Calculated mutation rates by racial groups using groupBy and frequency analysis",
+        "type": "Information Retrieval",
+        "subtype": "Multi-Column Analysis and Summarization",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "There are notable racial differences in mutation frequencies across the genes:\n\n1. Race_0 (largest group, n=765):\n- Highest mutation rates in IDH1 (49.8%), TP53 (42.75%), and ATRX (26.27%)\n- Shows consistent mutation patterns across most genes\n\n2. Race_1 (n=59):\n- Lower IDH1 mutations (25.42%) compared to Race_0\n- Higher rates of PTEN (25.42%) and EGFR (22.03%)\n- Higher rates of MUC16 (16.95%) and PIK3CA (13.56%)\n- Completely lacks mutations in NOTCH1, CSMD3, and SMARCA4\n\n3. Race_2 (n=14):\n- Highest IDH1 mutation rate (57.14%)\n- Lower TP53 mutations (21.43%) compared to Race_0 and Race_1\n- Higher PIK3R1 mutations (14.29%)\n- Lacks mutations in several genes including FUBP1, RB1, BCOR, CSMD3, and others\n\n4. Race_3 (n=1):\n- Shows no mutations in any of the genes, but this is not statistically meaningful due to having only one patient\n\nKey differences:\n- IDH1 mutations vary significantly across races (49.8% vs 25.42% vs 57.14%)\n- TP53 mutations are most frequent in Race_0 (42.75%)\n- PTEN and EGFR mutations are notably higher in Race_1\n- Some genes show complete absence of mutations in certain racial groups\n\nNote: Due to the large differences in sample sizes between groups (especially the small numbers in Race_2 and Race_3), these differences should be interpreted with caution."
+    },
+    {
+        "question": "Calculate the mutation burden distribution across the dataset.",
+        "ground_truth": "Distribution of number of mutations per patient: 0: 124 patients, 1: 213 patients, 2: 262 patients, 3: 201 patients, 4: 35 patients, 5-7: 4 patients",
+        "derivation": "Counted total number of mutations per patient and created frequency distribution",
+        "type": "Statistics",
+        "subtype": "Frequency and Distribution Analysis",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The mutation burden distribution across the dataset shows:\n- The dataset includes 839 patients\n- On average, patients have approximately 1.81 mutations\n- The standard deviation is 1.37 mutations\n- The range of mutations is from 0 to 17 mutations per patient\n- The median (50th percentile) is 2 mutations\n- The interquartile range shows:\n  * 25th percentile (Q1): 1 mutation\n  * 75th percentile (Q3): 2 mutations\nThis indicates that most patients have relatively few mutations (1-2), but there are some cases with significantly higher mutation counts (up to 17), creating a right-skewed distribution. The fact that the median and 75th percentile are the same (2 mutations) suggests that a substantial portion of patients cluster around this value."
+    },
+    {
+        "question": "What is the relationship between IDH1 mutation and glioma grade?",
+        "ground_truth": "In Grade 0 gliomas, 381/487 (78.2%) are IDH1-mutant, while in Grade 1 gliomas, only 23/352 (6.5%) are IDH1-mutant",
+        "derivation": "_.groupBy(data, 'Grade'); _.mapValues(groups, g => _.countBy(g, 'IDH1'))",
+        "type": "Statistics",
+        "subtype": "Correlation and Association",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "There is a strong relationship between IDH1 mutation and glioma grade. IDH1 mutations are much more common in Grade 0 gliomas (78.23%) compared to Grade 1 gliomas (6.53%). This suggests that IDH1 mutations are inversely correlated with glioma grade, being significantly more prevalent in lower-grade gliomas. This finding is consistent with existing medical literature where IDH1 mutations are typically associated with lower-grade gliomas and generally considered a favorable prognostic marker."
+    },
+    {
+        "question": "Is there an age difference between IDH1-mutant and IDH1-wildtype gliomas?",
+        "ground_truth": "Yes, IDH1-mutant patients are significantly younger (mean age 41.7 years) compared to IDH1-wildtype patients (mean age 59.5 years)",
+        "derivation": "_.groupBy(data, 'IDH1'); calculate mean age for each group",
+        "type": "Statistics",
+        "subtype": "Descriptive Statistics",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, there is a significant age difference between IDH1-mutant and IDH1-wildtype gliomas. IDH1-mutant gliomas occur in significantly younger patients (mean age = 41.7 years) compared to IDH1-wildtype gliomas (mean age = 59.5 years). This difference of approximately 18 years is statistically significant (p-value = 4.1e-73, t-test). The age ranges also show that IDH1-mutant gliomas tend to occur in younger patients overall, with 75% of cases diagnosed before age 50, while IDH1-wildtype gliomas tend to occur in older patients, with 75% of cases diagnosed before age 69."
+    },
+    {
+        "question": "What is the co-occurrence pattern of IDH1 and TP53 mutations?",
+        "ground_truth": "Of IDH1-mutant cases, 238/404 (58.9%) have TP53 mutation. Of IDH1-wildtype cases, only 110/435 (25.3%) have TP53 mutation",
+        "derivation": "_.countBy(data, row => `IDH1:${row.IDH1},TP53:${row.TP53}`)",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "What is the distribution of gender in the dataset and how does it relate to mutation status?",
+        "ground_truth": "There are 488 females (58.2%) and 351 males (41.8%) in the dataset",
+        "derivation": "_.countBy(data, 'Gender')",
+        "type": "Information Retrieval",
+        "subtype": "Multi-Column Analysis and Summarization",
+        "difficulty": "easy",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The dataset shows an uneven gender distribution with 58.2% males and 41.8% females. When examining mutation patterns, some notable gender-specific differences emerge. Females show higher mutation rates in IDH1, ATRX, and CIC genes, while males have higher rates in PTEN, EGFR, and PIK3R1. Several genes (TP53, MUC16, PIK3CA, NF1, and FUBP1) show similar mutation frequencies between genders, with differences of less than 1%. This suggests that while the overall gender distribution is somewhat skewed toward males, certain mutations show gender-specific patterns that might be clinically relevant."
+    },
+    {
+        "question": "What proportion of lower-grade (Grade 0) gliomas have IDH1 mutations?",
+        "ground_truth": "Of Grade 0 gliomas, 381/487 (78.2%) have IDH1 mutations",
+        "derivation": "filterByGrade(data, 0).filter(row => row.IDH1 === 1).length / filterByGrade(data, 0).length",
+        "type": "Information Retrieval",
+        "subtype": "Conditional Retrieval and Filtering",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "In lower-grade (Grade 0) gliomas, 78.2% (0.782) of cases have IDH1 mutations. This indicates that IDH1 mutations are quite common in lower-grade gliomas."
+    },
+    {
+        "question": "Is there evidence of mutual exclusivity between EGFR and IDH1 mutations?",
+        "ground_truth": "Yes, among 112 EGFR-mutant cases, only 4 (3.6%) have IDH1 mutations, suggesting strong mutual exclusivity",
+        "derivation": "_.countBy(data, row => `EGFR:${row.EGFR},IDH1:${row.IDH1}`)",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, there is strong evidence of mutual exclusivity between EGFR and IDH1 mutations. Only 3 cases showed both mutations, while 109 cases had EGFR mutations alone and 401 cases had IDH1 mutations alone. This pattern strongly suggests that these mutations tend to occur in a mutually exclusive manner, which is often indicative of different molecular pathways or subtypes of the disease."
+    },
+    {
+        "question": "Do molecular profiles differ by patient age?",
+        "ground_truth": "Yes, IDH1 mutations are significantly more common in younger patients (mean age 41.7 vs 59.5 years), suggesting distinct molecular pathways in different age groups",
+        "derivation": "compare mean age between IDH1-mutant and wildtype groups",
+        "type": "Statistics",
+        "subtype": "Correlation and Association",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "What is the frequency of ATRX mutations in IDH1-mutant vs IDH1-wildtype gliomas?",
+        "ground_truth": "Of the 217 ATRX-mutant cases in the dataset, 189 (87.1%) occur in IDH1-mutant gliomas, showing strong co-occurrence",
+        "derivation": "_.countBy(data, row => `ATRX:${row.ATRX},IDH1:${row.IDH1}`)",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "What is the frequency of concurrent mutations in the PI3K pathway (PIK3CA, PIK3R1, PTEN)?",
+        "ground_truth": "Only 3 cases (0.36%) show concurrent PIK3CA and PIK3R1 mutations, while 591 cases (70.4%) have no mutations in any of these genes",
+        "derivation": "_.countBy(data, row => `PIK3CA:${row.PIK3CA},PIK3R1:${row.PIK3R1},PTEN:${row.PTEN}`)",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The frequency of concurrent mutations in the PI3K pathway shows:\n- Most samples (591) had no mutations in any of these genes\n- Single gene mutations were most common: PTEN (124 cases), PIK3CA (63 cases), and PIK3R1 (41 cases)\n- Concurrent mutations were relatively rare:\n  * PIK3R1 + PTEN: 10 cases\n  * PIK3CA + PTEN: 7 cases\n  * PIK3CA + PIK3R1: 3 cases\n  * No cases had mutations in all three genes simultaneously\nThis pattern suggests that mutations in these genes tend to be mutually exclusive, which is consistent with their function in the same pathway."
+    },
+    {
+        "question": "Is there evidence of mutual exclusivity between PTEN and PIK3CA mutations?",
+        "ground_truth": "Yes, of 141 PTEN-mutant cases, only 7 (5%) have concurrent PIK3CA mutations, suggesting mutual exclusivity in the PI3K pathway",
+        "derivation": "_.countBy(data.filter(row => row.PTEN === 1), 'PIK3CA')",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "How does IDH1 mutation frequency vary across racial groups?",
+        "ground_truth": "IDH1 mutation frequencies vary by race: Race 0 (49.8%), Race 1 (25.4%), Race 2 (57.1%), showing significant variation in molecular profiles",
+        "derivation": "_.mapValues(_.groupBy(data, 'Race'), group => _.countBy(group, 'IDH1'))",
+        "type": "Information Retrieval",
+        "subtype": "Multi-Column Analysis and Summarization",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The IDH1 mutation frequency shows notable variation across racial groups, but the sample sizes are quite uneven:\n\n- Race 0 (765 patients): 49.8% mutation frequency\n- Race 1 (59 patients): 25.4% mutation frequency\n- Race 2 (14 patients): 57.1% mutation frequency\n- Race 3 (1 patient): 0% mutation frequency\n\nHowever, these results should be interpreted with caution because:\n1. The sample sizes are very unbalanced, with Race 0 having the majority of cases (765)\n2. Race 1 has a moderate sample size (59)\n3. Race 2 has a small sample size (14)\n4. Race 3 has only one patient, making that percentage unreliable\n\nThe most reliable comparison is between Race 0 and Race 1, which shows that Race 0 has nearly twice the mutation frequency of Race 1 (49.8% vs 25.4%)."
+    },
+    {
+        "question": "Is there a difference in EGFR mutation frequency across racial groups?",
+        "ground_truth": "EGFR mutation rates vary: Race 0 (12.8%), Race 1 (22.0%), Race 2 (7.1%), suggesting potential racial differences in molecular pathways",
+        "derivation": "_.mapValues(_.groupBy(data, 'Race'), group => _.countBy(group, 'EGFR'))",
+        "difficulty": "hard",
+        "subtype": "Demographic Analysis",
+        "type": "comparison",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, there are observable differences in EGFR mutation frequency across racial groups, but these differences are not statistically significant (p-value = 0.199 > 0.05). Here's the breakdown:\n\n- Race 1 shows the highest mutation rate at 22.03%\n- Race 0 has a mutation rate of 12.81%\n- Race 2 has a mutation rate of 7.14%\n- Race 3 shows no EGFR mutations (0%)\n\nWhile there appear to be numerical differences in mutation frequencies, the chi-square test indicates that these differences are not statistically significant, meaning we cannot conclude that race is associated with EGFR mutation frequency in this dataset. This could be due to various factors including sample size or natural variation in the population."
+    },
+    {
+        "question": "How does IDH1 mutation frequency vary across racial groups?",
+        "ground_truth": "IDH1 mutation frequencies vary by race: Race 0 (49.8%), Race 1 (25.4%), Race 2 (57.1%), showing significant variation in molecular profiles",
+        "derivation": "_.mapValues(_.groupBy(data, 'Race'), group => _.countBy(group, 'IDH1'))",
+        "type": "Information Retrieval",
+        "subtype": "Multi-Column Analysis and Summarization",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The IDH1 mutation frequency shows notable variation across racial groups, but the sample sizes are quite uneven:\n\n- Race 0 (765 patients): 49.8% mutation frequency\n- Race 1 (59 patients): 25.4% mutation frequency\n- Race 2 (14 patients): 57.1% mutation frequency\n- Race 3 (1 patient): 0% mutation frequency\n\nHowever, these results should be interpreted with caution because:\n1. The sample sizes are very unbalanced, with Race 0 having the majority of cases (765)\n2. Race 1 has a moderate sample size (59)\n3. Race 2 has a small sample size (14)\n4. Race 3 has only one patient, making that percentage unreliable\n\nThe most reliable conclusion we can draw is the difference between Race 0 (49.8%) and Race 1 (25.4%), as these groups have the largest sample sizes. The other racial groups have too few samples to make meaningful comparisons."
+    },
+    {
+        "question": "Is there a difference in EGFR mutation frequency across racial groups?",
+        "ground_truth": "EGFR mutation rates vary: Race 0 (12.8%), Race 1 (22.0%), Race 2 (7.1%), suggesting potential racial differences in molecular pathways",
+        "derivation": "_.mapValues(_.groupBy(data, 'Race'), group => _.countBy(group, 'EGFR'))",
+        "type": "Information Retrieval",
+        "subtype": "Multi-Column Analysis and Summarization",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, there are observable differences in EGFR mutation frequency across racial groups, although these differences are not statistically significant (p-value = 0.199 > 0.05). Here's the breakdown:\n\n- Race 1 shows the highest EGFR mutation rate at 22.03%\n- Race 0 has the second-highest rate at 12.81%\n- Race 2 shows a lower rate at 7.14%\n- Race 3 shows no EGFR mutations (0%)\n\nWhile these numerical differences exist, the chi-square test indicates that these differences are not statistically significant, meaning we cannot conclude that race is definitively associated with EGFR mutation frequency in this dataset. This could be due to various factors including sample size or natural variation in the data."
+    },
+    {
+        "question": "What is the pattern of co-occurrence between EGFR and PDGFRA mutations?",
+        "ground_truth": "Of 112 EGFR-mutant cases, only 5 (4.5%) have concurrent PDGFRA mutations, while 710 cases (84.6%) have neither mutation",
+        "derivation": "_.countBy(data, row => `EGFR:${row.EGFR},PDGFRA:${row.PDGFRA}`)",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "medium",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}"
+    },
+    {
+        "question": "Are PDGFRA mutations associated with specific molecular subtypes?",
+        "ground_truth": "Of 22 PDGFRA-mutant cases, 17 (77.3%) occur in EGFR-wildtype tumors, and 16 (72.7%) in IDH1-wildtype tumors, suggesting a distinct molecular subtype",
+        "derivation": "analysis of PDGFRA mutants with EGFR and IDH1 status",
+        "type": "Statistics",
+        "subtype": "Correlation and Association",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "PDGFRA mutations appear to be predominantly associated with IDH1-wildtype tumors (86% of PDGFRA mutant cases are IDH1-wildtype). While PDGFRA mutations can co-occur with other molecular alterations, they most commonly occur as isolated mutations. There isn't a strong association with any other specific molecular subtype, suggesting PDGFRA mutations may define a relatively distinct molecular subset, primarily within IDH-wildtype gliomas."
+    },
+    {
+        "question": "Does the IDH1-ATRX-TP53 triple-positive signature represent a distinct biological entity, and what are its clinical implications?",
+        "ground_truth": "171 cases (20.4%) show triple-positive signature, with mean age 38.5 years and strong enrichment in Grade 0 (90.1% of triple-positive cases), suggesting a distinct biological subtype with better prognosis",
+        "derivation": "Analysis of co-occurrence patterns and clinical features in triple-positive cases",
+        "type": "Statistics",
+        "subtype": "Classification and Clustering",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The IDH1-ATRX-TP53 triple-positive signature appears to represent a distinct biological entity in the dataset, with several important clinical implications:\n\n1. Frequency:\n- The triple-positive signature is present in 171 cases out of the total dataset, representing a significant subset of cases.\n- The pattern appears to be non-random, as other combinations (like IDH1+/ATRX+ without TP53) are much less common (only 17 cases).\n\n2. Age Distribution:\n- Triple-positive cases tend to occur in younger patients compared to non-triple-positive cases.\n- This suggests that this molecular signature may define a distinct biological subgroup with earlier onset.\n\n3. Clinical Implications:\n- The co-occurrence of these three mutations appears to be non-random, suggesting a biologically meaningful pattern.\n- The presence of all three mutations (IDH1, ATRX, and TP53) likely represents a specific molecular pathway in glioma development.\n- This signature could be useful for:\n  * Patient stratification\n  * Prognostic assessment\n  * Potentially guiding treatment decisions\n\n4. Biological Significance:\n- The frequent co-occurrence of these three mutations suggests they may work together in tumor development:\n  * IDH1 mutation affects cellular metabolism\n  * ATRX affects chromatin remodeling\n  * TP53 affects cell cycle control and apoptosis\n\nThis molecular signature appears to define a distinct biological entity that warrants specific attention in clinical settings and could be valuable for personalized treatment approaches."
+    },
+    {
+        "question": "How do alterations in the RTK/PI3K pathway members (EGFR, PDGFRA, PIK3CA, PIK3R1, PTEN) cooperate to drive gliomagenesis, and do they define specific molecular subtypes?",
+        "ground_truth": "RTK/PI3K pathway shows distinct patterns: EGFR mutations (13.3%) are mutually exclusive with PDGFRA (2.6%), while PIK3CA/PIK3R1 mutations show limited co-occurrence with PTEN loss, suggesting different mechanisms of pathway activation",
+        "derivation": "Complex pathway analysis including mutual exclusivity and co-occurrence patterns",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The analysis of RTK/PI3K pathway alterations reveals several important patterns:\n\n1. Mutation Frequencies:\n- PTEN mutations are most frequent (141 cases)\n- EGFR mutations are second most common (112 cases)\n- PIK3CA (73 cases) and PIK3R1 (54 cases) show moderate frequency\n- PDGFRA mutations are least common (22 cases)\n\n2. Co-occurrence Patterns:\n- There is a weak positive correlation between EGFR and PTEN mutations (correlation = 0.18), suggesting these alterations can co-occur in some cases\n- Most other pathway members show very weak correlations with each other (correlation coefficients < 0.06)\n- There are slight negative correlations between some members (e.g., PIK3CA and PTEN, correlation = -0.06), suggesting possible mutual exclusivity\n\n3. Molecular Subtypes:\n- The patterns suggest that rather than defining distinct subtypes, these alterations may represent partially overlapping mechanisms of RTK/PI3K pathway activation\n- The weak correlations suggest that multiple different combinations of these alterations can contribute to gliomagenesis\n- EGFR and PTEN alterations appear to be the dominant mechanisms of pathway dysregulation, while PDGFRA alterations may represent a less common alternative route\n\nThis suggests that gliomagenesis can occur through multiple different combinations of RTK/PI3K pathway alterations, rather than through strictly defined molecular subtypes based on these genes alone."
+    },
+    {
+        "question": "Do the distinct molecular profiles in different age groups suggest different cellular origins or evolutionary paths in glioma development?",
+        "ground_truth": "Young patients (<45 years) show enrichment for IDH1-ATRX-TP53 mutations (mean age 38.5), while older patients show EGFR/PTEN alterations (mean age 60.7), suggesting distinct developmental pathways",
+        "derivation": "Integration of age patterns with molecular subtypes",
+        "type": "Statistics",
+        "subtype": "Classification and Clustering",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Yes, the molecular profiles show clear age-related patterns that suggest different cellular origins or evolutionary paths in glioma development:\n\n1. Younger patients tend to develop gliomas characterized by IDH1/TP53/ATRX mutations, suggesting a distinct pathway possibly originating from neural progenitor cells.\n\n2. Older patients show a completely different profile with lower frequencies of IDH1/TP53/ATRX mutations but higher frequencies of PTEN and EGFR alterations, suggesting a different cellular origin or evolutionary pathway.\n\n3. Middle-aged patients show an intermediate profile, but closer to the young patient pattern, suggesting a gradual transition in the molecular mechanisms of glioma development with age.\n\nThese distinct molecular patterns across age groups strongly support the hypothesis that gliomas can develop through different cellular origins and evolutionary paths, with age being a crucial factor in determining which pathway is more likely to occur."
+    },
+    {
+        "question": "How does the interplay between chromatin modifiers (ATRX, SMARCA4, BCOR) and metabolic alterations (IDH1/2) influence glioma development and progression?",
+        "ground_truth": "ATRX mutations strongly co-occur with IDH1 (87.1%) but rarely with SMARCA4/BCOR, suggesting distinct chromatin-regulatory mechanisms in IDH-mutant vs wildtype gliomas",
+        "derivation": "Analysis of chromatin modifier co-occurrence patterns and associations",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The analysis reveals several important patterns in the interplay between chromatin modifiers and metabolic alterations in glioma:\n\n1. The strongest relationship is between IDH1 and ATRX mutations (correlation 0.45), suggesting these alterations frequently co-occur and may cooperate in glioma development. This is consistent with the known biology of lower-grade gliomas, where IDH1 mutations often occur alongside ATRX mutations.\n\n2. IDH1 and IDH2 mutations appear to be mutually exclusive (negative correlation), suggesting they may serve similar functions in altered metabolism, but through different pathways.\n\n3. The chromatin modifiers (ATRX, SMARCA4, BCOR) show minimal correlation with each other, suggesting they may influence glioma development through distinct mechanisms rather than working in concert.\n\n4. While IDH1 shows significant association with ATRX, other chromatin modifiers (SMARCA4 and BCOR) show minimal correlation with metabolic alterations (IDH1/2), suggesting their roles in glioma development may be independent of metabolic reprogramming.\n\nThese patterns suggest a complex interplay where metabolic alterations (particularly IDH1) may cooperate with specific chromatin modifiers (particularly ATRX) in glioma development, while other chromatin-modifying pathways may operate independently. This understanding could be valuable for developing targeted therapeutic strategies that consider both metabolic and epigenetic mechanisms."
+    },
+    {
+        "question": "How can the distinct molecular subtypes in glioma inform personalized treatment strategies and clinical trial design?",
+        "ground_truth": "Four major molecular subtypes identified: IDH-triple (20.4%, mean age 38.5), IDH-only (19.8%, mean age 45.8), RTK/PI3K (24.8%, mean age 60.3), and Other (35%, mean age 54.4). Each shows distinct grade distributions and mutation patterns, suggesting different therapeutic vulnerabilities",
+        "derivation": "Integration of molecular subtypes with clinical characteristics",
+        "type": "Statistics",
+        "subtype": "Classification and Clustering",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The molecular subtypes in glioma can inform personalized treatment strategies and clinical trial design in several key ways:\n\n1. Patient Stratification:\n- Patients can be stratified based on IDH1 mutation status, which is a strong prognostic marker\n- Molecular profiles can help create more homogeneous treatment groups in clinical trials\n\n2. Targeted Therapy Selection:\n- IDH1-mutant patients may be candidates for IDH inhibitors\n- EGFR/PTEN altered tumors might respond to PI3K/AKT/mTOR pathway inhibitors\n- TP53 mutant cases might benefit from cell cycle checkpoint inhibitors\n\n3. Clinical Trial Design:\n- Trials can be designed to target specific molecular pathways based on mutation patterns\n- Combination therapy approaches can be rationalized based on co-occurring mutations\n- Biomarker-driven patient selection can improve trial success rates\n\n4. Monitoring and Response:\n- Molecular markers can be used to monitor treatment response\n- They can help identify mechanisms of resistance\n- Guide adjustment of treatment strategies\n\nThis molecular profiling approach enables more precise and personalized treatment strategies, potentially improving patient outcomes through better-targeted therapies and more efficient clinical trial designs."
+    },
+    {
+        "question": "What do the age-specific molecular patterns reveal about glioma biology across different populations, and how should this inform screening and prevention strategies?",
+        "ground_truth": "Dramatic shift in molecular profiles with age: IDH-pathway mutations dominate in young patients (<45 years, 83.3%), while RTK/PI3K alterations predominate in older patients (>60 years, 47.2%). This suggests age-specific oncogenic mechanisms requiring different prevention strategies",
+        "derivation": "Analysis of age-stratified molecular patterns and risk factors",
+        "type": "Information Retrieval",
+        "subtype": "Pattern and Trend Recognition",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "The age-specific molecular patterns reveal several important insights about glioma biology:\n\n1. IDH1 Mutation Patterns:\n- Younger patients (mean age ~42 years) are significantly more likely to have IDH1 mutations\n- Older patients (mean age ~60 years) typically have IDH1 wild-type tumors\n- There's about an 18-year age gap between IDH1-mutant and wild-type cases\n\n2. EGFR Status:\n- EGFR mutations are more common in older patients (mean age ~60 years)\n- Patients without EGFR mutations are typically younger (mean age ~50 years)\n\nThese patterns suggest important screening and prevention implications:\n\n1. Age-Stratified Screening:\n- Patients under 45 should be monitored for IDH1-mutant gliomas\n- Patients over 55 should be screened with particular attention to IDH1-wildtype and EGFR-mutant tumors\n\n2. Prevention Strategies:\n- Different molecular mechanisms appear to drive glioma development in different age groups\n- Prevention strategies should be age-specific, focusing on relevant molecular pathways\n- Younger patients might benefit from IDH1-targeted prevention strategies\n- Older patients might benefit more from EGFR-pathway focused interventions\n\n3. Clinical Management:\n- Age at diagnosis should be considered when developing molecular testing strategies\n- Treatment approaches might need to be age-stratified based on these molecular patterns\n\nThis data suggests that glioma is not a uniform disease across age groups, and screening and prevention strategies should be tailored accordingly based on age-specific molecular patterns."
+    },
+    {
+        "question": "How do the distinct molecular subtypes suggest different evolutionary trajectories in glioma, and what are the implications for treatment resistance?",
+        "ground_truth": "Mutation burden analysis shows distinct patterns: IDH-triple subtype has higher mutation burden (mean 3.2 mutations) vs RTK/PI3K subtype (mean 1.8 mutations), suggesting different genomic stability mechanisms and potential resistance pathways",
+        "derivation": "Integration of mutation burden, pathway analysis, and clinical correlations",
+        "type": "Statistics",
+        "subtype": "Classification and Clustering",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Based on the analysis of the molecular data, we can identify distinct evolutionary trajectories in glioma with important implications for treatment resistance:\n\n1. Molecular Subtypes and Evolution:\n- IDH1 mutations are most prevalent (404 cases), representing a distinct evolutionary pathway\n- TP53 mutations are also common (348 cases)\n- ATRX mutations appear in 217 cases\n- EGFR alterations are present in 112 cases\n- Notably, IDH1 and EGFR mutations rarely co-occur (only 3 cases), suggesting mutually exclusive evolutionary pathways\n\n2. Major Evolutionary Trajectories:\na) IDH1-mutant pathway:\n- Typically represents secondary glioblastoma\n- Associated with better prognosis\n- Often develops through gradual progression\n- More common in younger patients\n\nb) IDH-wildtype pathway:\n- Characterized by EGFR alterations\n- Represents primary glioblastoma\n- Generally more aggressive\n- Different treatment resistance patterns\n\n3. Treatment Resistance Implications:\n- Different molecular subtypes require distinct treatment approaches\n- IDH1-mutant tumors may respond better to targeted therapies\n- EGFR-altered tumors might need different therapeutic strategies\n- The mutual exclusivity of IDH1 and EGFR mutations suggests fundamentally different disease mechanisms requiring different treatment approaches\n- Multiple mutation patterns indicate the need for combination therapy approaches\n\n4. Clinical Applications:\n- Molecular profiling is essential for treatment planning\n- Regular monitoring of molecular changes may help predict resistance\n- Treatment strategies should be tailored to specific molecular subtypes\n- Understanding these patterns helps in anticipating and potentially preventing treatment resistance\n\nThis understanding of molecular subtypes and their evolutionary trajectories is crucial for developing more effective, personalized treatment strategies and managing treatment resistance in glioma patients."
+    },
+    {
+        "question": "How should molecular subtype distributions influence clinical trial design and interpretation in glioma?",
+        "ground_truth": "Four distinct molecular subtypes with different ages of onset and clinical features suggest need for subtype-specific trial design: IDH-triple (young, good prognosis), RTK/PI3K (older, poor prognosis), requiring different endpoints and stratification strategies",
+        "derivation": "Analysis of subtype-specific characteristics and outcomes",
+        "type": "Information Retrieval",
+        "subtype": "Summary and Reporting from Tables",
+        "difficulty": "hard",
+        "table_path": "./datasets/research/Glioma.csv",
+        "result": "Based on the quantitative analysis of molecular markers in this dataset, here are the key recommendations for clinical trial design and interpretation in glioma:\n\n1. Primary Stratification Requirements:\n- IDH1 mutation status (present in 48.2% of cases) should be a mandatory stratification factor, as it represents two distinct disease entities\n- TP53 status (41.5% of cases) should be considered as a secondary stratification factor\n\n2. Sample Size and Power Considerations:\n- Trial designs need to account for the uneven distribution of molecular markers\n- For IDH1-specific trials, expect to screen roughly 2 patients to find 1 mutation-positive case\n- EGFR-targeted trials will require larger screening populations (only 13.3% positive)\n\n3. Trial Design Recommendations:\n- Implement molecular testing at screening phase\n- Consider basket trial designs for less common molecular subtypes\n- Use adaptive trial designs that can adjust for molecular subgroup responses\n- Include molecular marker testing turnaround time in trial timelines\n\n4. Analysis and Interpretation Guidelines:\n- Pre-specify subgroup analyses based on molecular profiles\n- Report outcomes separately for major molecular subgroups\n- Consider potential interaction effects between markers (e.g., IDH1/TP53 co-occurrence)\n- Account for molecular heterogeneity in efficacy analyses\n\n5. Practical Considerations:\n- Budget for molecular testing costs\n- Plan for adequate biospecimen collection and storage\n- Consider regional variations in molecular testing availability\n- Include quality control measures for molecular testing\n\nThis data-driven approach to trial design will help ensure more meaningful and interpretable results in glioma clinical research."
+    }
+]
