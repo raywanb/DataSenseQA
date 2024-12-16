@@ -196,7 +196,7 @@
         "derivation" : "",
         "type" : "data curation",
         "subtype" : "data cleaning and deduplication",
-        "difficulty" : "hard",
+        "difficulty" : "medium",
         "table_path" : ""
     },
     {
@@ -295,7 +295,7 @@
         "derivation" : "By categorizing crimes into violent and non-violent groups, we can count the frequency of each and identify the most common for both categories.",
         "type" : "data curation",
         "subtype" : "data logic explaination",
-        "difficulty" : "medium",
+        "difficulty" : "hard",
         "table_path" : ""
     }
 
