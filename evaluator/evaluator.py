@@ -20,12 +20,15 @@ def strict_evaluator(question: str, ground_truth: str, answer: str):
     eval_prompt = PromptTemplate(
         input_variables=["question", "ground_truth", "answer"],
         template=(
-            "You are a strict evaluator for answers. You will evaluate whether the student's answer strictly matches the ground truth. "
+            "You are a strict evaluator for answers. You will evaluate whether the student's answer matches the ground truth. "
             "Provide a binary score (1 or 0) based on correctness.\n\n"
             "Question: {question}\n"
             "Ground Truth: {ground_truth}\n"
             "Student's Answer: {answer}\n\n"
-            "Does the student's answer strictly match the ground truth? If yes, respond with 1. If no, respond with 0."
+            "Does the student's answer match the ground truth? If yes, respond with 1. If no, respond with 0."
+            "If the ground truth is a number it is important that the answer is correctly rounded, as indicated in the question."
+            "If the ground truth is a number it is important that the value is correct, if the ground truth says 111111, the answer 111111 and 111,111 is correct"
+            "If the ground truth is a string, it is important that all elements of that string are contained in the answer, but the order does not matter."
         ),
     )
 
