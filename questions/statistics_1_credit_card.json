@@ -5,7 +5,7 @@
         "derivation": "df['current_age'].mean(); df['current_age'].median(); df['current_age'].mode()",
         "difficulty": "easy",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -14,7 +14,7 @@
         "derivation": "range = df['credit_score'].max() - df['credit_score'].min(); std = df['credit_score'].std()",
         "difficulty": "medium",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -23,7 +23,7 @@
         "derivation": "df['yearly_income'] = df['yearly_income'].str.replace('$', '').str.replace(',', '').astype(float); df['total_debt'] = df['total_debt'].str.replace('$', '').str.replace(',', '').astype(float); q1_income = df['yearly_income'].quantile(0.25); q3_income = df['yearly_income'].quantile(0.75); iqr_income = q3_income - q1_income; q1_debt = df['total_debt'].quantile(0.25); q3_debt = df['total_debt'].quantile(0.75); iqr_debt = q3_debt - q1_debt",
         "difficulty": "hard",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -32,7 +32,7 @@
         "derivation": "q1_credit_score = data['credit_score'].quantile(0.25); q3_credit_score = data['credit_score'].quantile(0.75); iqr_credit_score = q3_credit_score - q1_credit_score; median_credit_score = data['credit_score'].median(); q1_credit_cards = data['num_credit_cards'].quantile(0.25); q3_credit_cards = data['num_credit_cards'].quantile(0.75); iqr_credit_cards = q3_credit_cards - q1_credit_cards; median_credit_cards = data['num_credit_cards'].median(); q1_retirement_age = data['retirement_age'].quantile(0.25); q3_retirement_age = data['retirement_age'].quantile(0.75); iqr_retirement_age = q3_retirement_age - q1_retirement_age; median_retirement_age = data['retirement_age'].median();",
         "difficulty": "hard",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },    
     {
@@ -41,7 +41,7 @@
         "derivation": "gender_counts = df['gender'].value_counts()",
         "difficulty": "easy",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -50,7 +50,7 @@
         "derivation": "df[df['credit_score'] > 750] / len(df)",
         "difficulty": "medium",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -59,7 +59,7 @@
         "derivation": "season_mapping = {12: 'Winter', 1: 'Winter', 2: 'Winter', 3: 'Spring', 4: 'Spring', 5: 'Spring', 6: 'Summer', 7: 'Summer', 8: 'Summer', 9: 'Fall', 10: 'Fall', 11: 'Fall'}; df['season'] = df['birth_month'].map(season_mapping); season_counts = df['season'].value_counts(); season_percentages = df['season'].value_counts(normalize=True) * 100; peak_season = season_counts.index[0]; low_season = season_counts.index[-1]; expected_freq = len(df) / 4; chi2_stat, p_value = stats.chisquare(season_counts, [expected_freq] * 4)",
         "difficulty": "hard",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -68,7 +68,7 @@
         "derivation": "from scipy import stats; bins = [300, 579, 669, 739, 850]; labels = ['Poor', 'Fair', 'Good', 'Excellent']; df['credit_score_range'] = pd.cut(df['credit_score'], bins=bins, labels=labels, include_lowest=True); range_counts = df['credit_score_range'].value_counts(); range_percentages = df['credit_score_range'].value_counts(normalize=True) * 100; observed = range_counts.values; expected = [len(df) / len(labels)] * len(labels); chi2_stat, p_value = stats.chisquare(f_obs=observed, f_exp=expected);",
         "difficulty": "hard",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },    
     {
@@ -77,7 +77,7 @@
         "derivation": "correlation = df['current_age'].corr(df['retirement_age'])",
         "difficulty": "easy",
         "subtype": "Correlation and Association",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -86,7 +86,7 @@
         "derivation": "df[['yearly_income', 'total_debt', 'credit_score']].corr()",
         "difficulty": "hard",
         "subtype": "Correlation and Association",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -94,8 +94,8 @@
         "ground_truth": "There is not really trends between these two as the correlation is 0.0396.",
         "derivation": "correlation = df['current_age'].corr(df['credit_score'])",
         "difficulty": "hard",
-        "subtype": "Trend Analysis",
-        "type": "statistics",
+        "subtype": "Descriptive Statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -103,8 +103,8 @@
         "ground_truth": "There is not really trends between these two as the correlation is -0.005.",
         "derivation": "correlation = df[['yearly_income', 'latitude', 'longitude']].corr()",
         "difficulty": "hard",
-        "subtype": "Trend Analysis",
-        "type": "statistics",
+        "subtype": "Descriptive Statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -112,8 +112,8 @@
         "ground_truth": "Both credit score and total debt show no statistically significant seasonal patterns based on birth month (p-values > 0.05). The ANOVA F-Statistic for credit score is 1.56 with a p-value of 0.105, and birth month explains only 0.9% of its variability (R-squared: 0.009). Similarly, the ANOVA F-Statistic for total debt is 1.24 with a p-value of 0.256, and birth month explains only 0.8% of its variability (R-squared: 0.008).",
         "derivation": "from scipy.stats import f_oneway; df['total_debt'] = pd.to_numeric(df['total_debt'].str.replace('[^\\d.]', ''), errors='coerce'); data_cleaned = df.dropna(subset=['birth_month', 'credit_score', 'total_debt']); anova_credit_score = f_oneway(*[group['credit_score'] for _, group in data_cleaned.groupby('birth_month')]); anova_total_debt = f_oneway(*[group['total_debt'] for _, group in data_cleaned.groupby('birth_month')]); credit_score_r_squared = data_cleaned.groupby('birth_month')['credit_score'].mean().var() / data_cleaned['credit_score'].var(); total_debt_r_squared = data_cleaned.groupby('birth_month')['total_debt'].mean().var() / data_cleaned['total_debt'].var()",
         "difficulty": "hard",
-        "subtype": "Trend Analysis",
-        "type": "statistics",
+        "subtype": "Descriptive Statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -122,7 +122,7 @@
         "derivation": "from scipy.stats import ttest_ind; males = df[df['gender'] == 'Male']['credit_score']; females = df[df['gender'] == 'Female']['credit_score']; t_stat, p_value = ttest_ind(males, females, equal_var=False)",
         "difficulty": "easy",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -131,7 +131,7 @@
         "derivation": "from scipy.stats import chi2_contingency; df['num_credit_cards_gt_3'] = df['num_credit_cards'] > 3; contingency_table = pd.crosstab(df['gender'], df['num_credit_cards_gt_3']); chi2_stat, p_value, dof, expected = chi2_contingency(contingency_table)",
         "difficulty": "medium",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -140,7 +140,7 @@
         "derivation": "from scipy.stats import levene; above_700 = df[df['credit_score'] > 700]['yearly_income']; below_700 = df[df['credit_score'] <= 700]['yearly_income']; levene_stat, p_value_levene = levene(above_700, below_700, center='mean')",
         "difficulty": "medium",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -149,7 +149,7 @@
         "derivation": "from scipy.stats import levene; above_3_cards = df[df['num_credit_cards'] > 3]['yearly_income']; below_3_cards = df[df['num_credit_cards'] <= 3]['yearly_income']; levene_stat, p_value_levene = levene(above_3_cards, below_3_cards, center='mean')",
         "difficulty": "medium",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },    
     {
@@ -158,7 +158,7 @@
         "derivation": "mean_debt_simple = filtered_data['total_debt'].mean(); std_dev = filtered_data['total_debt'].std(); n = len(filtered_data['total_debt'].dropna()); std_error = std_dev / math.sqrt(n); t_critical = 1.96; margin_of_error = t_critical * std_error; lower_bound = mean_debt_simple - margin_of_error; upper_bound = mean_debt_simple + margin_of_error",
         "difficulty": "medium",
         "subtype": "Confidence Interval",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -167,7 +167,7 @@
         "derivation": "from scipy.stats import norm; mean_yearly_income = data['yearly_income'].mean(); std_yearly_income = data['yearly_income'].std(); n = len(data['yearly_income']); se_yearly_income = std_yearly_income / np.sqrt(n); confidence = 0.95; z_score = norm.ppf((1 + confidence) / 2); margin_of_error = z_score * se_yearly_income; ci_lower = mean_yearly_income - margin_of_error; ci_upper = mean_yearly_income + margin_of_error",
         "difficulty": "easy",
         "subtype": "Confidence Interval",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     },
     {
@@ -176,7 +176,7 @@
         "derivation": "from scipy.stats import norm; mean_credit_score = data['credit_score'].mean(); std_credit_score = data['credit_score'].std(); n = len(data['credit_score']); se_credit_score = std_credit_score / np.sqrt(n); confidence = 0.90; z_score = norm.ppf((1 + confidence) / 2); margin_of_error = z_score * se_credit_score; ci_lower = mean_credit_score - margin_of_error; ci_upper = mean_credit_score + margin_of_error",
         "difficulty": "easy",
         "subtype": "Confidence Interval",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv"
     }
 ]

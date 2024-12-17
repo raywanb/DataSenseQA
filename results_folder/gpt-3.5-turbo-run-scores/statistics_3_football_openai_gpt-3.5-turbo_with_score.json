@@ -7,8 +7,8 @@
         "subtype": "frequency and distribution analysis",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The top 3 most frequent teams in the dataset are:\n1. Manchester City (99 appearances)\n2. Real Madrid (77 appearances)\n3. Barcelona (73 appearances)",
-        "score": 1
+        "result": "Man City, Real Madrid, Barcelona",
+        "score": 0
     },
     {
         "question": "Count the frequency of each season in the dataset.",
@@ -18,7 +18,7 @@
         "subtype": "frequency and distribution analysis",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The dataset contains entries from multiple seasons, with the most represented seasons being 2022/2023 (166 entries), 2023/2024 (165 entries), and 2021/2022 (161 entries). The data spans from 2014/2015 to 2023/2024, with some possible data entry errors in the season format for a few entries.",
+        "result": "The frequency of each season in the dataset is shown above.",
         "score": 0
     },
     {
@@ -29,7 +29,7 @@
         "subtype": "conditional retrieval and filtering",
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "78 players have scored more than 10 goals in a season.",
+        "result": "78",
         "score": 0
     },
     {
@@ -40,7 +40,7 @@
         "subtype": "direct value retrieval",
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "Thomas Muller had the highest number of assists in a single season with 25 assists while playing for Bayern Munich during the 2019/2020 season.",
+        "result": "Agent stopped due to iteration limit or time limit.",
         "score": 0
     },
     {
@@ -62,8 +62,8 @@
         "subtype": "Descriptive Statistics",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The range of matches played in a single season is from 1 to 59 matches, representing a difference of 58 matches between the most and least active players in a single season.",
-        "score": 1
+        "result": "The range of matches played in a single season is from 1 to 59 matches.",
+        "score": 0
     },
     {
         "question": "Identify the season with the most goals scored across all players.",
@@ -73,7 +73,7 @@
         "subtype": "Data Aggregation, Grouping and Classification",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The 2022/2023 season had the most goals scored with a total of 1,287 goals across all players.",
+        "result": "The season with the most goals scored across all players is 2022/2023 with a total of 1287 goals.",
         "score": 1
     },
     {
@@ -84,7 +84,7 @@
         "subtype": "Comparison and Ranking",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
+        "result": "The top 5 players with the most matches played are Eduardo Camavinga, Bruno Fernandes, Bruno Fernandes, Bernardo Silva, and Lautaro Martinez.",
         "score": 0
     },
     {
@@ -95,8 +95,8 @@
         "subtype": "descriptive statistics",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The median number of goals scored per season is 4.0 goals.",
-        "score": 1
+        "result": "The median number of goals scored per season is 5.0.",
+        "score": 0
     },
     {
         "question": "Compute the total number of goals scored by Lionel Messi across all seasons.",
@@ -106,7 +106,7 @@
         "subtype": "direct value retrieval",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "Lionel Messi scored a total of 276 goals across all seasons shown in the dataset.",
+        "result": "276",
         "score": 1
     },
     {
@@ -117,7 +117,7 @@
         "subtype": "descriptive statistics",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The correlation coefficient between goals and assists is approximately 0.562. This indicates a moderate positive correlation between goals and assists, meaning that as the number of goals increases, there is a tendency for the number of assists to increase as well, though the relationship is not very strong. A correlation of 1 would indicate a perfect positive correlation, while 0 would indicate no correlation at all. The value of 0.562 suggests that while there is a positive relationship between scoring goals and providing assists, there are also other factors that influence these statistics independently.",
+        "result": "0.5620808330371801",
         "score": 1
     },
     {
@@ -128,7 +128,7 @@
         "subtype": "data aggregation, grouping and classification",
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "Here are the total goals scored for each team, with the top 10 teams being:\n1. Manchester City: 818 goals\n2. Bayern Munich: 748 goals\n3. Liverpool: 641 goals\n4. Real Madrid: 640 goals\n5. Barcelona: 558 goals\n6. PSG: 535 goals\n7. Tottenham: 441 goals\n8. Manchester United: 433 goals\n9. Atletico Madrid: 373 goals\n10. Juventus: 324 goals\n\nThe data shows a wide range of goal-scoring totals across teams, from Man City's 818 goals at the top to several teams with 0 goals (Nancy, Atalanta, and Swansea) at the bottom. There are 93 teams in total in the dataset, with most top European clubs having significant goal tallies.\n\nNote: There appears to be a duplicate entry for \"Inter\" (249 goals and 14 goals) and \"Real Madrid\"/\"real Madrid\" (640 goals and 2 goals) which might need to be cleaned in the data.",
+        "result": "The total number of goals scored for each team has been calculated by grouping players by team.",
         "score": 0
     },
     {
@@ -139,8 +139,8 @@
         "subtype": "direct value retrieval",
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "Lionel Messi is the player with the most matches played for InterMiami with 29 matches total.",
-        "score": 1
+        "result": "Lionel Messi is the player with the most matches played for InterMiami.",
+        "score": 0
     },
     {
         "question": "Compute the interquartile range (IQR) of assists across all players.",
@@ -150,8 +150,8 @@
         "subtype": "descriptive statistics",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The interquartile range (IQR) of assists is 6.0. This means that the middle 50% of assist values fall within a range of 6 assists, with Q1 at 1 assist and Q3 at 7 assists.",
-        "score": 1
+        "result": "The interquartile range (IQR) of assists across all players is the value stored in the variable `iqr`.",
+        "score": 0
     },
     {
         "question": "Calculate the percentage of players with a seasonal rating above 8.0.",
@@ -161,7 +161,7 @@
         "subtype": "frequency and distribution Analysis",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "2.06% of players have a seasonal rating above 8.0. This calculation is based on the complete dataset where out of all players, only a small portion achieved ratings higher than 8.0. This percentage represents players with exceptional performance ratings ranging from 8.1 to 8.9.",
+        "result": "The percentage of players with a seasonal rating above 8.0 is 25 / 1216 = 2.06%.",
         "score": 1
     },
     {
@@ -172,7 +172,7 @@
         "subtype": "comparison and ranking",
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The top 3 teams with the highest average seasonal ratings are:\n1. Real Madrid Castilla with an average rating of 8.80\n2. Inter Miami with an average rating of 8.25\n3. Real Madrid with an average rating of 7.85",
+        "result": "Real Madrid Castilla, InterMiami, Real Madrid",
         "score": 0
     },
     {
@@ -183,8 +183,8 @@
         "subtype": "comparison and ranking",
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "Erling Haaland had the highest goals-to-matches ratio during the 2018/2019 season with Salzburg, scoring 1.27 goals per match (28 goals in 22 matches). This is notably higher than the next best ratio of 1.20 goals per match achieved by Robert Lewandowski in the 2020/2021 season with Bayern Munich.",
-        "score": 1
+        "result": "Erling Haaland has the highest goals-to-matches ratio.",
+        "score": 0
     },
     {
         "question": "Compute the 95% confidence interval for the mean seasonal rating.",
@@ -194,7 +194,7 @@
         "subtype": "confidence intervals",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "For the seasonal ratings, with a sample size of 1,216 observations:\n- The mean rating is 7.07\n- The 95% confidence interval is (7.04, 7.10)\n\nThis means we can be 95% confident that the true population mean of seasonal ratings falls between 7.04 and 7.10. The relatively narrow confidence interval is due to the large sample size (1,216 observations), which provides good precision in estimating the true population mean.",
+        "result": "The 95% confidence interval for the mean seasonal rating is [7.731, 8.269].",
         "score": 0
     },
     {
@@ -205,8 +205,8 @@
         "subtype": "frequency and distribution Analysis",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The frequency distribution of seasonal ratings shows:\n1. <7.0: 530 seasons (43.5%)\n2. 7.0-8.0: 661 seasons (54.3%)\n3. >8.0: 25 seasons (2.2%)\n\nThe majority of seasons (54.3%) had ratings between 7.0 and 8.0, indicating that this is the most common performance range. A significant portion (43.5%) had ratings below 7.0, while exceptional ratings above 8.0 were relatively rare, occurring in only 2.2% of seasons. This suggests that ratings above 8.0 represent truly outstanding performance levels that are difficult to achieve.",
-        "score": 1
+        "result": "The frequency distribution of seasonal ratings categorized into ranges is as follows:\n- Ratings < 7.0: 391\n- Ratings between 7.0 and 8.0: 793\n- Ratings > 8.0: 32",
+        "score": 0
     },
     {
         "question": "Determine the variance of the number of matches played across all players.",
@@ -216,7 +216,7 @@
         "subtype": "descriptive statistics",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "The variance of the number of matches played is 138.35.",
+        "result": "The variance of the number of matches played across all players is 138.35.",
         "score": 1
     }
 ]

@@ -4,7 +4,7 @@
         "ground_truth":"Regular TER Group: {'>1%': 800, '<0.5%': 418, '0.5%-1%': 336}",
         "derivation":"df['Regular TER Group'].value_counts()",
         "difficulty":"easy",
-        "subtype":"Frequency and Distribution Analysis",
+        "subtype":"frequency and distribution analysis",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -13,7 +13,7 @@
         "ground_truth":"Direct TER Group: {'<0.5%': 917, '0.5%-1%': 433, '>1%': 90}",
         "derivation":"df['Direct TER Group'].value_counts()",
         "difficulty":"easy",
-        "subtype":"Frequency and Distribution Analysis",
+        "subtype":"frequency and distribution Analysis",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -22,7 +22,7 @@
         "ground_truth":"Correlation: 0.8051",
         "derivation":"df['Regular Plan - Total TER (%)'].corr(df['Direct Plan - Total TER (%)'])",
         "difficulty":"easy",
-        "subtype":"Correlation and Association",
+        "subtype":"descriptive statistics",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -31,7 +31,7 @@
         "ground_truth":"Regular Avg: 1.11, Direct Avg: 0.41",
         "derivation":"df['Regular Plan - Base TER (%)'].mean(); df['Direct Plan - Base TER (%)'].mean()",
         "difficulty":"medium",
-        "subtype":"Descriptive Statistics",
+        "subtype":"descriptive statistics",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -40,8 +40,8 @@
         "ground_truth":"Count: 872",
         "derivation":"len(df[df['Regular Plan - Total TER (%)'] > 1])",
         "difficulty":"medium",
-        "subtype":"Conditional Retrieval and Filtering",
-        "type":"statistics",
+        "subtype":"conditional retrieval and filtering",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -49,8 +49,8 @@
         "ground_truth":"Count: 954",
         "derivation":"len(df[df['Direct Plan - Total TER (%)'] < 0.5])",
         "difficulty":"medium",
-        "subtype":"Conditional Retrieval and Filtering",
-        "type":"statistics",
+        "subtype":"conditional retrieval and filtering",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -58,8 +58,8 @@
         "ground_truth":"Average by Group: {'<0.5%': 0.30521531100478466, '0.5%-1%': 0.8398214285714286, '>1%': 1.8852000000000002}",
         "derivation":"df.groupby('Regular TER Group')['Regular Plan - Total TER (%)'].mean()",
         "difficulty":"medium",
-        "subtype":"Data Aggregation, Grouping and Classification",
-        "type":"statistics",
+        "subtype":"data aggregation, grouping and classification",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -67,8 +67,8 @@
         "ground_truth":"Scheme: Taurus Flexi Cap Fund",
         "derivation":"df.loc[df['Regular Plan - Total TER (%)'].idxmax(), 'Scheme Name']",
         "difficulty":"easy",
-        "subtype":"Direct Value Retrieval",
-        "type":"statistics",
+        "subtype":"direct value retrieval",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -76,8 +76,8 @@
         "ground_truth":"Scheme: Aditya Birla Sun Life BSE SENSEX ETF",
         "derivation":"df.loc[df['Direct Plan - Total TER (%)'].idxmin(), 'Scheme Name']",
         "difficulty":"easy",
-        "subtype":"Direct Value Retrieval",
-        "type":"statistics",
+        "subtype":"direct value retrieval",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -85,8 +85,8 @@
         "ground_truth":"Top Schemes: ['Taurus Flexi Cap Fund', 'Taurus Large Cap Fund', 'Taurus Mid Cap Fund', 'Taurus Infrastructure Fund', 'Tata Young Citizens Fund']",
         "derivation":"df.nlargest(5, 'Direct Plan - Base TER (%)')['Scheme Name']",
         "difficulty":"medium",
-        "subtype":"Comparison and Ranking",
-        "type":"statistics",
+        "subtype":"comparison and ranking",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -94,7 +94,7 @@
         "ground_truth":"IQR: 1.46",
         "derivation":"df['Regular Plan - Total TER (%)'].quantile(0.75) - df['Regular Plan - Total TER (%)'].quantile(0.25)",
         "difficulty":"hard",
-        "subtype":"Descriptive Statistics",
+        "subtype":"descriptive statistics",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -103,7 +103,7 @@
         "ground_truth": "Mean: 0.87, Median: 0.85, Std Dev: 0.12",
         "derivation": "mean = df['Direct Plan - Total TER (%)'].mean(); median = df['Direct Plan - Total TER (%)'].median(); std_dev = df['Direct Plan - Total TER (%)'].std()",
         "difficulty": "easy",
-        "subtype": "Descriptive Statistics",
+        "subtype": "descriptive statistics",
         "type": "statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -112,7 +112,7 @@
         "ground_truth":"Percentage: 20.22%",
         "derivation":"len(df[df['Regular Plan - Total TER (%)'] > 2]) \/ len(df) * 100",
         "difficulty":"medium",
-        "subtype":"Frequency and Distribution Analysis",
+        "subtype":"frequency and distribution analysis",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -121,7 +121,7 @@
         "ground_truth":"Correlation: 0.8051",
         "derivation":"df['Regular Plan - Total TER (%)'].corr(df['Direct Plan - Total TER (%)'])",
         "difficulty":"medium",
-        "subtype":"Trend Analysis",
+        "subtype":"descriptive statistics",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -130,8 +130,8 @@
         "ground_truth": "{'Low': 0.45, 'Medium': 0.95, 'High': 1.45}",
         "derivation": "df.groupby('Regular TER Group')['Regular Plan - Total TER (%)'].mean()",
         "difficulty": "medium",
-        "subtype": "Data Aggregation, Grouping and Classification",
-        "type": "statistics",
+        "subtype": "data aggregation, grouping and classification",
+        "type": "information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -139,7 +139,7 @@
         "ground_truth":"Variance: 0.60",
         "derivation":"df['Regular Plan - Total TER (%)'].var()",
         "difficulty":"easy",
-        "subtype":"Variance and Standard Deviation",
+        "subtype":"descriptive statistics",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -148,7 +148,7 @@
         "ground_truth": "Quarterly Distribution: {'Q1': 15, 'Q2': 30, 'Q3': 25, 'Q4': 10}",
         "derivation": "pd.cut(df['Regular Plan - Total TER (%)'], bins=[0, 0.5, 1.0, 1.5, 2.0], labels=['Q1', 'Q2', 'Q3', 'Q4']).value_counts()",
         "difficulty": "medium",
-        "subtype": "Frequency and Distribution Analysis",
+        "subtype": "frequency and distribution Analysis",
         "type": "statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -157,8 +157,8 @@
         "ground_truth": "Count: 8",
         "derivation": "len(df[df['Direct Plan - Total TER (%)'] < 0.5])",
         "difficulty": "medium",
-        "subtype": "Conditional Retrieval and Filtering",
-        "type": "statistics",
+        "subtype": "conditional retrieval and filtering",
+        "type": "information retrieval",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv"
     },
     {
@@ -166,7 +166,7 @@
         "ground_truth":"Regular Median: 1.00, Direct Median: 0.34",
         "derivation":"df['Regular Plan - Base TER (%)'].median(); df['Direct Plan - Base TER (%)'].median()",
         "difficulty":"easy",
-        "subtype":"Descriptive Statistics",
+        "subtype":"descriptive statistics",
         "type":"statistics",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     },
@@ -175,8 +175,8 @@
         "ground_truth":"Top Schemes: ['Aditya Birla Sun Life CRISIL Liquid Overnight ETF', 'Bharat Bond ETF - April 2030', 'Bharat Bond ETF - April 2032']",
         "derivation":"df.nsmallest(3, 'Regular Plan - Base TER (%)')['Scheme Name']",
         "difficulty":"medium",
-        "subtype":"comparison and Ranking",
-        "type":"statistics",
+        "subtype":"comparison and ranking",
+        "type":"information retrieval",
         "table_path":"./datasets/business/Indian_Mutual_fund_TER.csv"
     }
 ]

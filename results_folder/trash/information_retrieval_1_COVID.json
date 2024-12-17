@@ -7,8 +7,7 @@
         "subtype": "Direct Value Retrieval",
         "difficulty": "easy",
         "table_path": "./datasets/research/COVID19.csv",
-        "result": "The total number of confirmed cases in Algeria is 27973",
-        "score": 1
+        "result": "The total number of confirmed COVID-19 cases in Algeria is 27,973.\n\nThis number comes directly from the DataFrame, specifically the row where the 'Country/Region' is 'Algeria' and the 'Confirmed' column shows 27,973 cases. I verified this by using pandas boolean indexing to extract the specific value."
     },
     {
         "question": "How many deaths were recorded in China?",
@@ -18,8 +17,7 @@
         "subtype": "Direct Value Retrieval",
         "difficulty": "easy",
         "table_path": "./datasets/research/COVID19.csv",
-        "result": "4656",
-        "score": 1
+        "result": "4,656 deaths were recorded in China."
     },
     {
         "question": "What is the active number of cases in Belgium?",
@@ -29,8 +27,7 @@
         "subtype": "Direct Value Retrieval",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
-        "result": "The active number of cases in Belgium is 39154.",
-        "score": 1
+        "result": "The active number of cases in Belgium is 39,154.\n\nTo break down how I found this:\n1. I used a pandas DataFrame filtering technique to select only the row where 'Country/Region' is exactly 'Belgium'\n2. I then extracted the 'Active' column value from that row\n3. The result shows 39,154 active cases for Belgium"
     },
     {
         "question": "Find the new deaths reported for the country Angola.",
@@ -40,8 +37,7 @@
         "subtype": "Direct Value Retrieval",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
-        "result": "1",
-        "score": 1
+        "result": "1 new death was reported for Angola.\n\nThis can be seen in the \"New deaths\" column for the row corresponding to Angola, which shows a value of 1."
     },
     {
         "question": "What is the 'Deaths / 100 Cases' percentage for Afghanistan?",
@@ -51,8 +47,7 @@
         "subtype": "Direct Value Retrieval",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
-        "result": "3.5",
-        "score": 1
+        "result": "3.5\n\nThis means that for Afghanistan, there are 3.5 deaths per 100 confirmed COVID-19 cases."
     },
     {
         "question": "Retrieve the 'WHO Region' for Andorra.",
@@ -62,8 +57,7 @@
         "subtype": "Direct Value Retrieval",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
-        "result": "Europe",
-        "score": 1
+        "result": "Europe\n\nThe 'WHO Region' for Andorra is Europe, which matches what we saw in the initial dataframe preview. I confirmed this by using a pandas filtering operation to select the row for Andorra and then extracting its WHO Region value."
     },
     {
         "question": "List all countries where the number of confirmed cases is greater than 400,000.",
@@ -73,8 +67,7 @@
         "subtype": "Conditional Retrieval and Filtering",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "Brazil, India, Russia, South Africa, US",
-        "score": 1
+        "result": "The countries with more than 400,000 confirmed cases are the United States, Brazil, India, Russia, and South Africa."
     },
     {
         "question": "Which countries have a 'Recovered / 100 Cases' percentage below 2?",
@@ -84,8 +77,7 @@
         "subtype": "Conditional Retrieval and Filtering",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "Canada, Mozambique, Netherlands, Serbia, Sweden, Syria, Timor-Leste, United Kingdom",
-        "score": 1
+        "result": "The following countries have a 'Recovered / 100 Cases' percentage below 2%:\n1. Canada (0.00%)\n2. Mozambique (0.00%)\n3. Netherlands (0.35%)\n4. Serbia (0.00%)\n5. Sweden (0.00%)\n6. Syria (0.00%)\n7. Timor-Leste (0.00%)\n8. United Kingdom (0.48%)\n\nThese countries show extremely low recovery rates relative to their confirmed COVID-19 cases, which could indicate challenges in tracking recoveries, high mortality rates, or recent outbreaks with limited time for recovery."
     },
     {
         "question": "Identify the countries with a '1 week % increase' greater than 50%.",
@@ -95,8 +87,7 @@
         "subtype": "Conditional Retrieval and Filtering",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "Bahamas, Gambia, Papua New Guinea, Zimbabwe",
-        "score": 1
+        "result": "The countries with a '1 week % increase' greater than 50% are:\n1. Bahamas: 119.54% increase\n2. Gambia: 191.07% increase\n3. Papua New Guinea: 226.32% increase\n4. Zimbabwe: 57.85% increase\n\nThese percentages represent the week-over-week increase in confirmed COVID-19 cases for these countries. Papua New Guinea shows the most dramatic increase at 226.32%, followed by Gambia at 191.07%, then Bahamas at 119.54%, and Zimbabwe at 57.85%.\n\nThis analysis suggests these countries experienced a significant surge in COVID-19 cases during the reported week, with Papua New Guinea and Gambia showing particularly steep increases."
     },
     {
         "question": "Calculate the total number of confirmed cases.",
@@ -106,8 +97,7 @@
         "subtype": "Multi-Column Analysis and Summarization",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "The total number of confirmed cases is 16,480,485.",
-        "score": 1
+        "result": "The total number of confirmed cases is 16,480,485.\n\nThis means across all countries in the dataset, there have been 16,480,485 confirmed COVID-19 cases at the time this data was collected."
     },
     {
         "question": "What is the average 'Deaths / 100 Cases' across European countries?",
@@ -117,8 +107,7 @@
         "subtype": "Multi-Column Analysis and Summarization",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "The average 'Deaths / 100 Cases' across European countries is avg_deaths_europe.",
-        "score": 0
+        "result": "The average 'Deaths / 100 Cases' across European countries is 4.20.\n\nTo provide some additional context:\n- This means that for every 100 confirmed COVID-19 cases in European countries, approximately 4.20 cases resulted in death\n- This is an average across all European countries in the dataset\n- Individual countries may have higher or lower rates depending on various factors like healthcare system, population demographics, etc."
     },
     {
         "question": "Sum the total number of new cases reported in Africa region excluding Egypt.",
@@ -128,8 +117,7 @@
         "subtype": "Multi-Column Analysis and Summarization",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "12176",
-        "score": 1
+        "result": "12,176 new cases were reported in the Africa region, excluding Egypt.\n\nTo provide additional context:\n- The filter ensures only African countries are considered\n- Egypt is specifically excluded as per the question\n- The sum represents the total new COVID-19 cases for African countries at the time of this dataset\n\nWould you like me to break down the calculation further or show the countries contributing to this total?"
     },
     {
         "question": "Which country had the highest '1 week % increase' in cases compared to their confirmed numbers?",
@@ -139,8 +127,7 @@
         "subtype": "Pattern and Trend Recognition",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "Papua New Guinea had the highest '1 week % increase' in cases compared to their confirmed numbers.",
-        "score": 1
+        "result": "Papua New Guinea had the highest '1 week % increase' in COVID-19 cases at 226.32%. This means that in the week prior to the data collection, Papua New Guinea's confirmed cases increased by 226.32% compared to the previous week, which is a significant surge in infections.\n\nTo explain the process:\n1. I used pandas' `idxmax()` function to find the index of the row with the maximum '1 week % increase'\n2. Then I retrieved the country name and percentage increase for that row\n3. I verified the result by explicitly finding the maximum value and corresponding country\n\nThe high percentage increase suggests that Papua New Guinea was experiencing a rapid spread of COVID-19 during the period this data was collected, with cases more than tripling in just one week."
     },
     {
         "question": "Identify the ratio between Deaths and New Cases by each Region.",
@@ -150,8 +137,7 @@
         "subtype": "Pattern and Trend Recognition",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "hard",
-        "result": "The ratio between Deaths and New Cases by each Region has been calculated.",
-        "score": 0
+        "result": "The ratio of Deaths to New Cases varies significantly by WHO Region, with Europe having the highest ratio (9.47 deaths per new case) and South-East Asia having the lowest (0.84 deaths per new case). This indicates substantial regional differences in COVID-19 impact and potentially in factors like healthcare, testing, and reporting."
     },
     {
         "question": "Are there any statistical differences in the 'Recovered / 100 Cases' between regions?",
@@ -161,8 +147,7 @@
         "subtype": "Pattern and Trend Recognition",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "hard",
-        "result": "Yes, there are statistical differences in the 'Recovered / 100 Cases' between regions.",
-        "score": 0
+        "result": "There are no statistically significant differences in the 'Recovered / 100 Cases' between WHO regions, though there are some observable variations in the mean recovery rates."
     },
     {
         "question": "Group the data by 'WHO Region' and list the average number of deaths for each region.",
@@ -172,8 +157,7 @@
         "subtype": "Data Aggregation, Grouping and Classification",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "The average number of deaths for each WHO Region are as follows:\n- Africa: 254.65\n- Americas: 9792.34\n- Eastern Mediterranean: 1742.68\n- Europe: 3770.43\n- South-East Asia: 4134.90\n- Western Pacific: 515.56",
-        "score": 1
+        "result": "The average number of deaths by WHO Region, from highest to lowest, are:\n- Americas: 9,792.34\n- South-East Asia: 4,134.90\n- Europe: 3,770.43\n- Eastern Mediterranean: 1,742.68\n- Western Pacific: 515.56\n- Africa: 254.65"
     },
     {
         "question": "Calculate the highest confirmed cases to active cases for each region ratio and rank them descending.",
@@ -183,8 +167,7 @@
         "subtype": "Data Aggregation, Grouping and Classification",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "hard",
-        "result": "The regions are ranked in descending order based on the highest confirmed cases to active cases ratio.",
-        "score": 0
+        "result": "The highest confirmed cases to active cases ratio by WHO Region, in descending order, is:\nEastern Mediterranean (210.79), Africa (172.00), Europe (88.29), Western Pacific (74.14), Americas (26.94), and South-East Asia (25.76)."
     },
     {
         "question": "Show the average number of new deaths grouped by region.",
@@ -194,8 +177,7 @@
         "subtype": "Data Aggregation, Grouping and Classification",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "The average number of new deaths grouped by region are as follows:\n- Africa: 7.354167\n- Americas: 101.571429\n- Eastern Mediterranean: 20.227273\n- Europe: 5.428571\n- South-East Asia: 73.400000\n- Western Pacific: 1.500000",
-        "score": 0
+        "result": "The average number of new deaths grouped by WHO Region shows significant variation, with the Americas having the highest average of 101.57 new deaths per day, and the Western Pacific having the lowest at 1.50 new deaths per day."
     },
     {
         "question": "Out of the 30 countries with the least deaths, find the top 5 that have the lowest cases",
@@ -205,8 +187,7 @@
         "subtype": "Comparison and Ranking",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
-        "result": "The top 5 countries with the lowest cases out of the 30 countries with the least deaths are Western Sahara, Holy See, Greenland, Saint Kitts and Nevis, and Dominica.",
-        "score": 0
+        "result": "The 5 countries with the least confirmed cases among the 30 countries with the lowest deaths are Western Sahara, Holy See, Greenland, Saint Kitts and Nevis, and Dominica."
     },
     {
         "question": "Rank all European countries by the ratio of 'Recovered / 100 Cases' to 'Deaths / 100 Cases', and identify the country with the median value of this ratio.",
@@ -216,7 +197,6 @@
         "subtype": "Comparison and Ranking",
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "hard",
-        "result": "The country with the median value of the ratio of 'Recovered / 100 Cases' to 'Deaths / 100 Cases' among European countries is Albania.",
-        "score": 0
+        "result": "Finland is the median European country when ranking by the ratio of 'Recovered / 100 Cases' to 'Deaths / 100 Cases', with a ratio of 21.02."
     }
 ]

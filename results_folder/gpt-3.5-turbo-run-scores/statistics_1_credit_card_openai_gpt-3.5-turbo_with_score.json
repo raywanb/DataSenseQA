@@ -7,7 +7,7 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "- Mean: 45.3915\n- Median: 44.0\n- Mode: 18",
+        "result": "Mean: 45.3915, Median: 44.0, Mode: 18",
         "score": 0
     },
     {
@@ -18,7 +18,7 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The range of `credit_score` is from 480 to 850, and its standard deviation is approximately 67.22.",
+        "result": "Range of credit_score: 480 to 850, Standard Deviation: 67.22",
         "score": 0
     },
     {
@@ -29,7 +29,7 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The interquartile range (IQR) for `yearly_income` is 19,880, and for `total_debt` is 65,083.75. The `total_debt` has a wider spread compared to `yearly_income`.",
+        "result": "'total_debt' has a wider spread compared to 'yearly_income'.",
         "score": 1
     },
     {
@@ -40,8 +40,8 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "- Least variability: Number of Credit Cards (IQR = 2.0)\n- Medians: Credit Score = 711.5, Number of Credit Cards = 3.0, Retirement Age = 66.0\n- IQR indicates spread around the median; smaller IQR means less variability.",
-        "score": 1
+        "result": "The interquartile range (IQR) for credit_score is 72.0, for num_credit_cards is 2.0, and for retirement_age is 3.0. The attribute with the least variability is num_credit_cards. The median values are as follows: credit_score = 701.0, num_credit_cards = 5.0, and retirement_age = 66.0. In general, a smaller IQR indicates less variability in the data, while the median represents the middle value of the dataset. In this case, num_credit_cards has the smallest IQR, indicating less variability, and the median values provide a central tendency for each attribute.",
+        "score": 0
     },
     {
         "question": "Count the frequency of each gender value in the dataset.",
@@ -51,7 +51,7 @@
         "subtype": "Frequency and Distribution Analysis",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The frequency of each gender value in the dataset is 1016 Females and 984 Males.",
+        "result": "Female appears 1016 times and Male appears 984 times in the dataset.",
         "score": 1
     },
     {
@@ -62,7 +62,7 @@
         "subtype": "Frequency and Distribution Analysis",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The percentage of individuals with a credit score above 750 is 26.2%.",
+        "result": "26.2% individuals have a credit_score above 750.",
         "score": 1
     },
     {
@@ -73,7 +73,7 @@
         "subtype": "Frequency and Distribution Analysis",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The percentage distribution of births by season is Winter: 27.70%, Fall: 25.85%, Spring: 23.65%, Summer: 22.80%. The chi-squared test shows no statistical significance between peak and low seasons (p-value = 1.0).",
+        "result": "Agent stopped due to iteration limit or time limit.",
         "score": 0
     },
     {
@@ -84,7 +84,7 @@
         "subtype": "Frequency and Distribution Analysis",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The frequency distribution of credit scores is: Poor (4.05%), Fair (17.40%), Good (46.55%), Excellent (32.00%). The chi-squared test shows a statistically significant difference between the observed and expected distributions (chi2 = 476.42, p < 0.001).",
+        "result": "The chi-squared test results indicate whether there is a statistically significant difference between the observed and expected distributions of credit scores grouped into ranges (poor, fair, good, excellent).",
         "score": 0
     },
     {
@@ -95,8 +95,8 @@
         "subtype": "Correlation and Association",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The correlation between `current_age` and `retirement_age` is approximately 0.0048.",
-        "score": 1
+        "result": "The correlation between current_age and retirement_age is 0.0048.",
+        "score": 0
     },
     {
         "question": "Analyze whether there is a correlation between yearly_income, total_debt, and credit_score by computing a correlation matrix for these variables.",
@@ -106,8 +106,8 @@
         "subtype": "Correlation and Association",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The correlation matrix shows that there is a moderate positive correlation (0.55) between `yearly_income` and `total_debt`. The correlation between `yearly_income` and `credit_score` is almost negligible (0.000167), and there is a weak negative correlation (-0.104537) between `total_debt` and `credit_score`.",
-        "score": 1
+        "result": "There is a moderate positive correlation between yearly_income and total_debt, a very weak positive correlation between yearly_income and credit_score, and a weak negative correlation between total_debt and credit_score.",
+        "score": 0
     },
     {
         "question": "Identify trends in credit score based on current age.",
@@ -117,7 +117,7 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The average credit score generally increases with age, with some fluctuations. Younger age groups (18-22) have average credit scores around 706-717, while older age groups (93-101) have higher average credit scores, ranging from 736 to 773. This suggests that credit scores tend to improve with age, although there are variations at specific ages.",
+        "result": "The trends in credit score based on current age show variations across different age groups.",
         "score": 0
     },
     {
@@ -128,7 +128,7 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "There is a very weak positive correlation (0.052) between the distance from the point (40, -120) and yearly income, indicating no significant trend.",
+        "result": "The trend in yearly income vs latitude at the point (40, -120) shows a weak positive correlation.",
         "score": 0
     },
     {
@@ -139,7 +139,7 @@
         "subtype": "Descriptive Statistics",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The ANOVA test indicates no statistically significant differences in `credit_score` and `total_debt` across birth months (p-values > 0.05), suggesting that birth month does not significantly explain the variability in these columns.",
+        "result": "Birth_month may not be statistically significant in explaining the variability in credit_score and total_debt based on the ANOVA tests performed.",
         "score": 0
     },
     {
@@ -150,8 +150,8 @@
         "subtype": "Hypothesis Testing",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "There is no significant difference in the mean credit scores between males and females (t-statistic = 0.38, p-value = 0.704).",
-        "score": 1
+        "result": "The mean credit_score differs significantly between males and females if the p-value is less than the chosen significance level (e.g., 0.05).",
+        "score": 0
     },
     {
         "question": "Perform a chi-square test to see if gender and having num_credit_cards > 3 are independent.",
@@ -161,8 +161,8 @@
         "subtype": "Hypothesis Testing",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The chi-square test statistic is approximately 0.416, and the p-value is approximately 0.519, indicating no significant association between gender and having more than 3 credit cards.",
-        "score": 1
+        "result": "The p-value from the chi-square test will indicate whether gender and having num_credit_cards > 3 are independent.",
+        "score": 0
     },
     {
         "question": "Test if the variance in yearly_income is significantly different between individuals with credit_score above and below 700.",
@@ -172,7 +172,7 @@
         "subtype": "Hypothesis Testing",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The Levene's test statistic is approximately 0.072, and the p-value is approximately 0.789. Since the p-value is much greater than the common significance level of 0.05, we do not have enough evidence to reject the null hypothesis. Therefore, the variance in `yearly_income` is not significantly different between individuals with `credit_score` above and below 700.",
+        "result": "We can determine if the variance in yearly_income is significantly different between individuals with credit_score above and below 700 by analyzing the results of the Levene's test.",
         "score": 0
     },
     {
@@ -183,8 +183,8 @@
         "subtype": "Hypothesis Testing",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "There is no significant difference in the variance of `yearly_income` between individuals with more than 3 credit cards and those with 3 or fewer credit cards (p-value = 0.850).",
-        "score": 1
+        "result": "Agent stopped due to iteration limit or time limit.",
+        "score": 0
     },
     {
         "question": "Compute a 95% confidence interval for the mean total debt of individuals with a credit score above 700.",
@@ -194,8 +194,8 @@
         "subtype": "Confidence Interval",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The 95% confidence interval for the mean total debt of individuals with a credit score above 700 is approximately (57447.05, 63523.65).",
-        "score": 1
+        "result": "The 95% confidence interval for the mean total debt of individuals with a credit score above 700 is [\\$57947.82, \\$61689.18].",
+        "score": 0
     },
     {
         "question": "Calculate a 95% confidence interval for the average yearly_income.",
@@ -205,7 +205,7 @@
         "subtype": "Confidence Interval",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The 95% confidence interval for the average yearly income is approximately ($44,707.59, $46,724.17).",
+        "result": "The 95% confidence interval for the average yearly_income is [67567.82, 101732.18]",
         "score": 0
     },
     {
@@ -216,7 +216,7 @@
         "subtype": "Confidence Interval",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "The 90% confidence interval for the average credit score is approximately (707.26, 712.21).",
-        "score": 1
+        "result": "The 90% confidence interval for the average credit_score is [679.63, 720.37]",
+        "score": 0
     }
 ]
