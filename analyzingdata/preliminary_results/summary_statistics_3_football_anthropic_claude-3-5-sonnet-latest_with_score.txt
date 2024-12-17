@@ -1,0 +1,13 @@
+=== Summary for Dataset: statistics_3_football_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 20
+Overall average score: 0.400
+
+Average Scores by Question Type:
+            Average Score  Count
+type                            
+statistics            0.4     20
+
+Scores by Type and Difficulty (score, count):
+            easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                              
+statistics           0.5             8         0.333             3           0.333               9

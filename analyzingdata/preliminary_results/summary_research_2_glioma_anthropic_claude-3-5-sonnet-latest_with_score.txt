@@ -1,0 +1,17 @@
+=== Summary for Dataset: research_2_glioma_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 42
+Overall average score: 0.214
+
+Average Scores by Question Type:
+                       Average Score  Count
+type                                       
+comparison                     0.000      1
+information retrieval          0.227     22
+statistics                     0.211     19
+
+Scores by Type and Difficulty (score, count):
+                       easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                                         
+comparison                      NaN           NaN         0.000           1.0             NaN             NaN
+information retrieval           0.5           2.0         0.200          10.0             0.2            10.0
+statistics                      NaN           NaN         0.143          14.0             0.4             5.0

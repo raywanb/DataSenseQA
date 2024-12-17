@@ -1,0 +1,29 @@
+=== Model Comparison for Dataset: information_retrieval_1_COVID_openai_gpt-4o_with_score ===
+
+Scores by Type and Difficulty - Model Comparison:
+                        mean                    count                
+model                 gpt-4o               All gpt-4o             All
+difficulty              easy  hard medium        easy hard medium    
+type                                                                 
+information retrieval    1.0  0.25    0.7  0.7      6    4     10  20
+All                      1.0  0.25    0.7  0.7      6    4     10  20
+
+Scores by Type, Subtype and Difficulty - Model Comparison:
+                                                                      mean                      count                
+model                                                               gpt-4o                 All gpt-4o             All
+difficulty                                                            easy  hard medium          easy hard medium    
+type                  subtype                                                                                        
+information retrieval comparison and ranking                           NaN  0.00    0.0  0.000    NaN  1.0    1.0   2
+                      conditional retrieval and filtering              NaN   NaN    1.0  1.000    NaN  NaN    3.0   3
+                      data aggregation, grouping and classification    NaN  0.00    0.5  0.333    NaN  1.0    2.0   3
+                      direct value retrieval                           1.0   NaN    NaN  1.000    6.0  NaN    NaN   6
+                      multi-column analysis and summarization          NaN   NaN    1.0  1.000    NaN  NaN    3.0   3
+                      pattern and trend recognition                    NaN  0.50    0.0  0.333    NaN  2.0    1.0   3
+All                                                                    1.0  0.25    0.7  0.700    6.0  4.0   10.0  20
+
+Performance Differences:
+
+Difference (gpt-4o - claude-3.5):
+difficulty             easy  hard  medium
+type                                     
+information retrieval   NaN   NaN     NaN

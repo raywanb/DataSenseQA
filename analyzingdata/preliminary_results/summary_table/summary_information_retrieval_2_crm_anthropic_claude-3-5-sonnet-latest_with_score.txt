@@ -1,0 +1,21 @@
+=== Summary for Dataset: information_retrieval_2_crm_anthropic_claude-3-5-sonnet-latest_with_score ===
+
+Scores by Type and Difficulty:
+                        mean                      count                
+difficulty              easy   hard medium    All  easy hard medium All
+type                                                                   
+information retrieval  0.286  0.429  0.571  0.429     7    7      7  21
+All                    0.286  0.429  0.571  0.429     7    7      7  21
+
+Scores by Type, Subtype and Difficulty:
+                                                                       mean                      count                
+difficulty                                                             easy   hard medium    All  easy hard medium All
+type                  subtype                                                                                         
+information retrieval comparison and ranking                          0.000  1.000  1.000  0.667     1    1      1   3
+                      conditional retrieval and filtering             1.000  0.000  1.000  0.667     1    1      1   3
+                      data aggregation, grouping, and classification  0.000  1.000  1.000  0.667     1    1      1   3
+                      direct value retrieval                          0.000  0.000  0.000  0.000     1    1      1   3
+                      multi-column analysis and summarization         1.000  1.000  1.000  1.000     1    1      1   3
+                      pattern and trend recognition                   0.000  0.000  0.000  0.000     1    1      1   3
+                      summary and reporting from tables               0.000  0.000  0.000  0.000     1    1      1   3
+All                                                                   0.286  0.429  0.571  0.429     7    7      7  21

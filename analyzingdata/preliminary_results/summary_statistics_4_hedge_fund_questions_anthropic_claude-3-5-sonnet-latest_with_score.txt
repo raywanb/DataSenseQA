@@ -1,0 +1,13 @@
+=== Summary for Dataset: statistics_4_hedge_fund_questions_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 17
+Overall average score: 0.000
+
+Average Scores by Question Type:
+            Average Score  Count
+type                            
+statistics            0.0     17
+
+Scores by Type and Difficulty (score, count):
+            easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                              
+statistics           0.0             5           0.0             3             0.0               9

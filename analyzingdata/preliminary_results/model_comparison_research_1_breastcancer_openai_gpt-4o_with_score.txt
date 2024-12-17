@@ -1,0 +1,44 @@
+=== Model Comparison for Dataset: research_1_breastcancer_openai_gpt-4o_with_score ===
+
+Scores by Type and Difficulty - Model Comparison:
+                        mean                       count                
+model                 gpt-4o                  All gpt-4o             All
+difficulty              easy   hard medium          easy hard medium    
+type                                                                    
+data curation          0.500  0.000  1.000  0.333      2    3      1   6
+information retrieval  1.000  0.000  0.667  0.556      3    3      3   9
+statistics             1.000  0.133  0.700  0.385      1   15     10  26
+All                    0.833  0.095  0.714  0.415      6   21     14  41
+
+Scores by Type, Subtype and Difficulty - Model Comparison:
+                                                                      mean                       count                 
+model                                                               gpt-4o                  All gpt-4o              All
+difficulty                                                            easy   hard medium          easy  hard medium    
+type                  subtype                                                                                          
+data curation         anomaly and outlier identification               NaN    NaN  1.000  1.000    NaN   NaN    1.0   1
+                      data quality assessment                        1.000  0.000    NaN  0.500    1.0   1.0    NaN   2
+                      data transformation and aggregation              NaN  0.000    NaN  0.000    NaN   2.0    NaN   2
+                      metadata extraction                            0.000    NaN    NaN  0.000    1.0   NaN    NaN   1
+information retrieval comparison and ranking                           NaN    NaN  0.000  0.000    NaN   NaN    1.0   1
+                      contextual interpretation and explanation        NaN  0.000    NaN  0.000    NaN   1.0    NaN   1
+                      data aggregation, grouping and classification    NaN    NaN  1.000  1.000    NaN   NaN    1.0   1
+                      direct value retrieval                         1.000    NaN    NaN  1.000    3.0   NaN    NaN   3
+                      pattern and trend recognition                    NaN  0.000  1.000  0.333    NaN   2.0    1.0   3
+statistics            classification and clustering                    NaN  0.200    NaN  0.200    NaN   5.0    NaN   5
+                      confidence intervals                             NaN    NaN  1.000  1.000    NaN   NaN    1.0   1
+                      correlation and association                      NaN  0.143  0.333  0.200    NaN   7.0    3.0  10
+                      descriptive statistics                         1.000    NaN  0.500  0.667    1.0   NaN    2.0   3
+                      frequency and distribution analysis              NaN    NaN  1.000  1.000    NaN   NaN    1.0   1
+                      hypothesis testing                               NaN    NaN  1.000  1.000    NaN   NaN    1.0   1
+                      probability and risk analysis                    NaN    NaN  1.000  1.000    NaN   NaN    1.0   1
+                      variance and standard deviation                  NaN  0.000  1.000  0.250    NaN   3.0    1.0   4
+All                                                                  0.833  0.095  0.714  0.415    6.0  21.0   14.0  41
+
+Performance Differences:
+
+Difference (gpt-4o - claude-3.5):
+difficulty             easy  hard  medium
+type                                     
+data curation           NaN   NaN     NaN
+information retrieval   NaN   NaN     NaN
+statistics              NaN   NaN     NaN
