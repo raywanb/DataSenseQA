@@ -40,7 +40,7 @@
     "ground_truth": "31.8% (112 EGFR mutations out of 352 Grade 4 cases)",
     "derivation": "data.filter(row => row.Grade === 4 && row.EGFR === 1).length / data.filter(row => row.Grade === 4).length",
     "type": "Statistics",
-    "subtype": "Probability and Risk Analysis",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -67,7 +67,7 @@
     "ground_truth": "IDH1-mutated variance: 149.78, IDH1-wildtype variance: 182.16",
     "derivation": "const agesByIdh1 = _.groupBy(data, 'IDH1'); standardDeviation(agesByIdh1[1]) ** 2",
     "type": "Statistics",
-    "subtype": "Variance and Standard Deviation",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -76,7 +76,7 @@
     "ground_truth": "Grade 0: 6.37% EGFR mutation rate, Grade 1: 23.01% EGFR mutation rate",
     "derivation": "const egfrByGrade = _.groupBy(data, 'Grade'); Object.entries(egfrByGrade).map(([grade, patients]) => ({grade, egfrRate: patients.filter(p => p.EGFR === 1).length / patients.length}))",
     "type": "Statistics",
-    "subtype": "Correlation and Association",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -85,7 +85,7 @@
     "ground_truth": "Total patients: 839; Grade 0: 487, Grade 1: 352; Males in Grade 0: 271, Females in Grade 0: 216; Males in Grade 1: 217, Females in Grade 1: 135; Most common mutation: IDH1 (404 cases)",
     "derivation": "Multiple analyses combined",
     "type": "Information Retrieval",
-    "subtype": "Summary and Reporting from Tables",
+    "subtype": "Summary and Reporting",
     "difficulty": "medium",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -103,7 +103,7 @@
     "ground_truth": "Most common patterns: No mutations (170 patients, avg age 59.94), ATRX-IDH1-TP53 (167 patients, avg age 38.41), IDH1 only (146 patients, avg age 46.38)",
     "derivation": "Complex clustering analysis of mutation patterns",
     "type": "Statistics",
-    "subtype": "Classification and Clustering",
+    "subtype": "Frequency and Distribution Analysis",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -112,7 +112,7 @@
     "ground_truth": "Age <30: IDH1 (82.9%), TP53 (72.4%), ATRX (63.2%); Age 30-45: IDH1 (83.3%), TP53 (59.8%), ATRX (44.3%); Age 45-60: IDH1 (38.0%), TP53 (30.2%), ATRX (15.3%); Age 60+: IDH1 (14.9%), TP53 (26.3%), ATRX (8.0%)",
     "derivation": "Mutation frequencies calculated by age group using groupBy and frequency counts",
     "type": "Statistics",
-    "subtype": "Trend Analysis and Smoothing",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -130,7 +130,7 @@
     "ground_truth": "Males and females show different mutation frequencies: Males (Gender=0): IDH1: 46.1%, TP53: 41.4%, ATRX: 23.8%; Females (Gender=1): IDH1: 51.0%, TP53: 41.6%, ATRX: 28.8%",
     "derivation": "Analyzed gender-specific mutation rates using data grouping and frequency calculations",
     "type": "Statistics",
-    "subtype": "Correlation and Association",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -139,7 +139,7 @@
     "ground_truth": "Four risk groups identified: Low risk (404 patients, avg age 41.64), High risk (203 patients, avg age 60.89), Mixed (12 patients, avg age 41.39), No risk mutations (220 patients, avg age 59.35)",
     "derivation": "Created risk profiles based on combinations of high-risk (EGFR, PTEN) and low-risk (IDH1, CIC) mutations",
     "type": "Statistics",
-    "subtype": "Classification and Clustering",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -167,7 +167,7 @@
     "ground_truth": "In Grade 0 gliomas, 381/487 (78.2%) are IDH1-mutant, while in Grade 1 gliomas, only 23/352 (6.5%) are IDH1-mutant",
     "derivation": "_.groupBy(data, 'Grade'); _.mapValues(groups, g => _.countBy(g, 'IDH1'))",
     "type": "Statistics",
-    "subtype": "Correlation and Association",
+    "subtype": "Frequency and Distribution Analysis",
     "difficulty": "medium",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -222,7 +222,7 @@
     "ground_truth": "Yes, IDH1 mutations are significantly more common in younger patients (mean age 41.7 vs 59.5 years), suggesting distinct molecular pathways in different age groups",
     "derivation": "compare mean age between IDH1-mutant and wildtype groups",
     "type": "Statistics",
-    "subtype": "Correlation and Association",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -269,8 +269,8 @@
     "ground_truth": "EGFR mutation rates vary: Race 0 (12.8%), Race 1 (22.0%), Race 2 (7.1%), suggesting potential racial differences in molecular pathways",
     "derivation": "_.mapValues(_.groupBy(data, 'Race'), group => _.countBy(group, 'EGFR'))",
     "difficulty": "hard",
-    "subtype": "Demographic Analysis",
-    "type": "comparison",
+    "subtype": "Summary and Reporting",
+    "type": "Information Retrieval",
     "table_path": "./datasets/research/Glioma.csv"
   },
 
@@ -307,7 +307,7 @@
     "ground_truth": "Of 22 PDGFRA-mutant cases, 17 (77.3%) occur in EGFR-wildtype tumors, and 16 (72.7%) in IDH1-wildtype tumors, suggesting a distinct molecular subtype",
     "derivation": "analysis of PDGFRA mutants with EGFR and IDH1 status",
     "type": "Statistics",
-    "subtype": "Correlation and Association",
+    "subtype": "Descriptive Statistics",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -316,8 +316,8 @@
     "question": "Does the IDH1-ATRX-TP53 triple-positive signature represent a distinct biological entity, and what are its clinical implications?",
     "ground_truth": "171 cases (20.4%) show triple-positive signature, with mean age 38.5 years and strong enrichment in Grade 0 (90.1% of triple-positive cases), suggesting a distinct biological subtype with better prognosis",
     "derivation": "Analysis of co-occurrence patterns and clinical features in triple-positive cases",
-    "type": "Statistics",
-    "subtype": "Classification and Clustering",
+    "type": "Information Retrieval",
+    "subtype": "Data Aggregation, Grouping and Classification",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -336,8 +336,8 @@
     "question": "Do the distinct molecular profiles in different age groups suggest different cellular origins or evolutionary paths in glioma development?",
     "ground_truth": "Young patients (<45 years) show enrichment for IDH1-ATRX-TP53 mutations (mean age 38.5), while older patients show EGFR/PTEN alterations (mean age 60.7), suggesting distinct developmental pathways",
     "derivation": "Integration of age patterns with molecular subtypes",
-    "type": "Statistics",
-    "subtype": "Classification and Clustering",
+    "type": "Information Retrieval",
+    "subtype": "Data Aggregation, Grouping and Classification",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -356,8 +356,8 @@
     "question": "How can the distinct molecular subtypes in glioma inform personalized treatment strategies and clinical trial design?",
     "ground_truth": "Four major molecular subtypes identified: IDH-triple (20.4%, mean age 38.5), IDH-only (19.8%, mean age 45.8), RTK/PI3K (24.8%, mean age 60.3), and Other (35%, mean age 54.4). Each shows distinct grade distributions and mutation patterns, suggesting different therapeutic vulnerabilities",
     "derivation": "Integration of molecular subtypes with clinical characteristics",
-    "type": "Statistics",
-    "subtype": "Classification and Clustering",
+    "type": "Information Retrieval",
+    "subtype": "Data Aggregation, Grouping and Classification",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -376,8 +376,8 @@
     "question": "How do the distinct molecular subtypes suggest different evolutionary trajectories in glioma, and what are the implications for treatment resistance?",
     "ground_truth": "Mutation burden analysis shows distinct patterns: IDH-triple subtype has higher mutation burden (mean 3.2 mutations) vs RTK/PI3K subtype (mean 1.8 mutations), suggesting different genomic stability mechanisms and potential resistance pathways",
     "derivation": "Integration of mutation burden, pathway analysis, and clinical correlations",
-    "type": "Statistics",
-    "subtype": "Classification and Clustering",
+    "type": "Information Retrieval",
+    "subtype": "Data Aggregation, Grouping and Classification",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
@@ -387,7 +387,7 @@
     "ground_truth": "Four distinct molecular subtypes with different ages of onset and clinical features suggest need for subtype-specific trial design: IDH-triple (young, good prognosis), RTK/PI3K (older, poor prognosis), requiring different endpoints and stratification strategies",
     "derivation": "Analysis of subtype-specific characteristics and outcomes",
     "type": "Information Retrieval",
-    "subtype": "Summary and Reporting from Tables",
+    "subtype": "Summary and Reporting",
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   }
