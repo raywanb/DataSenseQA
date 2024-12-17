@@ -5,7 +5,7 @@
         "derivation": "df['current_age'].mean(); df['current_age'].median(); df['current_age'].mode()",
         "difficulty": "easy",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "- Mean: 45.3915\n- Median: 44.0\n- Mode: 18",
         "score": 0
@@ -16,7 +16,7 @@
         "derivation": "range = df['credit_score'].max() - df['credit_score'].min(); std = df['credit_score'].std()",
         "difficulty": "medium",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The range of `credit_score` is from 480 to 850, and its standard deviation is approximately 67.22.",
         "score": 0
@@ -27,7 +27,7 @@
         "derivation": "df['yearly_income'] = df['yearly_income'].str.replace('$', '').str.replace(',', '').astype(float); df['total_debt'] = df['total_debt'].str.replace('$', '').str.replace(',', '').astype(float); q1_income = df['yearly_income'].quantile(0.25); q3_income = df['yearly_income'].quantile(0.75); iqr_income = q3_income - q1_income; q1_debt = df['total_debt'].quantile(0.25); q3_debt = df['total_debt'].quantile(0.75); iqr_debt = q3_debt - q1_debt",
         "difficulty": "hard",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The interquartile range (IQR) for `yearly_income` is 19,880, and for `total_debt` is 65,083.75. The `total_debt` has a wider spread compared to `yearly_income`.",
         "score": 1
@@ -38,7 +38,7 @@
         "derivation": "q1_credit_score = data['credit_score'].quantile(0.25); q3_credit_score = data['credit_score'].quantile(0.75); iqr_credit_score = q3_credit_score - q1_credit_score; median_credit_score = data['credit_score'].median(); q1_credit_cards = data['num_credit_cards'].quantile(0.25); q3_credit_cards = data['num_credit_cards'].quantile(0.75); iqr_credit_cards = q3_credit_cards - q1_credit_cards; median_credit_cards = data['num_credit_cards'].median(); q1_retirement_age = data['retirement_age'].quantile(0.25); q3_retirement_age = data['retirement_age'].quantile(0.75); iqr_retirement_age = q3_retirement_age - q1_retirement_age; median_retirement_age = data['retirement_age'].median();",
         "difficulty": "hard",
         "subtype": "Descriptive Statistics",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "- Least variability: Number of Credit Cards (IQR = 2.0)\n- Medians: Credit Score = 711.5, Number of Credit Cards = 3.0, Retirement Age = 66.0\n- IQR indicates spread around the median; smaller IQR means less variability.",
         "score": 1
@@ -49,7 +49,7 @@
         "derivation": "gender_counts = df['gender'].value_counts()",
         "difficulty": "easy",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The frequency of each gender value in the dataset is 1016 Females and 984 Males.",
         "score": 1
@@ -60,7 +60,7 @@
         "derivation": "df[df['credit_score'] > 750] / len(df)",
         "difficulty": "medium",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The percentage of individuals with a credit score above 750 is 26.2%.",
         "score": 1
@@ -71,7 +71,7 @@
         "derivation": "season_mapping = {12: 'Winter', 1: 'Winter', 2: 'Winter', 3: 'Spring', 4: 'Spring', 5: 'Spring', 6: 'Summer', 7: 'Summer', 8: 'Summer', 9: 'Fall', 10: 'Fall', 11: 'Fall'}; df['season'] = df['birth_month'].map(season_mapping); season_counts = df['season'].value_counts(); season_percentages = df['season'].value_counts(normalize=True) * 100; peak_season = season_counts.index[0]; low_season = season_counts.index[-1]; expected_freq = len(df) / 4; chi2_stat, p_value = stats.chisquare(season_counts, [expected_freq] * 4)",
         "difficulty": "hard",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The percentage distribution of births by season is Winter: 27.70%, Fall: 25.85%, Spring: 23.65%, Summer: 22.80%. The chi-squared test shows no statistical significance between peak and low seasons (p-value = 1.0).",
         "score": 0
@@ -82,7 +82,7 @@
         "derivation": "from scipy import stats; bins = [300, 579, 669, 739, 850]; labels = ['Poor', 'Fair', 'Good', 'Excellent']; df['credit_score_range'] = pd.cut(df['credit_score'], bins=bins, labels=labels, include_lowest=True); range_counts = df['credit_score_range'].value_counts(); range_percentages = df['credit_score_range'].value_counts(normalize=True) * 100; observed = range_counts.values; expected = [len(df) / len(labels)] * len(labels); chi2_stat, p_value = stats.chisquare(f_obs=observed, f_exp=expected);",
         "difficulty": "hard",
         "subtype": "Frequency and Distribution Analysis",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The frequency distribution of credit scores is: Poor (4.05%), Fair (17.40%), Good (46.55%), Excellent (32.00%). The chi-squared test shows a statistically significant difference between the observed and expected distributions (chi2 = 476.42, p < 0.001).",
         "score": 0
@@ -93,7 +93,7 @@
         "derivation": "correlation = df['current_age'].corr(df['retirement_age'])",
         "difficulty": "easy",
         "subtype": "Correlation and Association",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The correlation between `current_age` and `retirement_age` is approximately 0.0048.",
         "score": 1
@@ -104,7 +104,7 @@
         "derivation": "df[['yearly_income', 'total_debt', 'credit_score']].corr()",
         "difficulty": "hard",
         "subtype": "Correlation and Association",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The correlation matrix shows that there is a moderate positive correlation (0.55) between `yearly_income` and `total_debt`. The correlation between `yearly_income` and `credit_score` is almost negligible (0.000167), and there is a weak negative correlation (-0.104537) between `total_debt` and `credit_score`.",
         "score": 1
@@ -114,8 +114,8 @@
         "ground_truth": "There is not really trends between these two as the correlation is 0.0396.",
         "derivation": "correlation = df['current_age'].corr(df['credit_score'])",
         "difficulty": "hard",
-        "subtype": "Trend Analysis",
-        "type": "statistics",
+        "subtype": "Descriptive Statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The average credit score generally increases with age, with some fluctuations. Younger age groups (18-22) have average credit scores around 706-717, while older age groups (93-101) have higher average credit scores, ranging from 736 to 773. This suggests that credit scores tend to improve with age, although there are variations at specific ages.",
         "score": 0
@@ -125,8 +125,8 @@
         "ground_truth": "There is not really trends between these two as the correlation is -0.005.",
         "derivation": "correlation = df[['yearly_income', 'latitude', 'longitude']].corr()",
         "difficulty": "hard",
-        "subtype": "Trend Analysis",
-        "type": "statistics",
+        "subtype": "Descriptive Statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "There is a very weak positive correlation (0.052) between the distance from the point (40, -120) and yearly income, indicating no significant trend.",
         "score": 0
@@ -136,8 +136,8 @@
         "ground_truth": "Both credit score and total debt show no statistically significant seasonal patterns based on birth month (p-values > 0.05). The ANOVA F-Statistic for credit score is 1.56 with a p-value of 0.105, and birth month explains only 0.9% of its variability (R-squared: 0.009). Similarly, the ANOVA F-Statistic for total debt is 1.24 with a p-value of 0.256, and birth month explains only 0.8% of its variability (R-squared: 0.008).",
         "derivation": "from scipy.stats import f_oneway; df['total_debt'] = pd.to_numeric(df['total_debt'].str.replace('[^\\d.]', ''), errors='coerce'); data_cleaned = df.dropna(subset=['birth_month', 'credit_score', 'total_debt']); anova_credit_score = f_oneway(*[group['credit_score'] for _, group in data_cleaned.groupby('birth_month')]); anova_total_debt = f_oneway(*[group['total_debt'] for _, group in data_cleaned.groupby('birth_month')]); credit_score_r_squared = data_cleaned.groupby('birth_month')['credit_score'].mean().var() / data_cleaned['credit_score'].var(); total_debt_r_squared = data_cleaned.groupby('birth_month')['total_debt'].mean().var() / data_cleaned['total_debt'].var()",
         "difficulty": "hard",
-        "subtype": "Trend Analysis",
-        "type": "statistics",
+        "subtype": "Descriptive Statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The ANOVA test indicates no statistically significant differences in `credit_score` and `total_debt` across birth months (p-values > 0.05), suggesting that birth month does not significantly explain the variability in these columns.",
         "score": 1
@@ -148,7 +148,7 @@
         "derivation": "from scipy.stats import ttest_ind; males = df[df['gender'] == 'Male']['credit_score']; females = df[df['gender'] == 'Female']['credit_score']; t_stat, p_value = ttest_ind(males, females, equal_var=False)",
         "difficulty": "easy",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "There is no significant difference in the mean credit scores between males and females (t-statistic = 0.38, p-value = 0.704).",
         "score": 1
@@ -159,7 +159,7 @@
         "derivation": "from scipy.stats import chi2_contingency; df['num_credit_cards_gt_3'] = df['num_credit_cards'] > 3; contingency_table = pd.crosstab(df['gender'], df['num_credit_cards_gt_3']); chi2_stat, p_value, dof, expected = chi2_contingency(contingency_table)",
         "difficulty": "medium",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The chi-square test statistic is approximately 0.416, and the p-value is approximately 0.519, indicating no significant association between gender and having more than 3 credit cards.",
         "score": 1
@@ -170,7 +170,7 @@
         "derivation": "from scipy.stats import levene; above_700 = df[df['credit_score'] > 700]['yearly_income']; below_700 = df[df['credit_score'] <= 700]['yearly_income']; levene_stat, p_value_levene = levene(above_700, below_700, center='mean')",
         "difficulty": "medium",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The Levene's test statistic is approximately 0.072, and the p-value is approximately 0.789. Since the p-value is much greater than the common significance level of 0.05, we do not have enough evidence to reject the null hypothesis. Therefore, the variance in `yearly_income` is not significantly different between individuals with `credit_score` above and below 700.",
         "score": 0
@@ -181,7 +181,7 @@
         "derivation": "from scipy.stats import levene; above_3_cards = df[df['num_credit_cards'] > 3]['yearly_income']; below_3_cards = df[df['num_credit_cards'] <= 3]['yearly_income']; levene_stat, p_value_levene = levene(above_3_cards, below_3_cards, center='mean')",
         "difficulty": "medium",
         "subtype": "Hypothesis Testing",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "There is no significant difference in the variance of `yearly_income` between individuals with more than 3 credit cards and those with 3 or fewer credit cards (p-value = 0.850).",
         "score": 1
@@ -192,7 +192,7 @@
         "derivation": "mean_debt_simple = filtered_data['total_debt'].mean(); std_dev = filtered_data['total_debt'].std(); n = len(filtered_data['total_debt'].dropna()); std_error = std_dev / math.sqrt(n); t_critical = 1.96; margin_of_error = t_critical * std_error; lower_bound = mean_debt_simple - margin_of_error; upper_bound = mean_debt_simple + margin_of_error",
         "difficulty": "medium",
         "subtype": "Confidence Interval",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The 95% confidence interval for the mean total debt of individuals with a credit score above 700 is approximately (57447.05, 63523.65).",
         "score": 1
@@ -203,7 +203,7 @@
         "derivation": "from scipy.stats import norm; mean_yearly_income = data['yearly_income'].mean(); std_yearly_income = data['yearly_income'].std(); n = len(data['yearly_income']); se_yearly_income = std_yearly_income / np.sqrt(n); confidence = 0.95; z_score = norm.ppf((1 + confidence) / 2); margin_of_error = z_score * se_yearly_income; ci_lower = mean_yearly_income - margin_of_error; ci_upper = mean_yearly_income + margin_of_error",
         "difficulty": "easy",
         "subtype": "Confidence Interval",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The 95% confidence interval for the average yearly income is approximately ($44,707.59, $46,724.17).",
         "score": 0
@@ -214,7 +214,7 @@
         "derivation": "from scipy.stats import norm; mean_credit_score = data['credit_score'].mean(); std_credit_score = data['credit_score'].std(); n = len(data['credit_score']); se_credit_score = std_credit_score / np.sqrt(n); confidence = 0.90; z_score = norm.ppf((1 + confidence) / 2); margin_of_error = z_score * se_credit_score; ci_lower = mean_credit_score - margin_of_error; ci_upper = mean_credit_score + margin_of_error",
         "difficulty": "easy",
         "subtype": "Confidence Interval",
-        "type": "statistics",
+        "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The 90% confidence interval for the average credit score is approximately (707.26, 712.21).",
         "score": 1
