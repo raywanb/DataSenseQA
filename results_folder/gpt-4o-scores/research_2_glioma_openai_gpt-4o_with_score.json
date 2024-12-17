@@ -250,7 +250,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "The proportion of lower-grade (Grade 0) gliomas with IDH1 mutations is approximately 78.23%.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Is there evidence of mutual exclusivity between EGFR and IDH1 mutations?",
@@ -349,7 +349,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "Yes, there is a difference in EGFR mutation frequency across racial groups. The frequencies are as follows:\n- Race 0: 12.81%\n- Race 1: 22.03%\n- Race 2: 7.14%\n- Race 3: 0.00%",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the pattern of co-occurrence between EGFR and PDGFRA mutations?",

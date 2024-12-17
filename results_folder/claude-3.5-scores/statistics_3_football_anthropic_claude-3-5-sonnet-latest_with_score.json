@@ -8,7 +8,7 @@
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "The top 3 most frequent teams in the dataset are:\n1. Manchester City (99 appearances)\n2. Real Madrid (77 appearances)\n3. Barcelona (73 appearances)",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Count the frequency of each season in the dataset.",
@@ -63,7 +63,7 @@
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "The range of matches played in a single season is from 1 to 59 matches, representing a difference of 58 matches between the most and least active players in a single season.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Identify the season with the most goals scored across all players.",
@@ -118,7 +118,7 @@
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "The correlation coefficient between goals and assists is approximately 0.562. This indicates a moderate positive correlation between goals and assists, meaning that as the number of goals increases, there is a tendency for the number of assists to increase as well, though the relationship is not very strong. A correlation of 1 would indicate a perfect positive correlation, while 0 would indicate no correlation at all. The value of 0.562 suggests that while there is a positive relationship between scoring goals and providing assists, there are also other factors that influence these statistics independently.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Group players by team and calculate the total number of goals scored for each team.",
@@ -140,7 +140,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "Lionel Messi is the player with the most matches played for InterMiami with 29 matches total.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Compute the interquartile range (IQR) of assists across all players.",
@@ -184,7 +184,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "Erling Haaland had the highest goals-to-matches ratio during the 2018/2019 season with Salzburg, scoring 1.27 goals per match (28 goals in 22 matches). This is notably higher than the next best ratio of 1.20 goals per match achieved by Robert Lewandowski in the 2020/2021 season with Bayern Munich.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Compute the 95% confidence interval for the mean seasonal rating.",

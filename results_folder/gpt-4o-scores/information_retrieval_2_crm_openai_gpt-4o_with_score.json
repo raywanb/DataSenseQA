@@ -8,7 +8,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/business/crm/",
         "result": "30 people closed the deal for 'GTX Plus Basic'.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Which account in the accounts table has the highest close value for deals in the sales_pipeline table?",

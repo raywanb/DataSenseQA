@@ -41,7 +41,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
         "result": "Angola reported 1 new death.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the 'Deaths / 100 Cases' percentage for Afghanistan?",
@@ -118,7 +118,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
         "result": "The average number of deaths per 100 cases across European countries is approximately 4.20, meaning that on average, about 4.20% of confirmed COVID-19 cases in European countries resulted in deaths.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Sum the total number of new cases reported in Africa region excluding Egypt.",
@@ -151,7 +151,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "hard",
         "result": "Here are the Death to New Cases ratios by WHO Region:\n1. Europe: 9.47 (highest ratio)\n2. Eastern Mediterranean: 3.09\n3. Americas: 2.65\n4. Western Pacific: 2.51\n5. Africa: 1.00\n6. South-East Asia: 0.84 (lowest ratio)\n\nThis means that:\n- Europe has the highest ratio with about 9.47 deaths for every new case\n- South-East Asia has the lowest ratio with about 0.84 deaths for every new case\n- Most regions have between 2-3 deaths per new case\n- Africa has approximately a 1:1 ratio between deaths and new cases\n\nNote: These ratios might seem unusually high because they're comparing total deaths to only new cases, not total cases. This is more of a snapshot in time rather than an overall mortality rate.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Are there any statistical differences in the 'Recovered / 100 Cases' between regions?",
@@ -173,7 +173,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
         "result": "Here are the average deaths by WHO Region:\n- Africa: 255 deaths\n- Americas: 9,792 deaths\n- Eastern Mediterranean: 1,743 deaths\n- Europe: 3,770 deaths\n- South-East Asia: 4,135 deaths\n- Western Pacific: 516 deaths\n\nThe Americas region has the highest average number of deaths (9,792), followed by South-East Asia (4,135) and Europe (3,770). The Africa region has the lowest average number of deaths (255), followed by Western Pacific (516).",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Calculate the highest confirmed cases to active cases for each region ratio and rank them descending.",

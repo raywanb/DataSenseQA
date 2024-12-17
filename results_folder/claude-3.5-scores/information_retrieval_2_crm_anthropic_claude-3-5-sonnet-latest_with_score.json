@@ -118,7 +118,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/business/crm/",
         "result": "Here's the average time (in days) taken to close deals for each product:\n1. GTK 500: 53.7 days (longest closing cycle)\n2. GTX Basic: 49.9 days\n3. GTX Plus Basic: 49.4 days\n4. MG Special: 48.4 days\n5. MG Advanced: 47.1 days\n6. GTX Plus Pro: 46.1 days\n7. GTXPro: 45.7 days (shortest closing cycle)\n\nKey observations:\n- The range of closing times is relatively tight, spanning from about 46 to 54 days\n- GTK 500 has the longest sales cycle at nearly 54 days\n- GTXPro has the most efficient sales cycle at about 46 days\n- Most products fall within the 46-50 day range for closing deals\n- The difference between the fastest and slowest closing times is approximately 8 days\n\nThis suggests a fairly consistent sales process across products, with some minor variations in closing time depending on the product complexity or type.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Analyze the product with the highest win percentage of each region.",

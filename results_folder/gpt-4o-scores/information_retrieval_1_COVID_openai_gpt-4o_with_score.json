@@ -41,7 +41,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
         "result": "The new deaths reported for the country Angola is 1.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the 'Deaths / 100 Cases' percentage for Afghanistan?",

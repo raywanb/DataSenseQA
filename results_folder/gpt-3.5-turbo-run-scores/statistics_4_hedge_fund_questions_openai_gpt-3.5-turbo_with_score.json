@@ -74,7 +74,7 @@
         "type": "statistics",
         "table_path": "./datasets/business/hedge_funds_list.csv",
         "result": "United States",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Group the hedge funds by their city and calculate the total AUM for each city.",

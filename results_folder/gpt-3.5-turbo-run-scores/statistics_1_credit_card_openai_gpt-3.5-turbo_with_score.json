@@ -85,7 +85,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The chi-squared test results indicate whether there is a statistically significant difference between the observed and expected distributions of credit scores grouped into ranges (poor, fair, good, excellent).",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Calculate the correlation between current_age and retirement_age.",
@@ -96,7 +96,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The correlation between current_age and retirement_age is 0.0048.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Analyze whether there is a correlation between yearly_income, total_debt, and credit_score by computing a correlation matrix for these variables.",
@@ -140,7 +140,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "Birth_month may not be statistically significant in explaining the variability in credit_score and total_debt based on the ANOVA tests performed.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Test if the mean credit_score differs significantly between males and females using a t-test.",
@@ -173,7 +173,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "We can determine if the variance in yearly_income is significantly different between individuals with credit_score above and below 700 by analyzing the results of the Levene's test.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Test if the variance in yearly_income is significantly different between individuals with more than 3 credit cards and those with 3 or fewer credit cards.",

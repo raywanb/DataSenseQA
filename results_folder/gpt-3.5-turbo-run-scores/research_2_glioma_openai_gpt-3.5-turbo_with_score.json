@@ -19,7 +19,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "238",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Which genetic mutation (among all recorded mutations) appears most frequently in the dataset?",
@@ -250,7 +250,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "The proportion of lower-grade (Grade 0) gliomas that have IDH1 mutations is approximately 0.7823.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Is there evidence of mutual exclusivity between EGFR and IDH1 mutations?",
@@ -272,7 +272,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "Yes, molecular profiles differ by patient age.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the frequency of ATRX mutations in IDH1-mutant vs IDH1-wildtype gliomas?",
@@ -327,7 +327,7 @@
         "type": "Information Retrieval",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "Yes, there is a difference in EGFR mutation frequency across racial groups.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "How does IDH1 mutation frequency vary across racial groups?",
@@ -371,7 +371,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "Yes, PDGFRA mutations are associated with specific molecular subtypes.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Does the IDH1-ATRX-TP53 triple-positive signature represent a distinct biological entity, and what are its clinical implications?",
@@ -404,7 +404,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/Glioma.csv",
         "result": "Yes, the distinct molecular profiles in different age groups suggest different cellular origins or evolutionary paths in glioma development.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "How does the interplay between chromatin modifiers (ATRX, SMARCA4, BCOR) and metabolic alterations (IDH1/2) influence glioma development and progression?",

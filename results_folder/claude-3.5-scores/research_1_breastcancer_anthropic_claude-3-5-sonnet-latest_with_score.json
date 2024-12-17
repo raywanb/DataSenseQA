@@ -8,7 +8,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The mean radius of the tumors in the dataset is 14.13 units.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "How many malignant (M) versus benign (B) cases are there in the dataset?",
@@ -52,7 +52,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The standard deviation of the symmetry_mean values is 0.0274.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the relationship between concavity_mean and diagnosis? Calculate the average concavity for each diagnosis type.",
@@ -85,7 +85,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The texture_mean values have a mean of 19.29 and a median of 18.84. Since the mean is slightly higher than the median (by about 0.45), this indicates a slight right skew in the distribution. The values range from 9.71 to 39.28, with the middle 50% of values falling between 16.17 and 21.80. The distribution appears to be reasonably symmetric since the difference between mean and median is relatively small, suggesting no extreme skewness.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What is the 95% confidence interval for the mean tumor radius in the dataset?",
@@ -96,7 +96,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The 95% confidence interval for the mean tumor radius is (13.84 mm, 14.42 mm). This means we can be 95% confident that the true population mean tumor radius falls between 13.84 and 14.42 millimeters.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Is there a significant difference in mean radius between malignant (M) and benign (B) tumors?",
@@ -107,7 +107,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "Yes, there is a highly significant difference in mean radius between malignant (M) and benign (B) tumors. Malignant tumors have a significantly larger mean radius (17.46 mm) compared to benign tumors (12.15 mm). This difference is statistically significant with a p-value of 8.47e-96, which is far below the conventional significance level of 0.05. This extremely small p-value indicates that the difference in radius between malignant and benign tumors is not due to chance, but represents a real and substantial difference between the two groups. The malignant tumors are, on average, about 5.3 mm larger in radius than benign tumors.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "How many numeric features (columns) are there in the dataset excluding the ID and diagnosis columns?",
@@ -140,7 +140,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "No, there are no missing values in the dataset. The output shows that every column has 0 missing values, which means the dataset is complete with no null or missing entries.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "If we cluster tumors into 'small' and 'large' groups based on the median radius, how many are in each group?",
@@ -173,7 +173,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The average radius difference between malignant and benign tumors is 5.32 units, with malignant tumors having a larger average radius (17.46) compared to benign tumors (12.15). This means malignant tumors are, on average, 5.32 units larger in radius than benign tumors.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "How does the average cell area differ between malignant and benign cases?",
@@ -195,7 +195,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "There is a significant relationship between texture measurements and diagnosis:\n\n1. Malignant (M) tumors consistently show higher texture values compared to Benign (B) tumors:\n   - Texture mean for malignant: 21.60\n   - Texture mean for benign: 17.91\n\n2. The difference is statistically significant, with an extremely low p-value (4.06e-25), which indicates this relationship is not due to chance.\n\n3. The most notable differences are observed in:\n   - Texture_worst (29.32 for malignant vs 23.52 for benign)\n   - Texture_mean (21.60 for malignant vs 17.91 for benign)\n\n4. Interestingly, the texture standard error (texture_se) is very similar between both groups (1.21 vs 1.22), suggesting that the variability in measurements is consistent regardless of diagnosis.\n\nThis relationship suggests that texture measurements could be a useful indicator in helping to distinguish between malignant and benign tumors, with higher texture values being associated with malignancy.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What percentage of the total cases in the dataset are malignant?",

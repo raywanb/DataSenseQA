@@ -140,7 +140,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "Based on the statistical analysis of birth_month's relationship with credit_score and total_debt:\n\n1. Credit Scores by Birth Month:\n- The mean credit scores range from 696.68 (May) to 719.13 (February)\n- The standard deviations range from about 61 to 74 points\n- The ANOVA test shows these differences are not statistically significant (p-value > 0.05)\n- The eta-squared value is very small, indicating birth month explains less than 1% of credit score variance\n\n2. Total Debt by Birth Month:\n- Mean total debt varies from $55,355 (April) to $68,459 (September)\n- Standard deviations are quite large, ranging from about $42,000 to $63,000\n- The ANOVA test indicates these differences are not statistically significant (p-value > 0.05)\n- The eta-squared value of 0.0068 shows birth month explains only about 0.68% of the variance in total debt\n\nOverall Conclusion:\nWhile there are some observable variations in both credit scores and total debt across birth months, these differences are not statistically significant. The extremely low eta-squared values indicate that birth month has very little explanatory power for either credit scores or total debt. Therefore, any observed patterns are likely due to random chance rather than any meaningful seasonal effect of birth month on financial outcomes.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Test if the mean credit_score differs significantly between males and females using a t-test.",
@@ -184,7 +184,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The Levene's test results (p-value = 0.8500) indicate that there is no statistically significant difference in the variance of yearly income between individuals with more than 3 credit cards and those with 3 or fewer credit cards. Since the p-value (0.8500) is much larger than the conventional significance level of 0.05, we fail to reject the null hypothesis that the variances are equal.\n\nThis means that while the two groups may have different mean incomes, the spread or variability of incomes is not significantly different between people with more credit cards versus those with fewer credit cards. The high p-value suggests that any observed differences in variance between the two groups are likely due to random chance rather than a true underlying difference in the population.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Compute a 95% confidence interval for the mean total debt of individuals with a credit score above 700.",

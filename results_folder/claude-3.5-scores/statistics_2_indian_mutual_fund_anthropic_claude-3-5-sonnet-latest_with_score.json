@@ -30,7 +30,7 @@
         "type": "statistics",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
         "result": "The correlation coefficient between 'Regular Plan - Total TER (%)' and 'Direct Plan - Total TER (%)' is approximately 0.805 (or 80.5%). This indicates a strong positive correlation between the two variables, meaning that as the Regular Plan Total TER increases, the Direct Plan Total TER tends to increase as well. However, since the correlation is not perfect (1.0), there is still some variation in how the two move together.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Calculate the average 'Regular Plan - Base TER (%)' and Compare it to the average 'Direct Plan - Base TER (%)'.",
@@ -173,7 +173,7 @@
         "type": "statistics",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
         "result": "The variance of 'Regular Plan - Total TER (%)' is approximately 0.602 or 0.6017 when expressed with more decimal places. This value indicates how spread out the Total TER values are from their mean in the Regular Plan.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Determine the seasonality of schemes by grouping them into quarters based on their Total TER values.",

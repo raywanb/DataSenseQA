@@ -173,7 +173,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The average radius difference between malignant and benign tumors is approximately 5.32.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "How does the average cell area differ between malignant and benign cases?",
@@ -239,7 +239,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "To identify distinct morphological subtypes within malignant cases by clustering based on texture, concavity, and symmetry features, you need to:\n\n1. Filter the dataframe to include only malignant cases.\n2. Select the relevant features for clustering: `texture_mean`, `concavity_mean`, and `symmetry_mean`.\n3. Standardize these features using `StandardScaler` from `sklearn.preprocessing`.\n4. Apply a clustering algorithm like K-Means from `sklearn.cluster` to identify clusters.\n5. Analyze the resulting clusters to determine if distinct subtypes can be identified.\n\nSince the `sklearn` library is not available in the current environment, you would need to ensure it is installed in your environment to proceed with the clustering analysis. The provided code snippet can be used in an environment where `sklearn` is available to complete the analysis and visualize the clusters.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the relationship between measurement variance (SE features) and diagnostic accuracy? Do cases with higher measurement uncertainty correlate with specific morphological patterns?",

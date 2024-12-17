@@ -8,7 +8,7 @@
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "Man City, Real Madrid, Barcelona",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Count the frequency of each season in the dataset.",
@@ -173,7 +173,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "Real Madrid Castilla, InterMiami, Real Madrid",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Find the player with the highest goals-to-matches ratio.",
@@ -184,7 +184,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "Erling Haaland has the highest goals-to-matches ratio.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Compute the 95% confidence interval for the mean seasonal rating.",

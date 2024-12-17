@@ -250,7 +250,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "- Number of invalid case numbers: The difference between the original number of rows and 261,524\n- Cleaned dataframe now has 261,524 rows, with all case numbers following the pattern of 2 letters followed by 6 digits\n\nThe key steps were:\n1. Identify invalid case numbers\n2. Count those invalid records\n3. Remove the invalid records\n4. Verify the cleaned dataframe's row count\n\nWould you like me to elaborate on any part of the solution?",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Print out the first five values of IDXYEAR.",
@@ -305,7 +305,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "Yes, the ArrestProbabilityForCrime value makes sense, but with important caveats:\n\n1. Calculation Method: The column represents the average arrest probability for each crime type by calculating the mean of the 'Arrest' column grouped by 'Primary Type'.\n\n2. Key Observations:\n- Some crime types have 100% arrest rates (e.g., Gambling, Liquor Law Violation)\n- Some have very low arrest rates (e.g., Human Trafficking at 0%, Intimidation at 3.7%)\n- More serious crimes like Homicide have a moderate arrest rate (37.5%)\n\n3. Limitations:\n- It's an aggregate statistic that doesn't account for:\n  * Individual case complexities\n  * Variations in evidence\n  * Law enforcement resources\n  * Reporting rates\n\n4. Interpretation Caution:\n- This metric provides a broad trend but should not be used as a definitive predictor of arrest likelihood in specific cases\n- It offers insights into law enforcement arrest patterns across different crime types\n\n5. Potential Uses:\n- Broad trend analysis\n- Resource allocation insights\n- Understanding general law enforcement effectiveness for different crime types\n\nThe value is statistically meaningful but should be interpreted carefully, considering the contextual limitations of such an aggregate measure.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Create a new column CommunityCrimeRate by dividing 'Community Area' by 'District'. Does it make sense to create such a new column, answer with YES or NO.",

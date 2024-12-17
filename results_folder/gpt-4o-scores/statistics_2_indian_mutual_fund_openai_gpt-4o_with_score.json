@@ -173,7 +173,7 @@
         "type": "statistics",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
         "result": "The variance of 'Regular Plan - Total TER (%)' is 0.6016874840164275.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Determine the seasonality of schemes by grouping them into quarters based on their Total TER values.",

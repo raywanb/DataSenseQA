@@ -52,7 +52,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "There are 2352 rows where both 'Latitude' and 'Longitude' are missing (NaN).",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Check if there are any duplicate rows and count them.",
@@ -107,7 +107,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "There are 156 unique values in the 'Location Description' column.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Identify and count records where the 'Case Number' format does not match the pattern 'XX999999'. Print the count.",
@@ -250,7 +250,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "There is 1 record where the 'Case Number' format does not match the pattern 'XX999999'. After deleting those values, the number of rows in the DataFrame is 261,524.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Print out the first five values of IDXYEAR.",
@@ -305,7 +305,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "The `ArrestProbabilityForCrime` column represents the average arrest rate for each crime type, and it makes sense as it indicates the likelihood of an arrest for each type of crime.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Create a new column CommunityCrimeRate by dividing 'Community Area' by 'District'. Does it make sense to create such a new column, answer with YES or NO.",

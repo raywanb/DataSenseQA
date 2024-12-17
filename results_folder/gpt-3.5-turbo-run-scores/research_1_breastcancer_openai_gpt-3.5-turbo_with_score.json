@@ -30,7 +30,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "Yes, there is a strong correlation between `radius_mean` and `area_mean` for the first few data points.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "How many outliers are there in the texture_mean column when using the 1.5 * IQR method?",
@@ -107,7 +107,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "Yes, there is a significant difference in mean radius between malignant and benign tumors.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "How many numeric features (columns) are there in the dataset excluding the ID and diagnosis columns?",
@@ -129,7 +129,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The pattern observed between `radius_mean` and `radius_worst` in the first three samples is as follows:\n\n|    |   radius_mean |   radius_worst |\n|---:|--------------:|---------------:|\n|  0 |         17.99 |          25.38 |\n|  1 |         20.57 |          24.99 |\n|  2 |         19.69 |          23.57 |",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Are there any missing values in the dataset?",
@@ -239,7 +239,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "Yes, we can identify distinct morphological subtypes within malignant cases by clustering based on texture, concavity, and symmetry features.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What is the relationship between measurement variance (SE features) and diagnostic accuracy? Do cases with higher measurement uncertainty correlate with specific morphological patterns?",
@@ -404,7 +404,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "Yes, we can identify distinct tumor subtypes based on composite biological pathway scores calculated from relevant columns in the dataframe.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "What biologically-informed composite features best capture tumor behavior?",

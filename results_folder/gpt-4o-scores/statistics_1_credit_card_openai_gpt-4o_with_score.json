@@ -140,7 +140,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The ANOVA test indicates no statistically significant differences in `credit_score` and `total_debt` across birth months (p-values > 0.05), suggesting that birth month does not significantly explain the variability in these columns.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Test if the mean credit_score differs significantly between males and females using a t-test.",

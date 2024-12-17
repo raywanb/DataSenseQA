@@ -140,7 +140,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "The player with the most matches played for InterMiami is Lionel Messi.",
-        "score": 1
+        "score": 0
     },
     {
         "question": "Compute the interquartile range (IQR) of assists across all players.",
