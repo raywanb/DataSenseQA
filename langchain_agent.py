@@ -10,6 +10,8 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain.schema import LLMResult
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_mistralai import ChatMistralAI
 import json
 
 def strict_evaluator(question: str, ground_truth: str, answer: str):
@@ -106,6 +108,21 @@ class DataFrameAgentProcessor:
             self.model = ChatAnthropic(
                 model=model, api_key=api_key, temperature=0.0
             )
+        elif model_type.lower() == 'gemini':
+            api_key = os.getenv("GEMINI_API_KEY")
+            if not api_key:
+                raise EnvironmentError("GEMINI_API_KEY environment variable not set.")
+
+            self.model = ChatGoogleGenerativeAI(
+                model=model,api_key=api_key, temperature=0)
+
+        elif model_type.lower() == 'mistral':
+            api_key = os.getenv("MISTRAL_API_KEY")
+            if not api_key:
+                raise EnvironmentError("MISTRAL environment variable not set.")
+
+            self.model = ChatMistralAI(
+                model=model, api_key=api_key,temperature=0)
 
         else:
             raise ValueError("Invalid model_type. Choose 'openai' or 'anthropic'.")

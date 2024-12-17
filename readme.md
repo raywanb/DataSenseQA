@@ -45,8 +45,9 @@ Create a `.env` file in the root of the project directory (if one doesn't exist 
 ### 2.2 Add API keys 
 Add your API keys for the respective LLMs into the .env file. The format should be as follows
 
-    LLM_API_KEY_MODEL_1="your_api_key_here"
-    LLM_API_KEY_MODEL_2="your_api_key_here"
+    OPENAI_API_KEY="your_api_key_here"
+    ANTHROPIC_API_KEY="your_api_key_here"
+    GEMINI_API_KEY="your_api_key_here"
 
 ### 2.3 Install Dependencies from `requirements.txt`
 
