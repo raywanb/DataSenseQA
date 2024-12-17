@@ -16,19 +16,15 @@ Contains files that are no longer relevant.
 
 The datasets folder contains all raw datasets in CSV format.
 
-### 1.3 `evaluator` Directory
-
-The evaluator directory contains the evaluator scripts.
-
-### 1.4 `questions` Directory
+### 1.3 `questions` Directory
 
 The questions directory contains all question collection sets in a JSON format.
 
-### 1.5 `results_folder` Directory
+### 1.4 `results_folder` Directory
 
 The questionsets with the scoring from the evaluator are stored here for every tested model.
 
-### 1.6 `test_agents` Directory
+### 1.5 `test_agents` Directory
 
 The scripts for the tested agent framework are contained in this directory
 
