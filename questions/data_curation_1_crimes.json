@@ -219,7 +219,7 @@
     },
     {
         "question": "Group the data by crime type and calculate the percentage of each group rounded to two values after the comma. Then calculate the difference of the group with the largest and the smallest percentage. Print out this delta percentage rounded to one value after the comma.",
-        "ground_truth": "23.9",
+        "ground_truth": "23.89",
         "derivation" : "",
         "type" : "data curation",
         "subtype" : "data transformation and aggregation",
