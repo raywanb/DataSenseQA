@@ -103,13 +103,7 @@ class DataFrameAgentProcessor:
             self.model = ChatAnthropic(
                 model=model, api_key=api_key, temperature=0.0
             )
-        elif model_type.lower() == 'gemini':
-            api_key = os.getenv("GEMINI_API_KEY")
-            if not api_key:
-                raise EnvironmentError("GEMINI_API_KEY environment variable not set.")
-            self.model = ChatGemini(
-                model=model, api_key=api_key, temperature=0.0
-            )
+
         else:
             raise ValueError("Invalid model_type. Choose 'openai' or 'anthropic'.")
 
