@@ -1,0 +1,20 @@
+=== Summary for Dataset: information_retrieval_1_COVID_anthropic_claude-3-5-sonnet-latest_with_score ===
+
+Scores by Type and Difficulty:
+                        mean                  count                
+difficulty              easy hard medium  All  easy hard medium All
+type                                                               
+information retrieval  0.667  0.5    0.6  0.6     6    4     10  20
+All                    0.667  0.5    0.6  0.6     6    4     10  20
+
+Scores by Type, Subtype and Difficulty:
+                                                                      mean                    count                
+difficulty                                                            easy hard medium    All  easy hard medium All
+type                  subtype                                                                                      
+information retrieval comparison and ranking                           NaN  1.0  0.000  0.500   NaN  1.0    1.0   2
+                      conditional retrieval and filtering              NaN  NaN  1.000  1.000   NaN  NaN    3.0   3
+                      data aggregation, grouping and classification    NaN  1.0  0.000  0.333   NaN  1.0    2.0   3
+                      direct value retrieval                         0.667  NaN    NaN  0.667   6.0  NaN    NaN   6
+                      multi-column analysis and summarization          NaN  NaN  0.667  0.667   NaN  NaN    3.0   3
+                      pattern and trend recognition                    NaN  0.0  1.000  0.333   NaN  2.0    1.0   3
+All                                                                  0.667  0.5  0.600  0.600   6.0  4.0   10.0  20

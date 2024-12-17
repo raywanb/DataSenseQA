@@ -1,0 +1,13 @@
+=== Summary for Dataset: data_curation_1_crimes_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 33
+Overall average score: 0.788
+
+Average Scores by Question Type:
+               Average Score  Count
+type                               
+data curation          0.788     33
+
+Scores by Type and Difficulty (score, count):
+               easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                                 
+data curation         0.846            13           1.0             9           0.545              11

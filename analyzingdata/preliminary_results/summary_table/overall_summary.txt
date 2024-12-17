@@ -1,0 +1,51 @@
+=== Overall Summary Across All Datasets ===
+
+Overall Scores by Type and Difficulty:
+                        mean                      count                  
+difficulty              easy   hard medium    All  easy  hard medium  All
+type                                                                     
+comparison               NaN  0.000    NaN  0.000   NaN   1.0    NaN    1
+data curation          0.733  0.750  0.583  0.692  15.0  12.0   12.0   39
+information retrieval  0.500  0.292  0.433  0.403  18.0  24.0   30.0   72
+statistics             0.321  0.159  0.340  0.270  28.0  44.0   50.0  122
+All                    0.475  0.284  0.402  0.380  61.0  81.0   92.0  234
+
+Overall Scores by Type, Subtype and Difficulty:
+                                                                       mean                      count                  
+difficulty                                                             easy   hard medium    All  easy  hard medium  All
+type                  subtype                                                                                           
+comparison            demographic analysis                              NaN  0.000    NaN  0.000   NaN   1.0    NaN    1
+data curation         anomaly and outlier identification                NaN    NaN  1.000  1.000   NaN   NaN    1.0    1
+                      data cleaning and deduplication                   NaN  1.000  0.000  0.500   NaN   1.0    1.0    2
+                      data filtering and partitioning                 1.000    NaN  1.000  1.000   2.0   NaN    1.0    3
+                      data logic explaination                           NaN  1.000  1.000  1.000   NaN   4.0    1.0    5
+                      data logic explanation                            NaN  1.000    NaN  1.000   NaN   2.0    NaN    2
+                      data normalization and standardization            NaN    NaN  0.750  0.750   NaN   NaN    4.0    4
+                      data quality assessment                         0.727  0.500  0.333  0.625  11.0   2.0    3.0   16
+                      data transformation and aggregation             1.000  0.333  0.000  0.400   1.0   3.0    1.0    5
+                      metadata extraction                             0.000    NaN    NaN  0.000   1.0   NaN    NaN    1
+information retrieval comparison and ranking                          0.000  1.000  0.250  0.429   1.0   2.0    4.0    7
+                      conditional retrieval and filtering             1.000  0.000  1.000  0.875   1.0   1.0    6.0    8
+                      contextual interpretation and explanation         NaN  0.500    NaN  0.500   NaN   2.0    NaN    2
+                      data aggregation, grouping and classification     NaN  1.000  0.333  0.500   NaN   1.0    3.0    4
+                      data aggregation, grouping, and classification  0.000  1.000  1.000  0.667   1.0   1.0    1.0    3
+                      direct value retrieval                          0.636  0.000  0.000  0.538  11.0   1.0    1.0   13
+                      multi-column analysis and summarization         0.500  1.000  0.375  0.455   2.0   1.0    8.0   11
+                      pattern and trend recognition                   0.000  0.077  0.200  0.105   1.0  13.0    5.0   19
+                      summary and reporting from tables               0.000  0.000  0.000  0.000   1.0   2.0    2.0    5
+statistics            classification and clustering                     NaN  0.000    NaN  0.000   NaN  11.0    NaN   11
+                      comparison and ranking                            NaN  0.000  0.500  0.400   NaN   1.0    4.0    5
+                      conditional retrieval and filtering               NaN    NaN  0.500  0.500   NaN   NaN    4.0    4
+                      confidence interval                             0.500  0.000  0.000  0.167   2.0   1.0    3.0    6
+                      confidence intervals                              NaN  0.000  0.000  0.000   NaN   1.0    1.0    2
+                      correlation and association                     0.500  0.083  0.167  0.150   2.0  12.0    6.0   20
+                      data aggregation, grouping and classification     NaN    NaN  0.250  0.250   NaN   NaN    4.0    4
+                      descriptive statistics                          0.375  0.800  0.400  0.478   8.0   5.0   10.0   23
+                      direct value retrieval                          0.200    NaN    NaN  0.200   5.0   NaN    NaN    5
+                      frequency and distribution analysis             0.143  0.500  0.364  0.300   7.0   2.0   11.0   20
+                      hypothesis testing                              1.000  0.000  0.250  0.286   1.0   2.0    4.0    7
+                      probability and risk analysis                     NaN  0.000  1.000  0.500   NaN   1.0    1.0    2
+                      trend analysis                                    NaN  0.000  0.000  0.000   NaN   3.0    1.0    4
+                      trend analysis and smoothing                      NaN  1.000    NaN  1.000   NaN   1.0    NaN    1
+                      variance and standard deviation                 0.333  0.000  1.000  0.250   3.0   4.0    1.0    8
+All                                                                   0.475  0.284  0.402  0.380  61.0  81.0   92.0  234

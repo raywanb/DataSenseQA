@@ -1,0 +1,172 @@
+[
+    {
+        "question": "Calculate the mean, median, and mode of the Firm_Name_AUM_in_millions column.",
+        "ground_truth": "Mean AUM: $220,231.20 million, Median AUM: $218,000 million, Mode AUM: $165,968 million",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); df['Firm_Name_AUM_in_millions'].mean(); df['Firm_Name_AUM_in_millions'].median(); df['Firm_Name_AUM_in_millions'].mode()",
+        "difficulty": "easy",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "Mean: 45841.37, Median: 28353.5, Mode: 30214.0"
+    },
+    {
+        "question": "Determine the range of Firm_Name_AUM_in_millions and calculate its standard deviation.",
+        "ground_truth": "Range: $82,929 million, Std: $31,758.34 million",
+        "derivation": "range = df['Firm_Name_AUM_in_millions'].max() - df['Firm_Name_AUM_in_millions'].min(); std = df['Firm_Name_AUM_in_millions'].std()",
+        "difficulty": "medium",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The range of Firm_Name_AUM_in_millions is 234,697.0 and the standard deviation is 48,050.55."
+    },
+    {
+        "question": "Find the interquartile range (IQR) of Firm_Name_AUM_in_millions and compare it to the annual_change_in_AUM column to identify which has a wider spread.",
+        "ground_truth": "Firm_Name_AUM_in_millions:\nQ1: $165,968 million\nQ3: $235,612 million\nIQR: $69,644 million\n\nAnnual Change in AUM:\nQ1: -0.1\nQ3: 0.2\nIQR: 0.3",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); iqr_aum = df['Firm_Name_AUM_in_millions'].quantile(0.75) - df['Firm_Name_AUM_in_millions'].quantile(0.25); iqr_change = df['Firm_Name_annual_change_in_AUM'].quantile(0.75) - df['Firm_Name_annual_change_in_AUM'].quantile(0.25)",
+        "difficulty": "hard",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The interquartile range (IQR) of the 'Firm_Name_AUM_in_millions' column is [Q3 - Q1]. To compare it to the spread of values in the 'annual_change_in_AUM' column, we need to calculate the range of values in the 'annual_change_in_AUM' column."
+    },
+    {
+        "question": "Count the frequency of each strategy listed in the Firm_Name_Strategies column.",
+        "ground_truth": "Multi Strategy: 3, Managed Futures: 1, Event Driven: 1, Long/Short: 1, Global Macro: 1, Convertibles: 1, Crypto: 1",
+        "derivation": "strategies_counts = df['Firm_Name_Strategies'].str.split(', ').explode().value_counts()",
+        "difficulty": "easy",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The frequency of each strategy listed in the Firm_Name_Strategies column is shown above."
+    },
+    {
+        "question": "Calculate the percentage of hedge funds with an annual AUM change greater than 0.",
+        "ground_truth": "40%",
+        "derivation": "percent_positive_change = (df['Firm_Name_annual_change_in_AUM'] > 0).mean() * 100",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The percentage of hedge funds with an annual AUM change greater than 0 is calculated to be `40%`."
+    },
+    {
+        "question": "Compute the correlation between Firm_Name_AUM_in_millions and Firm_Name_annual_change_in_AUM.",
+        "ground_truth": "0.72",
+        "derivation": "correlation = df['Firm_Name_AUM_in_millions'].corr(df['Firm_Name_annual_change_in_AUM'])",
+        "difficulty": "medium",
+        "subtype": "Correlation and Association",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The correlation between Firm_Name_AUM_in_millions and Firm_Name_annual_change_in_AUM is approximately 0.0529."
+    },
+    {
+        "question": "Identify which country has the highest average AUM across all listed hedge funds.",
+        "ground_truth": "United States ($220,231.20 million average AUM)",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); country_avg_aum = df.groupby('Firm_Name_Country')['Firm_Name_AUM_in_millions'].mean().idxmax()",
+        "difficulty": "easy",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "United States"
+    },
+    {
+        "question": "Group the hedge funds by their city and calculate the total AUM for each city.",
+        "ground_truth": "Greenwich: $248,897 million, Westport: $235,612 million, Chicago: $234,679 million, New York: $218,000 million, East Setauket: $165,968 million",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); city_total_aum = df.groupby('Firm_Name_City')['Firm_Name_AUM_in_millions'].sum()",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The total AUM for each city is as shown above."
+    },
+    {
+        "question": "Analyze whether there is a significant difference in the mean AUM of hedge funds that use 'Multi Strategy' compared to those that do not using a t-test.",
+        "ground_truth": "t-statistic: 2.11, p-value: 0.043",
+        "derivation": "from scipy.stats import ttest_ind; df['is_multi_strategy'] = df['Firm_Name_Strategies'].str.contains('Multi Strategy'); multi_aum = df[df['is_multi_strategy']]['Firm_Name_AUM_in_millions']; non_multi_aum = df[~df['is_multi_strategy']]['Firm_Name_AUM_in_millions']; t_stat, p_value = ttest_ind(multi_aum, non_multi_aum, equal_var=False)",
+        "difficulty": "hard",
+        "subtype": "Hypothesis Testing",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "An output parsing error occurred. In order to pass this error back to the agent and have it try again, pass `handle_parsing_errors=True` to the AgentExecutor. This is the error: Could not parse LLM output: `The issue persists even after checking for missing values. It seems that there might be some non-numeric values present in the 'Firm_Name_AUM_in_millions' column that are causing the t-test to fail. We should further investigate the data in that column to identify and handle any non-numeric values before retrying the t-test.`\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE "
+    },
+    {
+        "question": "Compute a 95% confidence interval for the average AUM of the listed hedge funds.",
+        "ground_truth": "($200,345.12 million, $240,117.28 million)",
+        "derivation": "from scipy.stats import norm; mean_aum = df['Firm_Name_AUM_in_millions'].mean(); std_aum = df['Firm_Name_AUM_in_millions'].std(); n = len(df['Firm_Name_AUM_in_millions']); se_aum = std_aum / np.sqrt(n); confidence = 0.95; z_score = norm.ppf((1 + confidence) / 2); margin_of_error = z_score * se_aum; ci_lower = mean_aum - margin_of_error; ci_upper = mean_aum + margin_of_error",
+        "difficulty": "medium",
+        "subtype": "Confidence Interval",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The 95% confidence interval for the average AUM of the listed hedge funds is [160,781.63, 242,374.37]"
+    },
+    {
+        "question": "Calculate the variance of the annual_change_in_AUM column.",
+        "ground_truth": "Variance: 0.04",
+        "derivation": "variance_aum_change = df['Firm_Name_annual_change_in_AUM'].var()",
+        "difficulty": "easy",
+        "subtype": "Variance and Standard Deviation",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The variance of the annual_change_in_AUM column is 0.14582932967284368."
+    },
+    {
+        "question": "Group hedge funds by strategy and calculate the average AUM for each strategy.",
+        "ground_truth": "Multi Strategy: $210,500 million, Managed Futures: $248,897 million, Event Driven: $165,968 million",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); df['Firm_Name_Strategies'] = df['Firm_Name_Strategies'].str.split(', '); exploded_df = df.explode('Firm_Name_Strategies'); avg_aum_by_strategy = exploded_df.groupby('Firm_Name_Strategies')['Firm_Name_AUM_in_millions'].mean()",
+        "difficulty": "medium",
+        "subtype": "Descriptive Statistics",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The average AUM for each strategy is shown above."
+    },
+    {
+        "question": "Determine the proportion of hedge funds with AUM greater than $200,000 million.",
+        "ground_truth": "60%",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); proportion = (df['Firm_Name_AUM_in_millions'] > 200000).mean() * 100",
+        "difficulty": "easy",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The proportion of hedge funds with AUM greater than $200,000 million is proportion_hedge_funds_gt_200."
+    },
+    {
+        "question": "Perform an ANOVA test to determine if there is a significant difference in AUM between hedge funds using different strategies.",
+        "ground_truth": "F-statistic: 4.56, p-value: 0.012",
+        "derivation": "from scipy.stats import f_oneway; df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); df['Firm_Name_Strategies'] = df['Firm_Name_Strategies'].str.split(', '); exploded_df = df.explode('Firm_Name_Strategies'); groups = [group['Firm_Name_AUM_in_millions'] for name, group in exploded_df.groupby('Firm_Name_Strategies')]; f_stat, p_value = f_oneway(*groups)",
+        "difficulty": "hard",
+        "subtype": "Hypothesis Testing",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "There is not a significant difference in AUM between hedge funds using different strategies."
+    },
+    {
+        "question": "Calculate a 90% confidence interval for the annual change in AUM.",
+        "ground_truth": "(-0.05, 0.15)",
+        "derivation": "from scipy.stats import norm; mean_change = df['Firm_Name_annual_change_in_AUM'].mean(); std_change = df['Firm_Name_annual_change_in_AUM'].std(); n = len(df['Firm_Name_annual_change_in_AUM']); se_change = std_change / np.sqrt(n); confidence = 0.90; z_score = norm.ppf((1 + confidence) / 2); margin_of_error = z_score * se_change; ci_lower = mean_change - margin_of_error; ci_upper = mean_change + margin_of_error",
+        "difficulty": "medium",
+        "subtype": "Confidence Interval",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "The 90% confidence interval for the annual change in AUM is [0.006, 0.294]."
+    },
+    {
+        "question": "What percentage of hedge funds have multiple strategies listed?",
+        "ground_truth": "40%",
+        "derivation": "percentage_multi_strategy = (df['Firm_Name_Strategies'].str.contains(',')).mean() * 100",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "71% of hedge funds have multiple strategies listed."
+    },
+    {
+        "question": "Identify the top 3 cities with the highest combined AUM and their respective totals.",
+        "ground_truth": "1. Greenwich: $248,897 million, 2. Westport: $235,612 million, 3. Chicago: $234,679 million",
+        "derivation": "df['Firm_Name_AUM_in_millions'] = df['Firm_Name_AUM_in_millions'].str.replace(',', '').astype(float); city_totals = df.groupby('Firm_Name_City')['Firm_Name_AUM_in_millions'].sum().nlargest(3)",
+        "difficulty": "medium",
+        "subtype": "Frequency and Distribution Analysis",
+        "type": "statistics",
+        "table_path": "./datasets/business/hedge_funds_list.csv",
+        "result": "New York, London, and Chicago are the top 3 cities with the highest combined AUM."
+    }
+]

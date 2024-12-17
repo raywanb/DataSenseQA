@@ -1,0 +1,13 @@
+=== Summary for Dataset: information_retrieval_1_COVID_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 20
+Overall average score: 0.600
+
+Average Scores by Question Type:
+                       Average Score  Count
+type                                       
+information retrieval            0.6     20
+
+Scores by Type and Difficulty (score, count):
+                       easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                                         
+information retrieval         0.667             6           0.5             4             0.6              10

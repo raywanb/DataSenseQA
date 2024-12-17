@@ -1,0 +1,23 @@
+=== Summary for Dataset: statistics_2_indian_mutual_fund_anthropic_claude-3-5-sonnet-latest_with_score ===
+
+Scores by Type and Difficulty:
+             mean                   count                
+difficulty   easy hard medium   All  easy hard medium All
+type                                                     
+statistics  0.125  1.0  0.455  0.35     8    1     11  20
+All         0.125  1.0  0.455  0.35     8    1     11  20
+
+Scores by Type, Subtype and Difficulty:
+                                                           mean                    count                
+difficulty                                                 easy hard medium    All  easy hard medium All
+type       subtype                                                                                      
+statistics comparison and ranking                           NaN  NaN  1.000  1.000   NaN  NaN    2.0   2
+           conditional retrieval and filtering              NaN  NaN  0.667  0.667   NaN  NaN    3.0   3
+           correlation and association                    0.000  NaN    NaN  0.000   1.0  NaN    NaN   1
+           data aggregation, grouping and classification    NaN  NaN  0.000  0.000   NaN  NaN    2.0   2
+           descriptive statistics                         0.500  1.0  0.000  0.500   2.0  1.0    1.0   4
+           direct value retrieval                         0.000  NaN    NaN  0.000   2.0  NaN    NaN   2
+           frequency and distribution analysis            0.000  NaN  0.500  0.250   2.0  NaN    2.0   4
+           trend analysis                                   NaN  NaN  0.000  0.000   NaN  NaN    1.0   1
+           variance and standard deviation                0.000  NaN    NaN  0.000   1.0  NaN    NaN   1
+All                                                       0.125  1.0  0.455  0.350   8.0  1.0   11.0  20

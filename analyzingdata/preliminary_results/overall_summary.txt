@@ -1,0 +1,9 @@
+=== Overall Summary Across All Datasets ===
+
+Overall Average Scores by Question Type:
+                       Average Score  Count
+type                                       
+comparison                     0.000      1
+data curation                  0.692     39
+information retrieval          0.403     72
+statistics                     0.270    122
