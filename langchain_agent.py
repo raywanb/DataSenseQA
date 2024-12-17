@@ -10,8 +10,8 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain.schema import LLMResult
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_mistralai import ChatMistralAI
+# from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain_mistralai import ChatMistralAI
 import json
 
 def strict_evaluator(question: str, ground_truth: str, answer: str):
@@ -260,9 +260,9 @@ questions_folder = "./questions/"
 output_folder = "./results_folder/"
 
 processor = DataFrameAgentProcessor(
-    model_type="openai",
+    model_type="anthropic",
     questions_path="",
-    model="gpt-4"          
+    model="claude-3-5-haiku-latest"          
 )
 
 processor.process_questions_folder(
