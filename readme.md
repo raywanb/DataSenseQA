@@ -43,11 +43,19 @@ To integrate and use the LangChain agent with Large Language Models (LLMs), you 
 Create a `.env` file in the root of the project directory (if one doesn't exist already)
 
 ### 2.2 Add API keys 
-Add your API keys for the respective LLMs into the .env file. The format should be as follows
+Add your API keys for the respective LLMs into the .env file. The format should be as follows:
 
     OPENAI_API_KEY="your_api_key_here"
     ANTHROPIC_API_KEY="your_api_key_here"
     GEMINI_API_KEY="your_api_key_here"
+    MISTRAL_API_KEY="your_api_key_here"
+
+If you do **NOT** have all API keys yet, get them here:
+
+- [OPENAI](https://platform.openai.com/docs/overview)
+- [ANTHROPIC](https://console.anthropic.com/login?selectAccount=true&returnTo=%2Fsettings%2Fkeys%3F)
+- [GEMINI](https://ai.google.dev/gemini-api/docs/api-key)
+- [MISTRAL](https://auth.mistral.ai/ui/login?flow=1be720ed-8a74-4e25-8034-4c837cc6e28e)
 
 ### 2.3 Install Dependencies from `requirements.txt`
 
@@ -63,7 +71,9 @@ To install the requirements use the following command
 
     pip install -r requirements.txt
 
+If these steps did **NOT** work, you have to install the dependencies manually, by going throught the files and installing all packages that throw errors.
+
 ---
 
-## 3 Running the Benchmark
+## 3 Benchmark
 
