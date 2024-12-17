@@ -256,16 +256,16 @@ class DataFrameAgentProcessor:
 
 
 
-questions_folder = "./questions/" 
-output_folder = "./results_folder/"
+# questions_folder = "./questions/" 
+# output_folder = "./results_folder/"
 
-processor = DataFrameAgentProcessor(
-    model_type="anthropic",
-    questions_path="",
-    model="claude-3-5-haiku-latest"          
-)
+# processor = DataFrameAgentProcessor(
+#     model_type="anthropic",
+#     questions_path="",
+#     model="claude-3-5-haiku-latest"          
+# )
 
-processor.process_questions_folder(
-    questions_folder=questions_folder,
-    output_folder=output_folder
-)
+# processor.process_questions_folder(
+#     questions_folder=questions_folder,
+#     output_folder=output_folder
+# )
