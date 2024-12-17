@@ -1,0 +1,43 @@
+=== Model Comparison for Dataset: research_2_glioma_openai_gpt-4o_with_score ===
+
+Scores by Type and Difficulty - Model Comparison:
+                        mean                      count                 
+model                 gpt-4o                 All gpt-4o              All
+difficulty              easy  hard medium          easy  hard medium    
+type                                                                    
+comparison               NaN  0.00    NaN  0.000    NaN   1.0    NaN   1
+information retrieval    0.5  0.20    0.4  0.318    2.0  10.0   10.0  22
+statistics               NaN  0.00    0.4  0.105    NaN  14.0    5.0  19
+All                      0.5  0.08    0.4  0.214    2.0  25.0   15.0  42
+
+Scores by Type, Subtype and Difficulty - Model Comparison:
+                                                                  mean                       count                 
+model                                                           gpt-4o                  All gpt-4o              All
+difficulty                                                        easy   hard medium          easy  hard medium    
+type                  subtype                                                                                      
+comparison            demographic analysis                         NaN  0.000    NaN  0.000    NaN   1.0    NaN   1
+information retrieval comparison and ranking                       NaN    NaN  0.000  0.000    NaN   NaN    1.0   1
+                      conditional retrieval and filtering          NaN    NaN  1.000  1.000    NaN   NaN    2.0   2
+                      contextual interpretation and explanation    NaN  1.000    NaN  1.000    NaN   1.0    NaN   1
+                      direct value retrieval                       1.0    NaN    NaN  1.000    1.0   NaN    NaN   1
+                      multi-column analysis and summarization      0.0    NaN  0.250  0.200    1.0   NaN    4.0   5
+                      pattern and trend recognition                NaN  0.125  0.500  0.200    NaN   8.0    2.0  10
+                      summary and reporting from tables            NaN  0.000  0.000  0.000    NaN   1.0    1.0   2
+statistics            classification and clustering                NaN  0.000    NaN  0.000    NaN   6.0    NaN   6
+                      confidence intervals                         NaN  0.000    NaN  0.000    NaN   1.0    NaN   1
+                      correlation and association                  NaN  0.000  0.000  0.000    NaN   4.0    1.0   5
+                      descriptive statistics                       NaN    NaN  0.667  0.667    NaN   NaN    3.0   3
+                      frequency and distribution analysis          NaN    NaN  0.000  0.000    NaN   NaN    1.0   1
+                      probability and risk analysis                NaN  0.000    NaN  0.000    NaN   1.0    NaN   1
+                      trend analysis and smoothing                 NaN  0.000    NaN  0.000    NaN   1.0    NaN   1
+                      variance and standard deviation              NaN  0.000    NaN  0.000    NaN   1.0    NaN   1
+All                                                                0.5  0.080  0.400  0.214    2.0  25.0   15.0  42
+
+Performance Differences:
+
+Difference (gpt-4o - claude-3.5):
+difficulty             easy  hard  medium
+type                                     
+comparison              NaN   NaN     NaN
+information retrieval   NaN   NaN     NaN
+statistics              NaN   NaN     NaN

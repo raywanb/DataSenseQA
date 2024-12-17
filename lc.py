@@ -11,6 +11,9 @@ from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain.schema import LLMResult
 import json
+from langchain_google_vertexai import ChatVertexAI
+
+
 
 def strict_evaluator(question: str, ground_truth: str, answer: str):
     """
@@ -36,7 +39,8 @@ def strict_evaluator(question: str, ground_truth: str, answer: str):
         ),
     )
 
-    llm = ChatOpenAI(model="gpt-4o", temperature=0)
+    # llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+    llm = ChatVertexAI(model="gemini-1.5-flash")
 
     eval_chain = LLMChain(llm=llm, prompt=eval_prompt)
 
@@ -103,6 +107,8 @@ class DataFrameAgentProcessor:
             self.model = ChatAnthropic(
                 model=model, api_key=api_key, temperature=0.0
             )
+        elif model_type.lower() == 'gemini':
+            self.model = ChatVertexAI(model="gemini-1.5-flash")
         else:
             raise ValueError("Invalid model_type. Choose 'openai' or 'anthropic'.")
 
@@ -236,12 +242,12 @@ class DataFrameAgentProcessor:
 
 
 questions_folder = "./questions/" 
-output_folder = "./results_folder/"
+output_folder = "./results_folder/gemini"
 
 processor = DataFrameAgentProcessor(
-    model_type="openai",
+    model_type="gemini",
     questions_path="",
-    model="gpt-4"          
+    model="gemini-1.5-flash"          
 )
 
 processor.process_questions_folder(

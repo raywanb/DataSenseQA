@@ -1,0 +1,13 @@
+=== Summary for Dataset: statistics_2_indian_mutual_fund_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 20
+Overall average score: 0.350
+
+Average Scores by Question Type:
+            Average Score  Count
+type                            
+statistics           0.35     20
+
+Scores by Type and Difficulty (score, count):
+            easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                              
+statistics         0.125             8           1.0             1           0.455              11

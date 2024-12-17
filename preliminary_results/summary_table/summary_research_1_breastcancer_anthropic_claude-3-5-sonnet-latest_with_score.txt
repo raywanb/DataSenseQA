@@ -1,0 +1,33 @@
+=== Summary for Dataset: research_1_breastcancer_anthropic_claude-3-5-sonnet-latest_with_score ===
+
+Scores by Type and Difficulty:
+                        mean                    count                
+difficulty              easy hard medium    All  easy hard medium All
+type                                                                 
+data curation          0.000  0.0  1.000  0.167     2    3      1   6
+information retrieval  0.667  0.0  0.333  0.333     3    3      3   9
+statistics             0.000  0.0  0.400  0.154     1   15     10  26
+All                    0.333  0.0  0.429  0.195     6   21     14  41
+
+Scores by Type, Subtype and Difficulty:
+                                                                      mean                    count                 
+difficulty                                                            easy hard medium    All  easy  hard medium All
+type                  subtype                                                                                       
+data curation         anomaly and outlier identification               NaN  NaN  1.000  1.000   NaN   NaN    1.0   1
+                      data quality assessment                        0.000  0.0    NaN  0.000   1.0   1.0    NaN   2
+                      data transformation and aggregation              NaN  0.0    NaN  0.000   NaN   2.0    NaN   2
+                      metadata extraction                            0.000  NaN    NaN  0.000   1.0   NaN    NaN   1
+information retrieval comparison and ranking                           NaN  NaN  0.000  0.000   NaN   NaN    1.0   1
+                      contextual interpretation and explanation        NaN  0.0    NaN  0.000   NaN   1.0    NaN   1
+                      data aggregation, grouping and classification    NaN  NaN  1.000  1.000   NaN   NaN    1.0   1
+                      direct value retrieval                         0.667  NaN    NaN  0.667   3.0   NaN    NaN   3
+                      pattern and trend recognition                    NaN  0.0  0.000  0.000   NaN   2.0    1.0   3
+statistics            classification and clustering                    NaN  0.0    NaN  0.000   NaN   5.0    NaN   5
+                      confidence intervals                             NaN  NaN  0.000  0.000   NaN   NaN    1.0   1
+                      correlation and association                      NaN  0.0  0.333  0.100   NaN   7.0    3.0  10
+                      descriptive statistics                         0.000  NaN  0.500  0.333   1.0   NaN    2.0   3
+                      frequency and distribution analysis              NaN  NaN  0.000  0.000   NaN   NaN    1.0   1
+                      hypothesis testing                               NaN  NaN  0.000  0.000   NaN   NaN    1.0   1
+                      probability and risk analysis                    NaN  NaN  1.000  1.000   NaN   NaN    1.0   1
+                      variance and standard deviation                  NaN  0.0  1.000  0.250   NaN   3.0    1.0   4
+All                                                                  0.333  0.0  0.429  0.195   6.0  21.0   14.0  41

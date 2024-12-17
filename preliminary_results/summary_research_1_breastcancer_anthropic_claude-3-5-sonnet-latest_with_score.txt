@@ -1,0 +1,17 @@
+=== Summary for Dataset: research_1_breastcancer_anthropic_claude-3-5-sonnet-latest_with_score ===
+Total questions: 41
+Overall average score: 0.195
+
+Average Scores by Question Type:
+                       Average Score  Count
+type                                       
+data curation                  0.167      6
+information retrieval          0.333      9
+statistics                     0.154     26
+
+Scores by Type and Difficulty (score, count):
+                       easy (score)  easy (count)  hard (score)  hard (count)  medium (score)  medium (count)
+type                                                                                                         
+data curation                 0.000             2           0.0             3           1.000               1
+information retrieval         0.667             3           0.0             3           0.333               3
+statistics                    0.000             1           0.0            15           0.400              10

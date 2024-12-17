@@ -1,0 +1,32 @@
+=== Model Comparison for Dataset: statistics_2_indian_mutual_fund_openai_gpt-4o_with_score ===
+
+Scores by Type and Difficulty - Model Comparison:
+             mean                   count                
+model      gpt-4o              All gpt-4o             All
+difficulty   easy hard medium        easy hard medium    
+type                                                     
+statistics  0.625  1.0  0.545  0.6      8    1     11  20
+All         0.625  1.0  0.545  0.6      8    1     11  20
+
+Scores by Type, Subtype and Difficulty - Model Comparison:
+                                                           mean                     count                
+model                                                    gpt-4o                All gpt-4o             All
+difficulty                                                 easy hard medium          easy hard medium    
+type       subtype                                                                                       
+statistics comparison and ranking                           NaN  NaN  1.000  1.000    NaN  NaN    2.0   2
+           conditional retrieval and filtering              NaN  NaN  0.667  0.667    NaN  NaN    3.0   3
+           correlation and association                    1.000  NaN    NaN  1.000    1.0  NaN    NaN   1
+           data aggregation, grouping and classification    NaN  NaN  0.000  0.000    NaN  NaN    2.0   2
+           descriptive statistics                         0.500  1.0  1.000  0.750    2.0  1.0    1.0   4
+           direct value retrieval                         1.000  NaN    NaN  1.000    2.0  NaN    NaN   2
+           frequency and distribution analysis            0.000  NaN  0.500  0.250    2.0  NaN    2.0   4
+           trend analysis                                   NaN  NaN  0.000  0.000    NaN  NaN    1.0   1
+           variance and standard deviation                1.000  NaN    NaN  1.000    1.0  NaN    NaN   1
+All                                                       0.625  1.0  0.545  0.600    8.0  1.0   11.0  20
+
+Performance Differences:
+
+Difference (gpt-4o - claude-3.5):
+difficulty  easy  hard  medium
+type                          
+statistics   NaN   NaN     NaN

@@ -1,0 +1,32 @@
+=== Model Comparison for Dataset: statistics_3_football_openai_gpt-4o_with_score ===
+
+Scores by Type and Difficulty - Model Comparison:
+             mean                    count                
+model      gpt-4o               All gpt-4o             All
+difficulty   easy hard medium         easy hard medium    
+type                                                      
+statistics  0.875  1.0  0.556  0.75      8    3      9  20
+All         0.875  1.0  0.556  0.75      8    3      9  20
+
+Scores by Type, Subtype and Difficulty - Model Comparison:
+                                                           mean                     count                
+model                                                    gpt-4o                All gpt-4o             All
+difficulty                                                 easy hard medium          easy hard medium    
+type       subtype                                                                                       
+statistics comparison and ranking                           NaN  1.0  0.500  0.667    NaN  1.0    2.0   3
+           conditional retrieval and filtering              NaN  NaN  0.000  0.000    NaN  NaN    1.0   1
+           confidence interval                              NaN  1.0    NaN  1.000    NaN  1.0    NaN   1
+           correlation and association                      NaN  NaN  1.000  1.000    NaN  NaN    1.0   1
+           data aggregation, grouping and classification    NaN  NaN  0.500  0.500    NaN  NaN    2.0   2
+           descriptive statistics                         1.000  1.0  1.000  1.000    2.0  1.0    1.0   4
+           direct value retrieval                         1.000  NaN    NaN  1.000    3.0  NaN    NaN   3
+           frequency and distribution analysis            0.500  NaN  0.500  0.500    2.0  NaN    2.0   4
+           variance and standard deviation                1.000  NaN    NaN  1.000    1.0  NaN    NaN   1
+All                                                       0.875  1.0  0.556  0.750    8.0  3.0    9.0  20
+
+Performance Differences:
+
+Difference (gpt-4o - claude-3.5):
+difficulty  easy  hard  medium
+type                          
+statistics   NaN   NaN     NaN
