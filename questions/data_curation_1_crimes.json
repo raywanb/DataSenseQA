@@ -6,7 +6,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Which column has the most missing values? Print the column name.",
@@ -15,7 +15,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Calculate the ratio of missing to non-missing values for each column. Print the result as 'Column Name: Ratio'.",
@@ -24,7 +24,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Name all columns that contain null values and calculate the percentage to non null values rounded to three values after the comma. Print the result as 'Column Name' : 'Percentage'.",
@@ -33,7 +33,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Find and print the count of all rows where 'Latitude' and 'Longitude' are both missing (NaN).",
@@ -42,7 +42,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Check if there are any duplicate rows and count them.",
@@ -51,7 +51,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Check if there are any duplicate 'Case Number' values in the dataset. Print YES or NO.",
@@ -60,7 +60,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Print all IDs of the rows of the first ten rows where the crime was not Theft.",
@@ -69,7 +69,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Find all the columns that only contain the same value in each row. Print the result as 'Columns with the same value in all rows:' : 'Column Name' or None if no such column exists.",
@@ -78,7 +78,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "How many unique values exist in the 'Location Description' column? Print the count.",
@@ -87,7 +87,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Identify and count records where the 'Case Number' format does not match the pattern 'XX999999'. Print the count.",
@@ -96,7 +96,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Standardize 'Location' column values to the format '(latitude, longitude)'. Print the first five formatted values in an array.",
@@ -105,7 +105,7 @@
         "type" : "data curation",
         "subtype" : "data normalization and standardization",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Ensure that timestamps in the 'Date' column are rounded to the nearest minute. Print the first five updated timestamps.",
@@ -114,7 +114,7 @@
         "type" : "data curation",
         "subtype" : "data normalization and standardization",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Partition the dataset by 'District' and count the number of crimes in each partition. Print 'District: Count'.",
@@ -123,7 +123,7 @@
         "type" : "data curation",
         "subtype" : "data filtering and partitioning",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
   {
         "question": "Filter the dataset to only include rows where 'Arrest' is True. Print the IDs of the first five rows of the filtered dataset.",
@@ -132,7 +132,7 @@
         "type" : "data curation",
         "subtype" : "data filtering and partitioning",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
   {
         "question": "Filter the dataset to exclude rows where 'Primary Type' is 'THEFT'. Print the number of remaining rows.",
@@ -141,7 +141,7 @@
         "type" : "data curation",
         "subtype" : "data filtering and partitioning",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
 
     {
@@ -151,7 +151,7 @@
         "type" : "data curation",
         "subtype" : "data normalization and standardization",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Print out the Date column of the first five rows of the dataset in JSON format with the Date formatted in the european format (dd/mm/yyyy hh:mm).",
@@ -160,7 +160,7 @@
         "type" : "data curation",
         "subtype" : "data normalization and standardization",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Print all values that occur in the column about crime types.",
@@ -169,7 +169,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Out of all unique values in the crime type column, is there a category that is very similar but has a typo or another feature where someone most likely made an error? yes or no?",
@@ -178,7 +178,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
 
     {
@@ -188,7 +188,7 @@
         "type" : "data curation",
         "subtype" : "data quality assessment",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Remove all rows, where over 10% of values are missing, and count the remaining rows.",
@@ -197,7 +197,7 @@
         "type" : "data curation",
         "subtype" : "data cleaning and deduplication",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Identify and count records where the 'Case Number' format does not match the pattern 'XX999999'. Delete those values and count the number of rows",
@@ -206,7 +206,7 @@
         "type" : "data curation",
         "subtype" : "data cleaning and deduplication",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Print out the first five values of IDXYEAR.",
@@ -215,7 +215,7 @@
         "type" : "data curation",
         "subtype" : "data transformation and aggregation",
         "difficulty" : "easy",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Group the data by crime type and calculate the percentage of each group rounded to two values after the comma. Then calculate the difference of the group with the largest and the smallest percentage. Print out this delta percentage rounded to one value after the comma.",
@@ -224,7 +224,7 @@
         "type" : "data curation",
         "subtype" : "data transformation and aggregation",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Print out the average of IDXYEAR over all rows rounded to two values after comma.",
@@ -233,7 +233,7 @@
         "type" : "data curation",
         "subtype" : "data transformation and aggregation",
         "difficulty" : "medium",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Does it make sense to create such a new column, answer with YES or NO.",
@@ -242,7 +242,7 @@
         "type" : "data curation",
         "subtype" : "data logic explanation",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Create a new column ArrestProbabilityForCrime by calculating the average Arrests for the commited crime type. Does such a value make sense?'",
@@ -251,7 +251,7 @@
         "type" : "data curation",
         "subtype" : "data logic explanation",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Create a new column CommunityCrimeRate by dividing 'Community Area' by 'District'. Does it make sense to create such a new column, answer with YES or NO.",
@@ -260,7 +260,7 @@
         "type" : "data curation",
         "subtype" : "data logic explaination",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "If the 'Year' column contains only one unique value (e.g., 2019), should it be retained as a feature in the dataset? Provide a 'Yes' or 'No' answer and justify your reasoning.",
@@ -269,7 +269,7 @@
         "type" : "data curation",
         "subtype" : "data logic explaination",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Should missing values in the 'Latitude' and 'Longitude' columns be imputed using the mean of each column? Provide a 'Yes' or 'No' answer and justify your response.",
@@ -278,7 +278,7 @@
         "type" : "data curation",
         "subtype" : "data logic explaination",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Classify the following crimes as 'Violent' or 'Non-Violent': 'Robbery', 'Burglary', 'Sexual Assault', 'Theft', 'Homicide', and 'Fraud'. Provide your answer as a dictionary with the crime as the key and 'Violent' or 'Non-Violent' as the value.",
@@ -287,7 +287,7 @@
         "type" : "data curation",
         "subtype" : "data logic explaination",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     },
     {
         "question": "Which non-violent crime and which violent crime occur the most in the dataset? Print the results as 'Most Frequent Violent Crime: X' and 'Most Frequent Non-Violent Crime: Y'.",
@@ -296,7 +296,6 @@
         "type" : "data curation",
         "subtype" : "data logic explaination",
         "difficulty" : "hard",
-        "table_path" : ""
+        "table_path" : "./datasets/research/Crimes_-_2019.csv"
     }
-
 ]
