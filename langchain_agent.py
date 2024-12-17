@@ -27,7 +27,10 @@ def strict_evaluator(question: str, ground_truth: str, answer: str):
     eval_prompt = PromptTemplate(
         input_variables=["question", "ground_truth", "answer"],
         template=(
-            "You are a strict evaluator for answers. You will evaluate whether the student's answer strictly matches the ground truth. It is fine to have some leeway in terms of numerical rounding. i.e 101.1 as ground truth and the student answer is 101.2 should be considered correct. "
+            "You are a strict evaluator for answers. You will evaluate whether the student's answer strictly matches the ground truth." 
+            "It is fine to have some leeway in terms of numerical rounding. i.e 101.1 as ground truth and the student answer is 101.2 should be considered correct. "
+            "It is also fine to have some leeway in terms of numerical formatting. i.e. 123443 as ground truth and the students answer is 123,443 should be considered correct."
+            "It is okay if the order of string values is not identical. e.g. ['IDX54421', 'IDX4223', 'IDA7786'] as ground truth and the students answer is ['IDA7786','IDX4223','IDX54421',] should be considered correct."
             "Provide a binary score (1 or 0) based on correctness.\n\n"
             "Question: {question}\n"
             "Ground Truth: {ground_truth}\n"

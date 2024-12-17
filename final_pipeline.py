@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from lc import DataFrameAgentProcessor 
+from langchain_agent import DataFrameAgentProcessor
 
 def process_question_files(input_folder, output_folder):
 

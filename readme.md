@@ -62,5 +62,7 @@ To install the requirements use the following command
 
     pip install -r requirements.txt
 
-### 3 Running the Benchmark
+---
+
+## 3 Running the Benchmark
 
