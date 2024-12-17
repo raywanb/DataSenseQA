@@ -1,118 +1,79 @@
-# Datasets
+# DataSense: Evaluating LLM Agents on Tabular Data for Curation, Retrieval, and Statistical Analysis
 
-### Dataset Collection
-All datasets that were used to create questions to test the individual agents on are available on open source such as [kaggle](kaggle.com/search). An overview
-all considered datasets and their sources can be found in the [dataset sheet](https://docs.google.com/spreadsheets/d/1IAQKPhE_R-w3SKLvBxDuQ01eqiVHOlhHdgtxtKnwJM8/edit?usp=sharing). 
+##### Benchmark Track | 4 Units | Group TBD
 
+Felix Krumme, Ray Wan, Dimple Amitha Garuadapuri, Manan Dhanuka
 
-### Dataset Domains
-We declare different domains to have suitable datasets for different question focusses, namely data curation, 
-content retrieval and statistics. Every agent will be tested on each dataset as we want to evaluate their performance across 
-all domains and question focuses. 
+-------------
 
-The domains are the following:
+## 1 Components & Files
+##
+### 1.1 `[deprecated]` Directory
 
-- **Business:** financial data and ERP-System tables
-  - DATA
-- **Research:** demographic, genomic and survey datasets
-  - Crimes reported in Chicago in 2019 (`Crimes_-_2019.csv`)
-  - Covid-19 infection case data for various countries (`COVID19.csv`)
-  - Glioma (type of brian cancer) grades and associated genes (`Glioma.csv`)
-- **Application:** datasets of varíous different applications
-  - DATA
+Contains files that are no longer relevant.
 
-# Questions
-### Question Scope
-Questions describe the individual tasks that are
-used to test different agents and LLMs respectively. 
-We want to design our questions as such that they are not too trivial
-for the agents to solve, as we ideally want to identify areas of improvement for each agent and LLM.
+### 1.2 `datasets` Directory
 
-### Question Structure
-Each dataset is equipped with one question collection.
-A question collection for a dataset focuses on one of the question 
-categories (_data curation, information retrieval or statistics_). Subtypes for all question catetegories can be found in
-the [question overview sheet](https://docs.google.com/spreadsheets/d/1IAQKPhE_R-w3SKLvBxDuQ01eqiVHOlhHdgtxtKnwJM8/edit?usp=sharing). 
-Each question collection hereby contains **at least one question of each subtype in either difficulty**.
+The datasets folder contains all raw datasets in CSV format.
 
-## Question Format
+### 1.3 `evaluator` Directory
 
-### Question Arrays
-The questions for each dataset are formatted 
-in a JSON array with each array stored in an
-individual file. 
-#### [Example]: Question Array
-```
-[{"question_1"}, ... , {question_n}]
-```
+The evaluator directory contains the evaluator scripts.
 
-### Question Structure
+### 1.4 `questions` Directory
 
-Each question consisting of the following 
-attributes: 
-- **`question`** contains the question written 
-in a normal sentence with a question mark, 
-- **`ground_truth`** contains the correct answer to the question, 
-- **`derivation`** contains the `pandas` python 
-code to derive the ground_truth, 
-- **`difficulty`** labels each question as either _easy, medium_ or _hard_
-- **`type`** contains the question category 
-(_data curation, content retrieval or statistics_), 
-- **`subtype`** contains
-the category subtypes that can be found in the [question overview sheet](https://docs.google.com/spreadsheets/d/1IAQKPhE_R-w3SKLvBxDuQ01eqiVHOlhHdgtxtKnwJM8/edit?usp=sharing) and
-- `table_path` indicating which table the question refers to.
+The questions directory contains all question collection sets in a JSON format.
 
-#### [Example]: Question in JSON
-```json
-{
-"question" : "What is the mean of column Age?",
-"ground_truth" : "1.57",
-"derivation" : "df['Age'].mean()",
-"difficulty" : "easy",
-"type" : "statistics",
-"subtype" : "descriptive statistics",
-"table_path" : "datasets/research/Example.csv"
-}
-```
+### 1.5 `results_folder` Directory
 
-#### [Template]: Empty Question in JSON
-```json
-{
-"question" : "",
-"ground_truth" : "",
-"derivation" : "",
-"difficulty" : "",
-"type" : "",
-"subtype" : "",
-"table_path" : ""
-}
-```
-## Question Generation
+The questionsets with the scoring from the evaluator are stored here for every tested model.
 
-### Manually Generated Questions
-Each dataset is assigned with one question category (_data curation, content retrieval or statisitcs_) first. 
-To optimally design the questions, each category has the before mentioned question subtypes. We use our own human understanding 
-to formulate questions for the dataset, derive a ground truth and label the questions accordingly. 
+### 1.6 `test_agents` Directory
 
-### LLM Generated Questions
+The scripts for the tested agent framework are contained in this directory
 
-To make sure every question subtype is included to uncover all possible weaknesses of the tested agents, the hand crafted 
-question collection is prompted to ChatGPT with the first ten rows of the dataset, as well as an adequate description of the dataset,
-including data quality issues to generate more questions. As the derivation is always included in the question, it is possibler check if the ground truth is in fact true.  
+---------------
 
-### Question Valuation
-First  all question collections are crossexamed by hand. To make sure that no issues with the question are overseen,the question collection including the first ten rows of the underlying dataset are prompted into ChatGPT-4 in three different instances
-to make sure that all questions pass all acception criteria (_from: InfiAgent-DABench: Evaluating Agents on Data Analysis Tasks_):
+## 2 Setup
+##
+To integrate and use the LangChain agent with Large Language Models (LLMs), you need to provide the necessary API keys for the LLM services.
 
+### 2.1 Create a `.env` File
 
-- **Suitableness:** Evaluates if the CSV file is suitable for data analysis.
-- **Reasonableness:** Ensures the question, constraints, and format are natural and conflict-free.
-- **Value:** Assesses the practical usefulness of the questions generated.
-- **Restrictiveness:** Checks if constraints are strict enough to ensure unique answers.
-- **Alignment:** Verifies that questions align with the data’s content, type, and range.
-- **Difficulty:** Confirms that the questions difficulty is labeled correctly.
+Create a `.env` file in the root of the project directory (if one doesn't exist already)
 
+### 2.2 Add API keys 
+Add your API keys for the respective LLMs into the .env file. The format should be as follows:
 
-### Agent Evaluation
+    OPENAI_API_KEY="your_api_key_here"
+    ANTHROPIC_API_KEY="your_api_key_here"
+    GEMINI_API_KEY="your_api_key_here"
+    MISTRAL_API_KEY="your_api_key_here"
 
-The outputed predictions from the agents were evalutation thorouhly by integrating NORM and Mix self-consistency mechanisms. The basic evaluator (exact_match_eval.py) implements a straightforward exact match evaluation with basic normalization and difficulty-weighted scoring. Features include : Basic string normalization (lowercase, whitespace, numbers) , Difficulty-based scoring (Hard: 3 points, Medium: 2 points, Easy: 1 point) , Detailed evaluation metrics by difficulty level and question type. The WTQ-style evaluator (wtq_eval.py) implements a more sophisticated evaluation approach based on the WikiTableQuestions methodology. Features include : Advanced NORM mechanism for answer normalization , Mix self-consistency evaluation using 5 samples per question , Unit and date standardization , Confidence scoring based on prediction agreement.
+If you do **NOT** have all API keys yet, get them here:
+
+- [OPENAI](https://platform.openai.com/docs/overview)
+- [ANTHROPIC](https://console.anthropic.com/login?selectAccount=true&returnTo=%2Fsettings%2Fkeys%3F)
+- [GEMINI](https://ai.google.dev/gemini-api/docs/api-key)
+- [MISTRAL](https://auth.mistral.ai/ui/login?flow=1be720ed-8a74-4e25-8034-4c837cc6e28e)
+
+### 2.3 Install Dependencies from `requirements.txt`
+
+Ensure that you have the necessary Python packages installed for working with environment variables and the LangChain agent
+
+#### 2.3.1 Locate the `requirements.txt` file 
+
+Locate the `reuirements.txt` file within this repository to see the required packages and versions.
+
+#### 2.3.2 Install requirements
+
+To install the requirements use the following command
+
+    pip install -r requirements.txt
+
+If these steps did **NOT** work, you have to install the dependencies manually, by going throught the files and installing all packages that throw errors.
+
+---
+
+## 3 Benchmark
+

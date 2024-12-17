@@ -10,10 +10,9 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain.schema import LLMResult
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_mistralai import ChatMistralAI
 import json
-from langchain_google_vertexai import ChatVertexAI
-
-
 
 def strict_evaluator(question: str, ground_truth: str, answer: str):
     """
@@ -30,7 +29,10 @@ def strict_evaluator(question: str, ground_truth: str, answer: str):
     eval_prompt = PromptTemplate(
         input_variables=["question", "ground_truth", "answer"],
         template=(
-            "You are a strict evaluator for answers. You will evaluate whether the student's answer strictly matches the ground truth. It is fine to have some leeway in terms of numerical rounding. i.e 101.1 as ground truth and the student answer is 101.2 should be considered correct. "
+            "You are a strict evaluator for answers. You will evaluate whether the student's answer strictly matches the ground truth." 
+            "It is fine to have some leeway in terms of numerical rounding. i.e 101.1 as ground truth and the student answer is 101.2 should be considered correct. "
+            "It is also fine to have some leeway in terms of numerical formatting. i.e. 123443 as ground truth and the students answer is 123,443 should be considered correct."
+            "It is okay if the order of string values is not identical. e.g. ['IDX54421', 'IDX4223', 'IDA7786'] as ground truth and the students answer is ['IDA7786','IDX4223','IDX54421',] should be considered correct."
             "Provide a binary score (1 or 0) based on correctness.\n\n"
             "Question: {question}\n"
             "Ground Truth: {ground_truth}\n"
@@ -39,8 +41,7 @@ def strict_evaluator(question: str, ground_truth: str, answer: str):
         ),
     )
 
-    # llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-    llm = ChatVertexAI(model="gemini-1.5-flash")
+    llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
     eval_chain = LLMChain(llm=llm, prompt=eval_prompt)
 
@@ -108,7 +109,21 @@ class DataFrameAgentProcessor:
                 model=model, api_key=api_key, temperature=0.0
             )
         elif model_type.lower() == 'gemini':
-            self.model = ChatVertexAI(model="gemini-1.5-flash")
+            api_key = os.getenv("GEMINI_API_KEY")
+            if not api_key:
+                raise EnvironmentError("GEMINI_API_KEY environment variable not set.")
+
+            self.model = ChatGoogleGenerativeAI(
+                model=model,api_key=api_key, temperature=0)
+
+        elif model_type.lower() == 'mistral':
+            api_key = os.getenv("MISTRAL_API_KEY")
+            if not api_key:
+                raise EnvironmentError("MISTRAL environment variable not set.")
+
+            self.model = ChatMistralAI(
+                model=model, api_key=api_key,temperature=0)
+
         else:
             raise ValueError("Invalid model_type. Choose 'openai' or 'anthropic'.")
 
@@ -242,12 +257,12 @@ class DataFrameAgentProcessor:
 
 
 questions_folder = "./questions/" 
-output_folder = "./results_folder/gemini"
+output_folder = "./results_folder/"
 
 processor = DataFrameAgentProcessor(
-    model_type="gemini",
+    model_type="openai",
     questions_path="",
-    model="gemini-1.5-flash"          
+    model="gpt-4"          
 )
 
 processor.process_questions_folder(

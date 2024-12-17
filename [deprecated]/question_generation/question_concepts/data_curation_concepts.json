@@ -2,7 +2,7 @@
   {
     "Type": "Data Curation",
     "Subtype": "Data Quality Assessment and Validation",
-    "Short Explanation": "Assess the ability to detect and address data quality issues, such as duplicates, missing values, outliers, and ensure data meets predefined quality standards.",
+    "Short Explanation": "Assess the ability to detect data quality issues, such as duplicates, missing values, outliers, and ensure data meets predefined quality standards.",
     "Examples": [
       "Identify and flag rows in a sales dataset where the 'Price' column contains negative values.",
       "Validate a customer database to ensure all email addresses follow a valid format (e.g., 'example@domain.com')."
@@ -25,7 +25,7 @@
 },
   {
     "Type": "Data Curation",
-    "Subtype": "Data Cleaning and Deduplication",
+    "Subtype": "Data Cleaning",
     "Short Explanation": "Test the ability to apply cleaning techniques to address missing, inconsistent, or incorrect data, and to identify and remove duplicate records in datasets.",
     "Examples": [
       "Fill missing values in a weather dataset's 'Temperature' column using the average temperature of the respective day.",
@@ -71,16 +71,5 @@
     ],
     "Constraints": "Ensure no data loss occurs during aggregation, and transformations should maintain data interpretability.",
     "Format": "All transformations and aggregations should be clearly documented with steps and logic to ensure reproducibility."
-  },
-  {
-    "Type": "Data Curation",
-    "Subtype": "Data Mapping",
-    "Short Explanation": "Evaluate the ability to link data from different sources or formats through semantic relationships.",
-    "Examples": [
-      "Map customer IDs from a CRM system to their corresponding transaction IDs in a payment system.",
-      "Link product codes between two datasets where one uses internal codes and the other uses external vendor codes."
-    ],
-    "Constraints": "",
-    "Format": ""
   }
 ]
