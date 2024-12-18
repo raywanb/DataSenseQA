@@ -41,7 +41,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
         "result": "The new deaths reported for the country Angola is 1.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What is the 'Deaths / 100 Cases' percentage for Afghanistan?",
@@ -140,7 +140,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
         "result": "The country with the highest '1 week % increase' in cases is Papua New Guinea.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Identify the ratio between Deaths and New Cases by each Region.",
