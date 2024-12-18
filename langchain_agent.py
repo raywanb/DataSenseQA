@@ -1,6 +1,8 @@
 import os
 import json
+import tabulate
 import pandas as pd
+from dotenv import load_dotenv
 import time
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -91,7 +93,14 @@ def run_evaluation(data: List[Any], output_file: str):
         question = item.get("question", "")
         ground_truth = item.get("ground_truth", "")
         student_answer = item.get("result", "")
-        item["score"] = strict_evaluator(question, ground_truth, student_answer)
+        try:
+            item["score"] = strict_evaluator(question, ground_truth, student_answer)
+        except Exception as e:
+            with open("./error.json", 'w') as f:
+                json.dump(data, f, indent=4)
+            print(f"Dumped file")
+            raise RuntimeError("run time error")
+            
 
     output_dir = os.path.dirname(output_file)
 
@@ -114,6 +123,8 @@ class DataFrameAgentProcessor:
         :param model_type: Specify the model type ('openai' or 'anthropic').
         :param questions_path: Path to the JSON file containing questions.
         """
+
+        load_dotenv()
         self.model_type = model_type
         self.questions_path = questions_path
         self.model_name = model
@@ -278,20 +289,18 @@ class DataFrameAgentProcessor:
 
 if __name__ == "__main__":
 
+    # DO NOT EDIT
     questions_folder = "./questions/" 
     output_folder = "./results_folder/"
 
+    # Edit this to the model you want to test
     processor = DataFrameAgentProcessor(
-        model_type="anthropic",
+        model_type="gemini",
         questions_path="",
-        model="claude-3-5-haiku-latest"          
+        model="gemini-1.5-pro"
     )
 
-    # processor.process_questions_folder(
-    #     questions_folder=questions_folder,
-    #     output_folder=output_folder
-    # )
-
+    # Edit this path to the question collection you want to execute
     processor.process_questions_list(
         ["./questions/statistics_4_hedge_fund_questions.json"],
         output_folder
