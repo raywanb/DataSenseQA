@@ -8,7 +8,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/business/crm/",
         "result": "30 people closed deals for 'GTX Plus Basic'.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Which account in the accounts table has the highest close value for deals in the sales_pipeline table?",
@@ -30,7 +30,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/business/crm/",
         "result": "Celia Rouche",
-        "score": 0
+        "score": 1
     },
     {
         "question": "List all products from the products table with a sales price above $1000 that are part of a 'Won' deal in the sales_pipeline table.",
@@ -106,8 +106,8 @@
         "subtype": "Pattern and Trend Recognition",
         "type": "information retrieval",
         "table_path": "./datasets/business/crm/",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
-        "score": 0
+        "result": "GTX Basic",
+        "score": 1
     },
     {
         "question": "Analyze the average time taken to close deals based on product type.",
@@ -128,8 +128,8 @@
         "subtype": "Pattern and Trend Recognition",
         "type": "information retrieval",
         "table_path": "./datasets/business/crm/",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
-        "score": 0
+        "result": "GTX Plus Pro",
+        "score": 1
     },
     {
         "question": "Group all accounts by sector and list the total deal value for each sector.",
@@ -199,7 +199,7 @@
     },
     {
         "question": "Give me a overview of the close rate of each sales person?",
-        "ground_truth": "Kan-code: 115, Hottechi: 111, Konex: 108, Condax: 105, Rangreen: 75.",
+        "ground_truth": "Reed Clapper: 65.40%, Garret Kinder: 60.98%, Donn Cantrell: 57.45%, Hayden Neloms: 52.97%, Cecily Lampkin: 52.71%",
         "derivation": "won_deals_by_account = sales_pipeline_df[sales_pipeline_df['deal_stage'] == 'Won'].groupby('account')['opportunity_id'].count().reset_index(); won_deals_by_account.rename(columns={'opportunity_id': 'won_deals_count'}, inplace=True);ranked_accounts = won_deals_by_account.sort_values(by='won_deals_count', ascending=False)",
         "difficulty": "easy",
         "subtype": "Summary and Reporting from Tables",
@@ -221,7 +221,7 @@
     },
     {
         "question": "Which combination of product, region, and sales agent maximizes deal win rate",
-        "ground_truth": "Won: 33.3%, Engaged: 40.2%, Lost: 26.5%",
+        "ground_truth": "Product: MG Advanced, Region: Kenya, Sales Agent: Anna Snelling",
         "derivation": "pipeline_full = pd.merge(pd.merge(sales_pipeline,products,on='product'),sales_teams,on='sales_agent); win_rate_data = pipeline_full.groupby(['product','regional_office','sales_agent']).agg(total_deals=('opportunity_id','count'),won_deals=('deal_stage',lambda x:(x=='Won').sum())).reset_index(); win_rate_data['win_rate'] = win_rate_data['won_deals'] / win_rate_data['total_deals']; win_rate_data.loc[win_rate_data['win_rate'].idxmax()]",
         "difficulty": "hard",
         "subtype": "Summary and Reporting from Tables",

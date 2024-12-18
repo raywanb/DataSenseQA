@@ -41,7 +41,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
         "result": "Angola reported 1 new death.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What is the 'Deaths / 100 Cases' percentage for Afghanistan?",
@@ -52,7 +52,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
         "result": "3.5%",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Retrieve the 'WHO Region' for Andorra.",
@@ -63,7 +63,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "easy",
         "result": "Andorra is in the WHO Region of Europe.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "List all countries where the number of confirmed cases is greater than 400,000.",
