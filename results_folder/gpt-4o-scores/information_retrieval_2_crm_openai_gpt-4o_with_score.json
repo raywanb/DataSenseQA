@@ -199,7 +199,7 @@
     },
     {
         "question": "Give me a overview of the close rate of each sales person?",
-        "ground_truth": "\"Reed Clapper: 65.40%, Garret Kinder: 60.98%, Donn Cantrell: 57.45%, Hayden Neloms: 52.97%, Cecily Lampkin: 52.71%",
+        "ground_truth": "Reed Clapper: 65.40%, Garret Kinder: 60.98%, Donn Cantrell: 57.45%, Hayden Neloms: 52.97%, Cecily Lampkin: 52.71%",
         "derivation": "won_deals_by_account = sales_pipeline_df[sales_pipeline_df['deal_stage'] == 'Won'].groupby('account')['opportunity_id'].count().reset_index(); won_deals_by_account.rename(columns={'opportunity_id': 'won_deals_count'}, inplace=True);ranked_accounts = won_deals_by_account.sort_values(by='won_deals_count', ascending=False)",
         "difficulty": "easy",
         "subtype": "Summary and Reporting from Tables",
