@@ -265,7 +265,7 @@
     },
     {
         "question": "Group the data by crime type and calculate the percentage of each group rounded to two values after the comma. Then calculate the difference of the group with the largest and the smallest percentage. Print out this delta percentage rounded to one value after the comma.",
-        "ground_truth": "23.89",
+        "ground_truth": "23.9",
         "derivation": "1. LOAD CSV file into 'data'.  \n2. CALCULATE percentage of 'Primary Type' occurrences.  \n3. ROUND percentages to 3 decimals.  \n4. COMPUTE difference: max - min, rounded to 2 decimals.  \n5. PRINT the difference.  ",
         "type": "data curation",
         "subtype": "data transformation and aggregation",
