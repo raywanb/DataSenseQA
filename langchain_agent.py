@@ -3,6 +3,8 @@ import json
 import pandas as pd
 import time
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_mistralai import ChatMistralAI
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 import re
