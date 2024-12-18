@@ -89,7 +89,14 @@ def run_evaluation(data: List[Any], output_file: str):
         question = item.get("question", "")
         ground_truth = item.get("ground_truth", "")
         student_answer = item.get("result", "")
-        item["score"] = strict_evaluator(question, ground_truth, student_answer)
+        try:
+            item["score"] = strict_evaluator(question, ground_truth, student_answer)
+        except Exception as e:
+            with open("./error.json", 'w') as f:
+                json.dump(data, f, indent=4)
+            print(f"Dumped file")
+            raise RuntimeError("run time error")
+            
 
     output_dir = os.path.dirname(output_file)
 
@@ -280,9 +287,9 @@ if __name__ == "__main__":
     output_folder = "./results_folder/"
 
     processor = DataFrameAgentProcessor(
-        model_type="anthropic",
+        model_type="openai",
         questions_path="",
-        model="claude-3-5-haiku-latest"          
+        model="gpt-3.5-turbo"          
     )
 
     # processor.process_questions_folder(
