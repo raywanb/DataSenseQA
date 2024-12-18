@@ -40,8 +40,8 @@
         "subtype": "descriptive statistics",
         "type": "statistics",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
-        "score": 0
+        "result": "Regular Plan: 1.11 Direct Plan: 0.42",
+        "score": 1
     },
     {
         "question": "Compute the total count of schemes with 'Regular Plan - Total TER (%)' greater than 1%.",
@@ -73,7 +73,7 @@
         "subtype": "data aggregation, grouping and classification",
         "type": "information retrieval",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
+        "result": "Agent is unable to answer this question",
         "score": 0
     },
     {
@@ -84,8 +84,8 @@
         "subtype": "direct value retrieval",
         "type": "information retrieval",
         "table_path": "./datasets/business/Indian_Mutual_fund_TER.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
-        "score": 0
+        "result": "Taurus Flexi Cap Fund has the highest Regular Plan - Total TER (%)",
+        "score": 1
     },
     {
         "question": "Identify the scheme with the lowest 'Direct Plan - Total TER (%)'.",
