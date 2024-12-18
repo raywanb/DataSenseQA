@@ -62,16 +62,6 @@
     "difficulty": "hard",
     "table_path": "./datasets/research/Glioma.csv"
   },
-  //wrong
-  {
-    "question": "Calculate the variance in age at diagnosis across different glioma grades.",
-    "ground_truth": "IDH1-mutated variance: 149.78, IDH1-wildtype variance: 182.16",
-    "derivation": "const agesByIdh1 = _.groupBy(data, 'IDH1'); standardDeviation(agesByIdh1[1]) ** 2",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/Glioma.csv"
-  },
   {
     "question": "Is there a correlation between EGFR mutation status and glioma grade? Determine if EGFR mutation rates are significantly different between different Glioma Grades.",
     "ground_truth": "Yes. Grade 0: 6.37% EGFR mutation rate, Grade 1: 23.01% EGFR mutation rate",
