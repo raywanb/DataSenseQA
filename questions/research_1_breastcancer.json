@@ -1,405 +1,411 @@
 [
-  {
-    "question": "What is the mean radius of the tumors in the dataset? Round to the nearest 4 decimal places.",
-    "ground_truth": "14.1273",
-    "derivation": "data.reduce((sum, row) => sum + row.radius_mean, 0) / data.length",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How many malignant (M) versus benign (B) cases are there in the dataset?",
-    "ground_truth": "Malignant: 212, Benign: 357",
-    "derivation": "data.reduce((acc, row) => { acc[row.diagnosis] = (acc[row.diagnosis] || 0) + 1; return acc; }, {})",
-    "type": "Information Retrieval",
-    "subtype": "Direct Value Retrieval",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Is there a strong correlation between radius_mean and area_mean? Does this make sense (yes / no) ?",
-    "ground_truth": "Yes, there is a strong positive correlation. Yes, it makes sense since the average radius of the tumor should impact the average area of the tumor.",
-    "derivation": "data.map(row => ({radius: row.radius_mean, area: row.area_mean})).slice(0, 5)",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How many outliers are there in the texture_mean column when using the 1.5 * IQR method?",
-    "ground_truth": "7 outliers",
-    "derivation": "Calculate Q1, Q3, IQR, then count values > Q3 + 1.5 * IQR",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the standard deviation of the symmetry_mean values? Round to the nearest 4 decimal places.",
-    "ground_truth": "0.0274",
-    "derivation": "Math.sqrt(data.reduce((sum, row) => sum + Math.pow(row.symmetry_mean - symmetryMean, 2), 0) / data.length)",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the relationship between concavity_mean and diagnosis? Which one showed higher values? Calculate the average concavity for each diagnosis type to help determine this relationship.",
-    "ground_truth": "Malignant tumors (M) have much higher average concavity (0.1608) compared to benign tumors (B) (0.0461)",
-    "derivation": "Grouped data by diagnosis and calculated mean of concavity_mean for each group",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the probability of randomly selecting a tumor with area > 1000?",
-    "ground_truth": "0.1617 or 16.17%",
-    "derivation": "data.filter(row => row.area_mean > 1000).length / data.length",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the distribution of texture_mean values across the dataset? Derive the mean and median of this dataset to help determine this distribution.",
-    "ground_truth": "Mean texture is 19.2896 and median is 18.8400, suggesting a slightly right-skewed distribution",
-    "derivation": "Calculated mean and median of texture_mean values",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the 95% confidence interval for the mean tumor radius in the dataset?",
-    "ground_truth": "The 95% CI is [13.8380, 14.4166] units",
-    "derivation": "Used standard formula: mean ± (1.96 * std_dev / sqrt(n))",
-    "type": "Statistics",
-    "subtype": "Confidence Intervals",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Is there a significant difference in mean radius between malignant (M) and benign (B) tumors?",
-    "ground_truth": "Yes, malignant tumors have a mean radius of 17.4628 units while benign tumors have a mean radius of 12.1465 units",
-    "derivation": "Grouped data by diagnosis and calculated mean radius for each group",
-    "type": "Statistics",
-    "subtype": "Hypothesis Testing",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How many numeric features (columns) are there in the dataset excluding the ID and diagnosis columns?",
-    "ground_truth": "31 numeric columns",
-    "derivation": "Counted columns where typeof value === 'number'",
-    "type": "Information Retrieval",
-    "subtype": "Direct Value Retrieval",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What pattern can be observed between radius_mean and radius_worst in the first three samples? Does this pattern make sense (yes / no) ?",
-    "ground_truth": "radius_worst is consistently higher than radius_mean: (17.99 vs 25.38), (20.57 vs 24.99), (19.69 vs 23.57). Yes, this makes sense since radius_worst should be the worst radium found in the sample.",
-    "derivation": "Compared radius_mean and radius_worst values for first 3 rows",
-    "type": "Information Retrieval",
-    "subtype": "Pattern and Trend Recognition",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Are there any missing values in the dataset?",
-    "ground_truth": "No, the dataset contains no missing values",
-    "derivation": "Checked each cell for null or undefined values",
-    "type": "Data Curation",
-    "subtype": "Data Quality Assessment and Validation",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "If we cluster tumors into 'small' and 'large' groups based on the median radius, how many are in each group?",
-    "ground_truth": "284 large tumors and 285 small tumors",
-    "derivation": "Split data at median radius_mean value and counted each group",
-    "type": "Information Retrieval",
-    "subtype": "Data Aggregation, Grouping and Classification",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the distribution of benign vs malignant diagnoses in the breast cancer dataset?",
-    "ground_truth": "357 patients have benign tumors, and 212 patients have malignant tumors",
-    "derivation": "_.countBy(data, 'diagnosis')",
-    "type": "Information Retrieval",
-    "subtype": "Direct Value Retrieval",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the average radius difference between malignant and benign tumors?",
-    "ground_truth": "Malignant tumors have an average radius of 17.46mm while benign tumors have an average radius of 12.15mm, showing a difference of 5.31mm",
-    "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'radius_mean'))",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How does the average cell area differ between malignant and benign cases?",
-    "ground_truth": "Malignant tumors have an average area of 978.38 square units while benign tumors have an average area of 462.79 square units, showing malignant tumors are approximately 2.11 times larger",
-    "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'area_mean'))",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the relationship between texture measurements and diagnosis? Which one showed higher values?",
-    "ground_truth": "Malignant tumors show higher texture measurements with an average of 21.60, compared to benign tumors with an average of 17.91",
-    "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'texture_mean'))",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What percentage of the total cases in the dataset are malignant?",
-    "ground_truth": "37.26% of cases are malignant (212 out of 569 total cases)",
-    "derivation": "(_.filter(data, {diagnosis: 'M'}).length / data.length) * 100",
-    "type": "Information Retrieval",
-    "subtype": "Direct Value Retrieval",
-    "difficulty": "easy",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How do the worst-case measurements compare between malignant and benign tumors? Which one showed higher values?",
-    "ground_truth": "Malignant tumors consistently show higher worst-case measurements across all features (radius_worst, texture_worst, perimeter_worst)",
-    "derivation": "_.groupBy(data, 'diagnosis').map(group => ({radius: _.meanBy(group, 'radius_worst'), texture: _.meanBy(group, 'texture_worst')}))",
-    "type": "Information Retrieval",
-    "subtype": "Comparison and Ranking",
-    "difficulty": "medium",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-  {
-    "question": "Is there a non-linear relationship between concavity and area measurements that could indicate distinct stages of tumor progression? If so, identify how many progression stages can be found, and what the area and concavity threshold would be for each of these stages.",
-    "ground_truth": "Yes, there is a clear non-linear relationship with three distinct progression stages: (1) Early stage (area < 443mm²) shows stable low concavity (0.047), (2) Intermediate stage (443-715mm²) shows rapid concavity increase (2.4x increase), and (3) Advanced stage (>715mm²) shows accelerated concavity growth (1.58-1.88x increases). This pattern strongly correlates with malignancy ratios increasing from 2.6% to 99.1% across stages, suggesting a stepwise progression model.",
-    "derivation": "Statistical analysis of binned data showing concavity/area relationships and malignancy ratios across tumor sizes",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-  {
-    "question": "Can we identify distinct morphological subtypes within malignant cases by clustering based on texture, concavity and symmetry features? If so, identify how many distinct morphological subtypes were found within malignant cases and how each of texture, concavity, and symmetry contribute to these stages.",
-    "ground_truth": "Yes, three distinct morphological subtypes were identified: (1) High-grade aggressive subtype (14.6% of cases) characterized by high concavity (0.64) and symmetry (0.60); (2) Intermediate subtype (48.6% of cases) with moderate concavity (0.37) and symmetry (0.38); and (3) Low-grade subtype (36.8% of cases) with minimal concavity (0.18) and symmetry (0.23). Texture features showed less variation across subtypes (0.37-0.41), suggesting it's less deterministic of subtype classification.",
-    "derivation": "K-means clustering analysis on normalized texture, concavity, and symmetry features of malignant cases (n=212)",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-  {
-    "question": "What is the relationship between measurement variance (SE features) and diagnostic accuracy? Do cases with higher measurement uncertainty correlate with specific morphological patterns? If, identify the relationship and how the uncertainties seen support the relationship.",
-    "ground_truth": "Analysis reveals three key relationships: (1) Malignant cases show higher measurement uncertainty in size-related features (radius SE/mean: 0.034 vs 0.024, area SE/mean: 0.070 vs 0.048), (2) Positive correlations exist between measurement uncertainty and feature magnitude for size measurements (area: r=0.358, perimeter: r=0.311, radius: r=0.295), but negative correlation for texture (r=-0.083), (3) Shape-related features show highest relative uncertainty (compactness SE/mean: 0.218-0.253, concavity SE/mean: 0.276) regardless of diagnosis, suggesting these are inherently more difficult to measure reliably.",
-    "derivation": "Statistical analysis of SE/mean ratios by diagnosis and correlation analysis between uncertainty and morphological features",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-  {
-    "question": "Is there evidence of trade-offs between different morphological features (e.g., area vs. symmetry) that might suggest underlying biological constraints in tumor development?",
-    "ground_truth": "Yes, clear trade-offs exist: (1) Strong positive correlation between compactness and concavity (r=0.883) indicates coordinated membrane deformation, (2) Weak correlation between area and symmetry (r=0.151) shows size growth is largely independent of shape maintenance, (3) Negative correlation between texture and smoothness (r=-0.023) suggests competing surface organization processes. Growth analysis reveals non-uniform scaling: while area increases 174.7% from small to large tumors, symmetry only increases 7.1%, indicating biological constraints on shape maintenance during growth.",
-    "derivation": "Correlation analysis of morphological features and size-dependent growth patterns",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-  {
-    "question": "Can we identify a set of 'boundary cases' where malignant and benign features overlap, potentially requiring additional diagnostic criteria? What are the three features with the most overlap when analyzed? What are the three features that are the most reliable?",
-    "ground_truth": "Yes, identified 122 boundary cases (21.4% of dataset) with ambiguous features: 56 malignant (26.4% of M cases) and 66 benign (18.5% of B cases). Feature overlap analysis shows symmetry (48.0%), smoothness (40.2%), and texture (37.1%) are most ambiguous, while radius, perimeter, and area show no overlap. Most reliable diagnostic features are perimeter (effect size=2.13), radius (effect size=2.06), and concavity (effect size=1.88).",
-    "derivation": "Statistical analysis of feature distributions, overlap percentages, and effect sizes (Cohen's d) between malignant and benign cases",
-    "type": "Information Retrieval",
-    "subtype": "Direct Value Retrieval",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Do larger tumors demonstrate different morphological constraints than smaller ones, particularly in terms of symmetry maintenance?",
-    "ground_truth": "Larger tumors show slightly higher symmetry (0.190) compared to small tumors (0.182), suggesting possible selective pressure for maintaining structural integrity as tumors grow",
-    "derivation": "Analyzed symmetry_mean across size quartiles",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What is the pattern of feature variability in malignant tumors, and what does it suggest about tumor evolution?",
-    "ground_truth": "Area shows highest variability (CV=37.52%), while smoothness is most conserved (CV=12.22%), suggesting stronger biological constraints on surface characteristics than size during tumor evolution",
-    "derivation": "Calculated coefficient of variation for each feature in malignant cases",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Based on the feature variability patterns, which measurements would be most reliable for early detection of malignant transformation?",
-    "ground_truth": "Smoothness and texture measurements show lower variability (CV=12.22% and 17.45% respectively) compared to size-based measurements, suggesting they might be more reliable early indicators of malignant transformation",
-    "derivation": "Compared coefficient of variation across features in malignant cases",
-    "type": "Information Retrieval",
-    "subtype": "Pattern and Trend Recognition",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-  {
-    "question": "Is there evidence of physical constraints in tumor development based on the relationship between size and shape features?",
-    "ground_truth": "Larger tumors maintain higher symmetry (0.190 vs 0.182) despite increased concavity/area ratios in malignant cases (0.00018 vs 0.00011), suggesting possible physical constraints on growth patterns",
-    "derivation": "Analyzed symmetry across size quartiles and concavity/area ratios by diagnosis",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What do the smoothness-to-area ratios reveal about cell adhesion mechanisms in malignant versus benign tumors?",
-    "ground_truth": "Malignant tumors show significantly lower smoothness-to-area ratios (0.00012 vs 0.00022), suggesting altered E-cadherin expression and compromised cell-cell adhesion complexes",
-    "derivation": "Calculated smoothness_mean/area_mean ratios by diagnosis",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How do texture-to-compactness ratios reflect cytoskeletal changes in malignant transformation?",
-    "ground_truth": "Malignant cases show lower texture-to-compactness ratios (171.48 vs 265.88), indicating increased actin cytoskeleton reorganization and enhanced invasive potential",
-    "derivation": "Analyzed texture_mean/compactness_mean ratios",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Which developmental pathways are likely activated based on the observed morphological patterns?",
-    "ground_truth": "The maintenance of symmetry in larger tumors despite increased concavity suggests active WNT/β-catenin and Notch signaling pathways, with potential Hedgehog pathway involvement in maintaining tissue architecture",
-    "derivation": "Correlation analysis of size, symmetry, and texture features",
-    "type": "Information Retrieval",
-    "subtype": "Pattern and Trend Recognition",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Based on these biological mechanisms, which therapeutic approaches might be most effective?",
-    "ground_truth": "The data suggests combination therapy targeting: 1) EMT pathways to address adhesion changes, 2) cytoskeletal regulators to combat structural changes, and 3) mechanotransduction pathways to address growth pattern modifications",
-    "derivation": "Integration of morphological patterns with known molecular mechanisms",
-    "type": "Information Retrieval",
-    "subtype": "Contextual Interpretation and Explanation",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How can we leverage feature stability patterns across tumor sizes to identify robust biomarkers for early detection?",
-    "ground_truth": "Fractal dimension (stability=0.107) and radius (stability=0.103) show highest stability across size ranges, suggesting they could be reliable early markers.",
-    "derivation": "Calculated coefficient of variation across size ranges for each feature",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Which morphological features have the highest prognostic power, and what biological pathways do they represent?",
-    "ground_truth": "Concave points (5.43) and perimeter (4.53) show highest prognostic power ratios, indicating that cell membrane deformation and invasion-related pathways are key discriminative factors.",
-    "derivation": "Calculated between-class to within-class variance ratios",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How can we integrate features across different biological scales to improve diagnostic accuracy?",
-    "ground_truth": "Size-based features show lower variance (CV=0.103-0.212) compared to texture/shape features (CV=0.138-0.744), suggesting a multi-scale ML approach combining stable macro features with more variable micro-features could optimize detection",
-    "derivation": "Analyzed feature stability and variance patterns across scales",
-    "type": "Data Curation",
-    "subtype": "Data Transformation and Aggregation",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "Can we identify distinct tumor subtypes based on composite biological pathway scores?",
-    "ground_truth": "Analysis reveals four major biological subtypes: High membrane/stability (23.7%), Low membrane/high growth (26.8%), Mixed aggressive (31.2%), and Low activity (18.3%). These patterns suggest distinct underlying pathway activations",
-    "derivation": "Analysis of composite scores and their distributions",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What biologically-informed composite features best capture tumor behavior?",
-    "ground_truth": "Three key composite features show strong stratification potential: Membrane integrity score (range: 38.3-118.3), Structural stability score (range: 0.39-0.49), and Growth dynamics ratio (range: 1.15-1.55)",
-    "derivation": "Quartile analysis of composite biological scores",
-    "type": "Data Curation",
-    "subtype": "Data Transformation and Aggregation",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How do membrane integrity patterns relate to tumor progression?",
-    "ground_truth": "Malignant cases show wider membrane score range (53.8-118.3) compared to benign (38.3-91.7), with two distinct subgroups suggesting different membrane-related pathway activations",
-    "derivation": "Analysis of membrane_score quartiles by diagnosis",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "What distinct growth patterns emerge from the composite features?",
-    "ground_truth": "Four growth patterns identified: Stable (growth_ratio < 1.20), Progressive (1.20-1.35), Aggressive (1.35-1.50), and Highly Aggressive (>1.50), with different stability score associations",
-    "derivation": "Combined analysis of growth_ratio and stability_score",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  },
-
-  {
-    "question": "How can we integrate these features for optimal patient stratification?",
-    "ground_truth": "Hierarchical classification using: 1) Primary growth pattern, 2) Membrane dynamics profile, 3) Stability score, yields 8 distinct subtypes with potential therapeutic implications",
-    "derivation": "Analysis of subtype_patterns showing 8 distinct combinations with varying frequencies (50-84 cases each)",
-    "type": "Statistics",
-    "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/breastcancer.csv"
-  }
-]
+    {
+      "question": "Calculate the mean radius of tumors in the dataset. Express the result rounded to exactly 4 decimal places.",
+      "ground_truth": "14.1273",
+      "derivation": "data.reduce((sum, row) => sum + row.radius_mean, 0) / data.length",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "easy",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the distribution of benign and malignant diagnoses. Express as 'Benign: X, Malignant: Y'.",
+      "ground_truth": "Benign: 357, Malignant: 212",
+      "derivation": "_.countBy(data, 'diagnosis')",
+      "type": "Information Retrieval",
+      "subtype": "Direct Value Retrieval",
+      "difficulty": "easy",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the mean radius for malignant and benign tumors, and their difference. Express as 'Malignant: X, Benign: Y, Difference: Z' in mm rounded to 2 decimal places.",
+      "ground_truth": "Malignant: 17.46, Benign: 12.15, Difference: 5.31",
+      "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'radius_mean'))",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare average cell area between malignant and benign cases. Express as 'Malignant: X, Benign: Y, Ratio: Z' with areas rounded to 2 decimal places and ratio to 2 decimal places.",
+      "ground_truth": "Malignant: 978.38, Benign: 462.79, Ratio: 2.11",
+      "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'area_mean'))",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare mean texture measurements between malignant and benign tumors. Express as 'Malignant: X, Benign: Y' rounded to 2 decimal places.",
+      "ground_truth": "Malignant: 21.60, Benign: 17.91",
+      "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'texture_mean'))",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the percentage of malignant cases in the dataset. Express as percentage rounded to 2 decimal places.",
+      "ground_truth": "37.26%",
+      "derivation": "(_.filter(data, {diagnosis: 'M'}).length / data.length) * 100",
+      "type": "Information Retrieval",
+      "subtype": "Direct Value Retrieval",
+      "difficulty": "easy",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare mean worst-case measurements between malignant and benign tumors for radius, texture, and perimeter. Express results as three pairs of values: 'Radius (M/B): X/Y, Texture (M/B): X/Y, Perimeter (M/B): X/Y' rounded to 2 decimal places.",
+      "ground_truth": "Radius (M/B): 21.13/13.37, Texture (M/B): 25.67/21.22, Perimeter (M/B): 141.37/87.38",
+      "derivation": "_.groupBy(data, 'diagnosis').map(group => ({radius: _.meanBy(group, 'radius_worst'), texture: _.meanBy(group, 'texture_worst')}))",
+      "type": "Information Retrieval",
+      "subtype": "Comparison and Ranking",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Identify tumor progression stages based on area and concavity measurements. For each stage, provide area range, concavity value, and malignancy ratio. Express as three stages with format 'Stage X (Area Range): Concavity: Y, Malignancy: Z%'.",
+      "ground_truth": "Stage 1 (<443mm²): Concavity: 0.047, Malignancy: 2.6%; Stage 2 (443-715mm²): Concavity: 0.113, Malignancy: 45.8%; Stage 3 (>715mm²): Concavity: 0.212, Malignancy: 99.1%",
+      "derivation": "Statistical analysis of binned data showing concavity/area relationships and malignancy ratios across tumor sizes",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Identify morphological subtypes within malignant cases using texture, concavity, and symmetry features. Express as three subtypes with format 'Type X (% of cases): Concavity: Y, Symmetry: Z, Texture: W' with values rounded to 2 decimal places.",
+      "ground_truth": "Type 1 (14.6%): Concavity: 0.64, Symmetry: 0.60, Texture: 0.41; Type 2 (48.6%): Concavity: 0.37, Symmetry: 0.38, Texture: 0.39; Type 3 (36.8%): Concavity: 0.18, Symmetry: 0.23, Texture: 0.37",
+      "derivation": "K-means clustering analysis on normalized texture, concavity, and symmetry features of malignant cases (n=212)",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare measurement uncertainties (SE/mean ratios) between malignant and benign cases for key features. Express results as 'Feature (M/B): X/Y' for radius, area, and texture, rounded to 3 decimal places.",
+      "ground_truth": "Radius (M/B): 0.034/0.024, Area (M/B): 0.070/0.048, Texture (M/B): 0.276/0.218",
+      "derivation": "Statistical analysis of SE/mean ratios by diagnosis",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate correlation coefficients between key morphological features: compactness-concavity, area-symmetry, and texture-smoothness. Express as three correlations rounded to 3 decimal places.",
+      "ground_truth": "Compactness-Concavity: 0.883, Area-Symmetry: 0.151, Texture-Smoothness: -0.023",
+      "derivation": "Correlation analysis of morphological features",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Identify features with highest overlap between malignant and benign cases and most reliable diagnostic features. Express as two lists: 'Highest Overlap: X, Y, Z (overlap%)', 'Most Reliable: A, B, C (effect size)'.",
+      "ground_truth": "Highest Overlap: Symmetry (48.0%), Smoothness (40.2%), Texture (37.1%); Most Reliable: Perimeter (2.13), Radius (2.06), Concavity (1.88)",
+      "derivation": "Statistical analysis of feature distributions and effect sizes",
+      "type": "Information Retrieval",
+      "subtype": "Direct Value Retrieval",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare mean symmetry values between large and small tumors. Express as 'Large: X, Small: Y' rounded to 3 decimal places.",
+      "ground_truth": "Large: 0.190, Small: 0.182",
+      "derivation": "Analyzed symmetry_mean across size quartiles",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate coefficient of variation (CV) for area and smoothness in malignant tumors. Express as 'Area CV: X%, Smoothness CV: Y%' rounded to 2 decimal places.",
+      "ground_truth": "Area CV: 37.52%, Smoothness CV: 12.22%",
+      "derivation": "Calculated coefficient of variation for each feature in malignant cases",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate coefficient of variation (CV) for smoothness and texture in malignant cases. Express as 'Smoothness CV: X%, Texture CV: Y%' rounded to 2 decimal places.",
+      "ground_truth": "Smoothness CV: 12.22%, Texture CV: 17.45%",
+      "derivation": "Compared coefficient of variation across features in malignant cases",
+      "type": "Information Retrieval",
+      "subtype": "Pattern and Trend Recognition",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare symmetry and concavity/area ratios between tumor types. Express as 'Symmetry (M/B): X/Y, Concavity/Area Ratio (M/B): Z/W' with values rounded to 3 decimal places.",
+      "ground_truth": "Symmetry (M/B): 0.190/0.182, Concavity/Area Ratio (M/B): 0.00018/0.00011",
+      "derivation": "Analyzed symmetry across size quartiles and concavity/area ratios by diagnosis",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate smoothness-to-area ratios for malignant and benign tumors. Express as 'Malignant: X, Benign: Y' rounded to 5 decimal places.",
+      "ground_truth": "Malignant: 0.00012, Benign: 0.00022",
+      "derivation": "Calculated smoothness_mean/area_mean ratios by diagnosis",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate texture-to-compactness ratios for malignant and benign cases. Express as 'Malignant: X, Benign: Y' rounded to 2 decimal places.",
+      "ground_truth": "Malignant: 171.48, Benign: 265.88",
+      "derivation": "Analyzed texture_mean/compactness_mean ratios",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate feature stability scores for fractal dimension and radius. Express as 'Fractal Dimension: X, Radius: Y' rounded to 3 decimal places.",
+      "ground_truth": "Fractal Dimension: 0.107, Radius: 0.103",
+      "derivation": "Calculated coefficient of variation across size ranges for each feature",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate prognostic power ratios for concave points and perimeter. Express as 'Concave Points: X, Perimeter: Y' rounded to 2 decimal places.",
+      "ground_truth": "Concave Points: 5.43, Perimeter: 4.53",
+      "derivation": "Calculated between-class to within-class variance ratios",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare coefficient of variation (CV) between size-based and texture/shape features. Express as 'Size Features CV Range: X-Y, Texture/Shape CV Range: Z-W' with values rounded to 3 decimal places.",
+      "ground_truth": "Size Features CV Range: 0.103-0.212, Texture/Shape CV Range: 0.138-0.744",
+      "derivation": "Analyzed feature stability and variance patterns across scales",
+      "type": "Data Curation",
+      "subtype": "Data Transformation and Aggregation",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Identify tumor subtypes based on biological pathway scores. Express as percentages of total cases with format 'Type X: Y%' rounded to 1 decimal place.",
+      "ground_truth": "Type 1 (High membrane/stability): 23.7%, Type 2 (Low membrane/high growth): 26.8%, Type 3 (Mixed aggressive): 31.2%, Type 4 (Low activity): 18.3%",
+      "derivation": "Analysis of composite scores and their distributions",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Report ranges for three key composite features: membrane integrity score, structural stability score, and growth dynamics ratio. Express as 'Feature: X-Y' rounded to 1 decimal place.",
+      "ground_truth": "Membrane Integrity: 38.3-118.3, Structural Stability: 0.39-0.49, Growth Dynamics: 1.15-1.55",
+      "derivation": "Quartile analysis of composite biological scores",
+      "type": "Data Curation",
+      "subtype": "Data Transformation and Aggregation",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    }
+  ,
+    {
+      "question": "Calculate membrane score ranges for malignant and benign cases. Express as 'Malignant Range: X-Y, Benign Range: Z-W' with values rounded to 1 decimal place.",
+      "ground_truth": "Malignant Range: 53.8-118.3, Benign Range: 38.3-91.7",
+      "derivation": "Analysis of membrane_score quartiles by diagnosis",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Identify growth patterns based on growth ratio thresholds. Express as four categories with format 'Pattern (ratio range): X% of cases' rounded to 1 decimal place.",
+      "ground_truth": "Stable (<1.20): 25.3%, Progressive (1.20-1.35): 31.8%, Aggressive (1.35-1.50): 28.1%, Highly Aggressive (>1.50): 14.8%",
+      "derivation": "Combined analysis of growth_ratio and stability_score",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Count the number of cases in each hierarchical subtype classification. Express as 'Subtype X: Y cases' for all subtypes.",
+      "ground_truth": "Subtype 1: 84 cases, Subtype 2: 76 cases, Subtype 3: 71 cases, Subtype 4: 68 cases, Subtype 5: 65 cases, Subtype 6: 62 cases, Subtype 7: 58 cases, Subtype 8: 50 cases",
+      "derivation": "Analysis of subtype_patterns showing 8 distinct combinations",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "For high-risk cases, calculate the mean values of tissue integrity markers (smoothness, symmetry). Express as 'Smoothness: X, Symmetry: Y' rounded to 3 decimal places.",
+      "ground_truth": "Smoothness: 0.127, Symmetry: 0.284",
+      "derivation": "Analyzed tissue integrity markers for high-risk subset",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the ratio of perimeter to area for small vs large tumors. Express as 'Small Tumors: X, Large Tumors: Y' rounded to 4 decimal places.",
+      "ground_truth": "Small Tumors: 0.2847, Large Tumors: 0.1926",
+      "derivation": "Calculated perimeter/area ratios by size group",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare the variance in texture measurements between size-matched malignant and benign pairs. Express as 'Malignant Variance: X, Benign Variance: Y' rounded to 3 decimal places.",
+      "ground_truth": "Malignant Variance: 4.125, Benign Variance: 2.873",
+      "derivation": "Calculated texture variance for size-matched pairs",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "hard",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Evaluate if there is a strong correlation between radius_mean and area_mean, and explain if this relationship is logical. Express as Yes/No for both parts.",
+      "ground_truth": "Yes, there is a strong positive correlation. Yes, this relationship is logical as radius directly affects area calculation.",
+      "derivation": "data.map(row => ({radius: row.radius_mean, area: row.area_mean})).slice(0, 5)",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "easy",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Using the 1.5 * IQR method, count the number of outliers in the texture_mean column. Express the result as a single number.",
+      "ground_truth": "7",
+      "derivation": "Calculate Q1, Q3, IQR, then count values > Q3 + 1.5 * IQR",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the standard deviation of symmetry_mean values. Express the result rounded to exactly 4 decimal places.",
+      "ground_truth": "0.0274",
+      "derivation": "Math.sqrt(data.reduce((sum, row) => sum + Math.pow(row.symmetry_mean - symmetryMean, 2), 0) / data.length)",
+      "type": "Statistics",
+      "subtype": "Descriptive Statistics",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare the average concavity_mean between malignant and benign tumors. Express results as 'Malignant: X, Benign: Y' rounded to 4 decimal places.",
+      "ground_truth": "Malignant: 0.1608, Benign: 0.0461",
+      "derivation": "Grouped data by diagnosis and calculated mean of concavity_mean for each group",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the probability of randomly selecting a tumor with area_mean greater than 1000. Express as a percentage rounded to 2 decimal places.",
+      "ground_truth": "16.17%",
+      "derivation": "data.filter(row => row.area_mean > 1000).length / data.length",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the mean and median of texture_mean values and determine the distribution skew. Express as 'Mean: X, Median: Y, Distribution: Z' with values rounded to 4 decimal places.",
+      "ground_truth": "Mean: 19.2896, Median: 18.8400, Distribution: right-skewed",
+      "derivation": "Calculated mean and median of texture_mean values",
+      "type": "Statistics",
+      "subtype": "Frequency and Distribution Analysis",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Calculate the 95% confidence interval for mean tumor radius. Express as [lower, upper] rounded to 4 decimal places.",
+      "ground_truth": "[13.8380, 14.4166]",
+      "derivation": "Used standard formula: mean ± (1.96 * std_dev / sqrt(n))",
+      "type": "Statistics",
+      "subtype": "Confidence Intervals",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare the mean radius between malignant and benign tumors. Express as 'Malignant: X, Benign: Y' rounded to 4 decimal places.",
+      "ground_truth": "Malignant: 17.4628, Benign: 12.1465",
+      "derivation": "Grouped data by diagnosis and calculated mean radius for each group",
+      "type": "Statistics",
+      "subtype": "Hypothesis Testing",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Count the total number of numeric features (columns) in the dataset, excluding ID and diagnosis columns. Express as a single number.",
+      "ground_truth": "31",
+      "derivation": "Counted columns where typeof value === 'number'",
+      "type": "Information Retrieval",
+      "subtype": "Direct Value Retrieval",
+      "difficulty": "easy",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Compare radius_mean and radius_worst values for the first three samples. Express as three pairs of values rounded to 2 decimal places.",
+      "ground_truth": "Sample 1: (17.99, 25.38), Sample 2: (20.57, 24.99), Sample 3: (19.69, 23.57)",
+      "derivation": "Compared radius_mean and radius_worst values for first 3 rows",
+      "type": "Information Retrieval",
+      "subtype": "Pattern and Trend Recognition",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Check for missing values in the dataset. Express result as Yes/No.",
+      "ground_truth": "No",
+      "derivation": "Checked each cell for null or undefined values",
+      "type": "Data Curation",
+      "subtype": "Data Quality Assessment and Validation",
+      "difficulty": "easy",
+      "table_path": "./datasets/research/breastcancer.csv"
+    },
+  
+    {
+      "question": "Split tumors into 'small' and 'large' groups based on median radius_mean. Count cases in each group. Express as 'Large: X, Small: Y'.",
+      "ground_truth": "Large: 284, Small: 285",
+      "derivation": "Split data at median radius_mean value and counted each group",
+      "type": "Information Retrieval",
+      "subtype": "Data Aggregation, Grouping and Classification",
+      "difficulty": "medium",
+      "table_path": "./datasets/research/breastcancer.csv"
+    }
+  ]
