@@ -278,20 +278,18 @@ class DataFrameAgentProcessor:
 
 if __name__ == "__main__":
 
+    # DO NOT EDIT
     questions_folder = "./questions/" 
     output_folder = "./results_folder/"
 
+    # Edit this to the model you want to test
     processor = DataFrameAgentProcessor(
         model_type="anthropic",
         questions_path="",
         model="claude-3-5-haiku-latest"          
     )
 
-    # processor.process_questions_folder(
-    #     questions_folder=questions_folder,
-    #     output_folder=output_folder
-    # )
-
+    # Edit this path to the question collection you want to execute
     processor.process_questions_list(
         ["./questions/statistics_4_hedge_fund_questions.json"],
         output_folder
