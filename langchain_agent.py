@@ -1,6 +1,8 @@
 import os
 import json
+import tabulate
 import pandas as pd
+from dotenv import load_dotenv
 import time
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -114,6 +116,8 @@ class DataFrameAgentProcessor:
         :param model_type: Specify the model type ('openai' or 'anthropic').
         :param questions_path: Path to the JSON file containing questions.
         """
+
+        load_dotenv()
         self.model_type = model_type
         self.questions_path = questions_path
         self.model_name = model
@@ -284,9 +288,9 @@ if __name__ == "__main__":
 
     # Edit this to the model you want to test
     processor = DataFrameAgentProcessor(
-        model_type="anthropic",
+        model_type="gemini",
         questions_path="",
-        model="claude-3-5-haiku-latest"          
+        model="gemini-1.5-pro"
     )
 
     # Edit this path to the question collection you want to execute
