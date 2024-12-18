@@ -74,7 +74,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "Based on the analysis of birth seasonality in the dataset:\n\n1. Seasonal Distribution:\n- Winter: 27.7% (highest)\n- Fall: 25.9%\n- Spring: 23.7%\n- Summer: 22.8% (lowest)\n\n2. Key Findings:\n- There is a noticeable variation in birth seasonality\n- Winter months (December, January, February) show the highest concentration of births at 27.7%\n- Summer months (June, July, August) show the lowest concentration at 22.8%\n- The difference between peak (Winter) and low (Summer) seasons is 4.9 percentage points\n\n3. Pattern:\n- There appears to be a gradual decline in births from Winter to Summer\n- The distribution shows a slight preference for births in colder months (Winter and Fall) compared to warmer months (Spring and Summer)\n- Winter and Fall combined account for 53.55% of births, while Spring and Summer combined account for 46.45%\n\nWhile we can observe these patterns in the data, the differences between seasons are relatively modest and may not be dramatic enough to conclude there's a strong seasonal effect in birth patterns. The variation we see might be due to various social, biological, or environmental factors, but would require additional context and analysis to determine the underlying causes.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Analyze the frequency distribution of credit scores by grouping them into ranges (poor, fair, good, excellent). Calculate the percent distribution and determine if there is a statistically significant difference between observed and expected distributions using a chi2 test.",
@@ -106,7 +106,7 @@
         "subtype": "Correlation and Association",
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
+        "result": "Correlation between the features are shown below:",
         "score": 0
     },
     {
@@ -129,7 +129,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "From analyzing the data points closest to the reference point (40, -120), there isn't a strong linear relationship between distance and yearly income. The incomes near this location are moderately varied, mostly ranging from $40,000-$60,000, with some outliers. The reference point appears to be in a region with moderate income levels compared to the dataset as a whole. The geographic area represented by these closest points appears to be in the northern California/Nevada region, which shows relatively consistent income levels with occasional variations. This suggests that local economic factors, rather than simple geographic distance from the reference point, may be more influential in determining income levels in this region.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Group individuals by birth_month and analyze seasonal patterns in credit_score and total_debt. Determine if these patterns are statistically significant and quantify the extent to which birth_month explains the variability in these two columns using an ANOVA test.",
@@ -195,7 +195,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "Based on the analysis, for individuals with a credit score above 700, we can be 95% confident that the true population mean of total debt falls between $57,450.16 and $63,520.54. This confidence interval was calculated using the standard formula (mean \u00b1 1.96 * standard error) and assumes the sampling distribution is approximately normal.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Calculate a 95% confidence interval for the average yearly_income.",
@@ -206,7 +206,7 @@
         "type": "Statistics",
         "table_path": "./datasets/demographics/Credit_card_data.csv",
         "result": "The 95% confidence interval for the average yearly income is ($44,707.59, $46,724.17). This means we can be 95% confident that the true population mean yearly income falls between $44,707.59 and $46,724.17. The point estimate for the mean yearly income is approximately $45,715.88 (the middle of the interval).\n\nThis interval provides a range of plausible values for the true population mean, taking into account the sample size and variability in the data. Any value within this interval could reasonably be the true population mean yearly income, with values near the center of the interval being more likely than values near the edges.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Compute a 90% confidence interval for the average credit_score.",

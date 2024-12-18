@@ -10,8 +10,9 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain.schema import LLMResult
-# from langchain_google_genai import ChatGoogleGenerativeAI
-# from langchain_mistralai import ChatMistralAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_mistralai import ChatMistralAI
+from typing import List, Any
 import json
 
 def strict_evaluator(question: str, ground_truth: str, answer: str):
@@ -55,7 +56,7 @@ def strict_evaluator(question: str, ground_truth: str, answer: str):
     if match:
         return int(match.group(1))
     else:
-        return 0  # Default to 0 if no valid score is found
+        return 0
 
 def evaluate_json(input_file: str, output_file: str):
     """
@@ -80,6 +81,27 @@ def evaluate_json(input_file: str, output_file: str):
 
     with open(output_file, 'w') as f:
         json.dump(data, f, indent=4)
+
+def run_evaluation(data: List[Any], output_file: str):
+    """Run evaluation on a list of data items"""
+
+    for item in data:
+        question = item.get("question", "")
+        ground_truth = item.get("ground_truth", "")
+        student_answer = item.get("result", "")
+        item["score"] = strict_evaluator(question, ground_truth, student_answer)
+
+    output_dir = os.path.dirname(output_file)
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    try:
+        with open(output_file, 'w') as f:
+            json.dump(data, f, indent=4)
+        print(f"Evaluation results saved successfully to {output_file}")
+    except Exception as e:
+        raise IOError(f"Failed to save results to {output_file}: {e}")
 
 
 class DataFrameAgentProcessor:
@@ -125,13 +147,13 @@ class DataFrameAgentProcessor:
                 model=model, api_key=api_key,temperature=0)
 
         else:
-            raise ValueError("Invalid model_type. Choose 'openai' or 'anthropic'.")
+            raise ValueError("Invalid model_type.")
 
     def process_questions(self, output_path: str):
         """
         Process the questions and append results to the JSON file.
 
-        :param output_path: Path to save the output JSON with results.
+        :param output_path: Path to save the scored output JSON.
         """
         try:
             with open(self.questions_path, 'r') as f:
@@ -204,28 +226,8 @@ class DataFrameAgentProcessor:
             except Exception as e:
                 data[i]['result'] = str(e)
 
-        try:
-            with open(output_path, 'w') as f:
-                json.dump(data, f, indent=4)
-        except Exception as e:
-            raise IOError(f"Error saving results to output file: {e}")
-
-        print(f"Processed results saved to '{output_path}'")
-
-        self.run_evaluator(output_path)
-
-    def run_evaluator(self, input_file: str):
-        """
-        Evaluate answers in the JSON file using strict evaluation.
-
-        :param input_file: Path to the JSON file containing processed questions and answers.
-        """
-        base_name, _ = os.path.splitext(input_file)
-        output_file = f"{base_name}_{self.model_type}_{self.model_name}_with_score.json"
-
-        evaluate_json(input_file, output_file)
-        print(f"Evaluation scores saved to '{output_file}'")
-
+        base_path, _ = os.path.splitext(output_path)
+        run_evaluation(data, f"{base_path}_{self.model_type}_{self.model_name}_with_score.json")
 
     def process_questions_folder(self, questions_folder: str, output_folder: str):
         """
@@ -252,20 +254,43 @@ class DataFrameAgentProcessor:
                     self.process_questions(output_path)
                 except Exception as e:
                     print(f"Error processing file {file_name}: {e}")
-                # time.sleep(50)
+
+    def process_questions_list(self, questions_path_list: List[str], output_folder: str):
+        """Runs a list of question path and writes the scored results to output_folder"""
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
+
+        for questions_path in questions_path_list:
+            if questions_path.endswith('.json'):
+                file_name = os.path.basename(questions_path)
+                output_path = os.path.join(output_folder, file_name)
+
+                print(f"Processing file: {questions_path}")
+
+                try:
+                    self.questions_path = questions_path
+                    self.process_questions(output_path)
+                except Exception as e:
+                    print(f"Error processing file {file_name}: {e}")
 
 
+if __name__ == "__main__":
 
-# questions_folder = "./questions/" 
-# output_folder = "./results_folder/"
+    questions_folder = "./questions/" 
+    output_folder = "./results_folder/"
 
-# processor = DataFrameAgentProcessor(
-#     model_type="anthropic",
-#     questions_path="",
-#     model="claude-3-5-haiku-latest"          
-# )
+    processor = DataFrameAgentProcessor(
+        model_type="anthropic",
+        questions_path="",
+        model="claude-3-5-haiku-latest"          
+    )
 
-# processor.process_questions_folder(
-#     questions_folder=questions_folder,
-#     output_folder=output_folder
-# )
+    # processor.process_questions_folder(
+    #     questions_folder=questions_folder,
+    #     output_folder=output_folder
+    # )
+
+    processor.process_questions_list(
+        ["./questions/statistics_4_hedge_fund_questions.json"],
+        output_folder
+    )

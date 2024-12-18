@@ -2,7 +2,7 @@
     {
         "question": "How many columns does the dataset contain and how many columns contain null values? Print the result as 'Number of Columns' and 'Number of Columns with Null Value'.",
         "ground_truth": "Number of Columns: 22, Number of Columns with Null Value: 7 ",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -13,7 +13,7 @@
     {
         "question": "Which column has the most missing values? Print the column name.",
         "ground_truth": "X Coordinate",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -24,7 +24,7 @@
     {
         "question": "Calculate the ratio of missing to non-missing values for each column. Print the result as 'Column Name: Ratio'.",
         "ground_truth": "ID: 0.0\nCase Number: 0.0\nDate: 0.0\nBlock: 0.0\nIUCR: 0.0\nPrimary Type: 0.0\nDescription: 0.0\nLocation Description: 0.0051\nArrest: 0.0\nDomestic: 0.0\nBeat: 0.0\nDistrict: 0.0\nWard: 0.0001\nCommunity Area: 0.0\nFBI Code: 0.0\nX Coordinate: 0.0091\nY Coordinate: 0.0091\nYear: 0.0\nUpdated On: 0.0\nLatitude: 0.0091\nLongitude: 0.0091\nLocation: 0.0091",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "medium",
@@ -35,7 +35,7 @@
     {
         "question": "Name all columns that contain null values and calculate the percentage to non null values rounded to three values after the comma. Print the result as 'Column Name' : 'Percentage'.",
         "ground_truth": "'Location Description': '0.511%'\n'Ward': '0.006%'\n'X Coordinate': '0.908%'\n'Y Coordinate': '0.908%'\n'Latitude': '0.908%'\n'Longitude': '0.908%'\n'Location': '0.908%'",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "medium",
@@ -46,7 +46,7 @@
     {
         "question": "Find and print the count of all rows where 'Latitude' and 'Longitude' are both missing (NaN).",
         "ground_truth": "2352",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -57,7 +57,7 @@
     {
         "question": "Check if there are any duplicate rows and count them.",
         "ground_truth": "0",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -68,7 +68,7 @@
     {
         "question": "Check if there are any duplicate 'Case Number' values in the dataset. Print YES or NO.",
         "ground_truth": "YES",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -79,7 +79,7 @@
     {
         "question": "Print all IDs of the rows of the first ten rows where the crime was not Theft.",
         "ground_truth": "[11662417, 12990873, 11630496, 11632505, 11765926, 11885224, 13210699, 13211437, 13211898, 11842146]",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -90,7 +90,7 @@
     {
         "question": "Find all the columns that only contain the same value in each row. Print the result as 'Columns with the same value in all rows:' : 'Column Name' or None if no such column exists.",
         "ground_truth": "Columns with the same value in all rows: 'Year'",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -101,7 +101,7 @@
     {
         "question": "How many unique values exist in the 'Location Description' column? Print the count.",
         "ground_truth": "156",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -112,7 +112,7 @@
     {
         "question": "Identify and count records where the 'Case Number' format does not match the pattern 'XX999999'. Print the count.",
         "ground_truth": "1",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "hard",
@@ -123,7 +123,7 @@
     {
         "question": "Standardize 'Location' column values to the format '(latitude, longitude)'. Print the first five formatted values in an array.",
         "ground_truth": "['(41.749500329, -87.6011574)', '(41.89621515, -87.728572048)', None, None, '(41.736126864, -87.629184056)']",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data normalization and standardization",
         "difficulty": "medium",
@@ -134,7 +134,7 @@
     {
         "question": "Ensure that timestamps in the 'Date' column are rounded to the nearest minute. Print the first five updated timestamps.",
         "ground_truth": "['2019-04-21 12:30:00', '2019-08-17 13:14:00','2019-03-16 11:35:00', '2019-03-20 01:00:00', '2019-07-21 14:00:00']",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data normalization and standardization",
         "difficulty": "medium",
@@ -145,7 +145,7 @@
     {
         "question": "Partition the dataset by 'District' and count the number of crimes in each partition. Print 'District: Count'.",
         "ground_truth": "'11': 18735\n'6': 16900\n'8': 15743\n'1': 15309\n'18': 15181\n'4': 14074\n'7': 13746\n'12': 13197\n'25': 12968\n'3': 12526\n'10': 12508\n'19': 11849\n'5': 11388\n'2': 11267\n'9': 11031\n'15': 10022\n'14': 9296\n'16': 8326\n'22': 8267\n'24': 8032\n'17': 6764\n'20': 4389\n'31': 7",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data filtering and partitioning",
         "difficulty": "medium",
@@ -156,7 +156,7 @@
     {
         "question": "Filter the dataset to only include rows where 'Arrest' is True. Print the IDs of the first five rows of the filtered dataset.",
         "ground_truth": "[12990873, 24886, 13195357, 11858992, 11839309]",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data filtering and partitioning",
         "difficulty": "easy",
@@ -167,7 +167,7 @@
     {
         "question": "Filter the dataset to exclude rows where 'Primary Type' is 'THEFT'. Print the number of remaining rows.",
         "ground_truth": "199030",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data filtering and partitioning",
         "difficulty": "easy",
@@ -178,7 +178,7 @@
     {
         "question": "Ensure that all 'District' values are zero-padded to a 3-digit format (e.g., '007' instead of '7'). Print the first five updated values.",
         "ground_truth": "['006', '011', '019', '024', '006']",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data normalization and standardization",
         "difficulty": "medium",
@@ -189,18 +189,18 @@
     {
         "question": "Print out the Date column of the first five rows of the dataset in JSON format with the Date formatted in the european format (dd/mm/yyyy hh:mm).",
         "ground_truth": "[\"21/04/2019\",\"17/08/2019\",\"16/03/2019\",\"20/03/2019\",\"21/07/2019\"]",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data normalization and standardization",
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "Here are the first five dates from the dataset in European format (dd/mm/yyyy hh:mm) in JSON format:\n{\n  \"0\": \"21/04/2019 12:30\",\n  \"1\": \"17/08/2019 13:14\",\n  \"2\": \"16/03/2019 11:35\",\n  \"3\": \"20/03/2019 01:00\",\n  \"4\": \"21/07/2019 14:00\"\n}\n\nThe dates have been successfully converted from the original American format (mm/dd/yyyy) to the European format (dd/mm/yyyy) and the times are shown in 24-hour format.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Print all values that occur in the column about crime types.",
         "ground_truth": "['ROBBERY' 'OFFENSE INVOLVING CHILDREN' 'THEFT' 'SEX OFFENSE'\n 'CRIMINAL SEXUAL ASSAULT' 'BURGLARY' 'HOMICIDE' 'DECEPTIVE PRACTICE'\n 'BATTERY' 'OTHER OFFENSE' 'MOTOR VEHICLE THEFT' 'WEAPONS VIOLATION'\n 'STALKING' 'NARCOTICS' 'ASSAULT' 'CRIMINAL DAMAGE' 'CRIMINAL TRESPASS'\n 'CRIM SEXUAL ASSAULT' 'PUBLIC PEACE VIOLATION'\n 'INTERFERENCE WITH PUBLIC OFFICER' 'PROSTITUTION' 'LIQUOR LAW VIOLATION'\n 'ARSON' 'OBSCENITY' 'CONCEALED CARRY LICENSE VIOLATION' 'KIDNAPPING'\n 'GAMBLING' 'INTIMIDATION' 'HUMAN TRAFFICKING' 'NON-CRIMINAL'\n 'OTHER NARCOTIC VIOLATION' 'PUBLIC INDECENCY']",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -211,7 +211,7 @@
     {
         "question": "Out of all unique values in the crime type column, is there a category that is very similar but has a typo or another feature where someone most likely made an error? yes or no?",
         "ground_truth": "yes",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "easy",
@@ -222,21 +222,21 @@
     {
         "question": "Print the datatype of each column as a dict.",
         "ground_truth": "{'ID': 'int64', 'Case Number': 'object', 'Date': 'object', 'Block': 'object', 'IUCR': 'object', 'Primary Type': 'object', 'Description': 'object', 'Location Description': 'object', 'Arrest': 'bool', 'Domestic': 'bool', 'Beat': 'int64', 'District': 'int64', 'Ward': 'float64', 'Community Area': 'int64', 'FBI Code': 'object', 'X Coordinate': 'float64', 'Y Coordinate': 'float64', 'Year': 'int64', 'Updated On': 'object', 'Latitude': 'float64', 'Longitude': 'float64', 'Location': 'object'}",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data quality assessment",
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "Here are the data types for each column in the DataFrame:\n- ID: int64 (integer)\n- Case Number: object (string)\n- Date: object (string)\n- Block: object (string)\n- IUCR: object (string)\n- Primary Type: object (string)\n- Description: object (string)\n- Location Description: object (string)\n- Arrest: bool (boolean)\n- Domestic: bool (boolean)\n- Beat: int64 (integer)\n- District: int64 (integer)\n- Ward: float64 (floating-point)\n- Community Area: int64 (integer)\n- FBI Code: object (string)\n- X Coordinate: float64 (floating-point)\n- Y Coordinate: float64 (floating-point)\n- Year: int64 (integer)\n- Updated On: object (string)\n- Latitude: float64 (floating-point)\n- Longitude: float64 (floating-point)\n- Location: object (string)",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Remove all rows, where over 10% of values are missing, and count the remaining rows.",
         "ground_truth": "259173",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data cleaning",
-        "difficulty": "hard",
+        "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "After removing all rows where over 10% of values are missing, the dataframe contains 259,173 rows.",
         "score": 1
@@ -244,18 +244,18 @@
     {
         "question": "Identify and count records where the 'Case Number' format does not match the pattern 'XX999999'. Delete those values and count the number of rows",
         "ground_truth": "261524",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data cleaning",
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
-        "score": 0
+        "result": "261524",
+        "score": 1
     },
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Print out the first five values of IDXYEAR.",
         "ground_truth": "[23546419923, 26228572587, 23481971424, 23486027595, 23755404594]",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data transformation and aggregation",
         "difficulty": "easy",
@@ -265,11 +265,11 @@
     },
     {
         "question": "Group the data by crime type and calculate the percentage of each group rounded to two values after the comma. Then calculate the difference of the group with the largest and the smallest percentage. Print out this delta percentage rounded to one value after the comma.",
-        "ground_truth": "23.9",
-        "derivation": "",
+        "ground_truth": "23.89",
+        "derivation": "1. LOAD CSV file into 'data'.  \n2. CALCULATE percentage of 'Primary Type' occurrences.  \n3. ROUND percentages to 3 decimals.  \n4. COMPUTE difference: max - min, rounded to 2 decimals.  \n5. PRINT the difference.  ",
         "type": "data curation",
         "subtype": "data transformation and aggregation",
-        "difficulty": "hard",
+        "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "The difference between the highest and lowest crime type percentages is 23.9%.\n\nNote: The calculation was performed by:\n1. Converting the crime type counts to percentages (multiplied by 100)\n2. Rounding these percentages to 2 decimal places\n3. Finding the maximum and minimum percentages\n4. Subtracting the minimum from the maximum and rounding to 1 decimal place\nThe result shows that there is a 23.9 percentage point difference between the most common and least common types of crimes in the dataset.",
         "score": 1
@@ -277,7 +277,7 @@
     {
         "question": "Create a new column IDXYEAR for each row by multiplying the ID with the YEAR column. Print out the average of IDXYEAR over all rows rounded to two values after comma.",
         "ground_truth": "23688888976.91",
-        "derivation": "",
+        "derivation": "./[deprecated]/question_generation/data_curation_1_crimes_ground_truth.ipynb",
         "type": "data curation",
         "subtype": "data transformation and aggregation",
         "difficulty": "medium",
@@ -305,7 +305,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "Yes, the arrest probability values make sense for several reasons:\n\n1. The probabilities range from 0 to 1 (0% to 100%), which is mathematically correct for probability values.\n\n2. The values align with what we might expect for different types of crimes:\n   - Crimes like NARCOTICS (99.97%), PROSTITUTION (100%), and GAMBLING (100%) have very high arrest rates, which makes sense as these are often caught \"in the act\"\n   - CONCEALED CARRY LICENSE VIOLATION (97.7%) and INTERFERENCE WITH PUBLIC OFFICER (96.1%) also have high arrest rates, which is logical as these involve direct interaction with law enforcement\n   - Property crimes like BURGLARY (5.7%) and THEFT (9.8%) have lower arrest rates, which is reasonable as these crimes often occur without witnesses present\n   - Violent crimes like HOMICIDE have moderate arrest rates (37.5%), reflecting the intensive investigation these cases receive but also the challenges in solving them\n\n3. The values provide useful insights for analysis:\n   - They can help predict the likelihood of an arrest for a given crime type\n   - They could be useful for law enforcement resource allocation\n   - They provide transparency about enforcement patterns\n\nThe column creation is therefore both technically correct and practically meaningful for analysis purposes.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Create a new column CommunityCrimeRate by dividing 'Community Area' by 'District'. Does it make sense to create such a new column, answer with YES or NO.",
@@ -357,7 +357,7 @@
         "derivation": "By categorizing crimes into violent and non-violent groups, we can count the frequency of each and identify the most common for both categories.",
         "type": "data curation",
         "subtype": "data logic explaination",
-        "difficulty": "medium",
+        "difficulty": "hard",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "Most Frequent Violent Crime: BATTERY\nMost Frequent Non-Violent Crime: THEFT",
         "score": 1

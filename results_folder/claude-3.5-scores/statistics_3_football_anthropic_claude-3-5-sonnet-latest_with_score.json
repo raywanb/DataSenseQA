@@ -19,7 +19,7 @@
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "The dataset contains entries from multiple seasons, with the most represented seasons being 2022/2023 (166 entries), 2023/2024 (165 entries), and 2021/2022 (161 entries). The data spans from 2014/2015 to 2023/2024, with some possible data entry errors in the season format for a few entries.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Count the number of players who have scored more than 10 goals in a season.",
@@ -84,8 +84,8 @@
         "subtype": "Comparison and Ranking",
         "type": "statistics",
         "table_path": "./datasets/demographics/Football_Data.csv",
-        "result": "{'type': 'error', 'error': {'details': None, 'type': 'overloaded_error', 'message': 'Overloaded'}}",
-        "score": 0
+        "result": "'Bruno Fernandes', 'Eduardo Camavinga', 'Bernardo Silva', 'Bruno Fernandes', 'Marcus Rashford'",
+        "score": 1
     },
     {
         "question": "Calculate the median number of goals scored per season.",
@@ -173,7 +173,7 @@
         "type": "information retrieval",
         "table_path": "./datasets/demographics/Football_Data.csv",
         "result": "The top 3 teams with the highest average seasonal ratings are:\n1. Real Madrid Castilla with an average rating of 8.80\n2. Inter Miami with an average rating of 8.25\n3. Real Madrid with an average rating of 7.85",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Find the player with the highest goals-to-matches ratio.",
