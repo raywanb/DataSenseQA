@@ -288,6 +288,7 @@ def main():
         "gpt-4o": "./results_folder/gpt-4o-scores",
         "gpt-3.5-turbo": "./results_folder/gpt-3.5-turbo-scores",
         "gpt-3.5-turbo": "./results_folder/gpt-3.5-turbo-run2-scores",
+        "gemini-1.5-pro": ".results_folder/gemini-1.5-pro-scores",
 
         # Add more models as needed:
         # "model-3": "./path/to/model3/scores",
