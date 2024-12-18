@@ -8,7 +8,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/COVID19.csv",
         "result": "The total number of confirmed cases in Algeria is 27973",
-        "score": 0
+        "score": 1
     },
     {
         "question": "How many deaths were recorded in China?",
@@ -140,7 +140,7 @@
         "table_path": "./datasets/research/COVID19.csv",
         "difficulty": "medium",
         "result": "Papua New Guinea had the highest '1 week % increase' in cases compared to their confirmed numbers.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Identify the ratio between Deaths and New Cases by each Region.",

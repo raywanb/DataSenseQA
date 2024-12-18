@@ -30,7 +30,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "Yes, there is a very strong positive correlation (approximately 0.9976) between `radius_mean` and `area_mean` in the first few data points.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "How many outliers are there in the texture_mean column when using the 1.5 * IQR method?",
@@ -184,7 +184,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The average cell area for malignant cases is approximately 978.38, while for benign cases it is approximately 462.79.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What is the relationship between texture measurements and diagnosis?",
@@ -195,7 +195,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "The statistical analysis indicates that there is a relationship between texture measurements and diagnosis:\n\n- Malignant (M) cases tend to have higher `texture_mean` and `texture_worst` values compared to benign (B) cases.\n- The `texture_se` values are similar for both malignant and benign cases.\n\nThese findings suggest that higher texture measurements are associated with malignant diagnoses.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What percentage of the total cases in the dataset are malignant?",
@@ -239,7 +239,7 @@
         "difficulty": "hard",
         "table_path": "./datasets/research/breastcancer.csv",
         "result": "To identify distinct morphological subtypes within malignant cases by clustering based on texture, concavity, and symmetry features, you need to:\n\n1. Filter the dataframe to include only malignant cases.\n2. Select the relevant features for clustering: `texture_mean`, `concavity_mean`, and `symmetry_mean`.\n3. Standardize these features using `StandardScaler` from `sklearn.preprocessing`.\n4. Apply a clustering algorithm like K-Means from `sklearn.cluster` to identify clusters.\n5. Analyze the resulting clusters to determine if distinct subtypes can be identified.\n\nSince the `sklearn` library is not available in the current environment, you would need to ensure it is installed in your environment to proceed with the clustering analysis. The provided code snippet can be used in an environment where `sklearn` is available to complete the analysis and visualize the clusters.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "What is the relationship between measurement variance (SE features) and diagnostic accuracy? Do cases with higher measurement uncertainty correlate with specific morphological patterns?",

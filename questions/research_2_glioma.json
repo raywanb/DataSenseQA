@@ -1,7 +1,7 @@
 [
   {
-    "question": "How many patients in the dataset have Grade 1 gliomas?",
-    "ground_truth": "487 patients have Grade 0 gliomas, and 352 patients have Grade 1 gliomas",
+    "question": "How many patients in the dataset have Grade 0 gliomas?",
+    "ground_truth": "487 patients have Grade 0 gliomas",
     "derivation": "_.countBy(data, 'Grade')",
     "type": "Information Retrieval",
     "subtype": "Direct Value Retrieval",
@@ -36,7 +36,7 @@
     "table_path": "./datasets/research/Glioma.csv"
   },
   {
-    "question": "What is the probability of having an EGFR mutation given that a patient has a Grade 4 glioma?",
+    "question": "What is the probability of having an EGFR mutation given that a patient has a Grade 1 glioma?",
     "ground_truth": "31.8% (112 EGFR mutations out of 352 Grade 4 cases)",
     "derivation": "data.filter(row => row.Grade === 4 && row.EGFR === 1).length / data.filter(row => row.Grade === 4).length",
     "type": "Statistics",
@@ -63,17 +63,8 @@
     "table_path": "./datasets/research/Glioma.csv"
   },
   {
-    "question": "Calculate the variance in age at diagnosis across different glioma grades.",
-    "ground_truth": "IDH1-mutated variance: 149.78, IDH1-wildtype variance: 182.16",
-    "derivation": "const agesByIdh1 = _.groupBy(data, 'IDH1'); standardDeviation(agesByIdh1[1]) ** 2",
-    "type": "Statistics",
-    "subtype": "Descriptive Statistics",
-    "difficulty": "hard",
-    "table_path": "./datasets/research/Glioma.csv"
-  },
-  {
-    "question": "Is there a correlation between EGFR mutation status and glioma grade?",
-    "ground_truth": "Grade 0: 6.37% EGFR mutation rate, Grade 1: 23.01% EGFR mutation rate",
+    "question": "Is there a correlation between EGFR mutation status and glioma grade? Determine if EGFR mutation rates are significantly different between different Glioma Grades.",
+    "ground_truth": "Yes. Grade 0: 6.37% EGFR mutation rate, Grade 1: 23.01% EGFR mutation rate",
     "derivation": "const egfrByGrade = _.groupBy(data, 'Grade'); Object.entries(egfrByGrade).map(([grade, patients]) => ({grade, egfrRate: patients.filter(p => p.EGFR === 1).length / patients.length}))",
     "type": "Statistics",
     "subtype": "Descriptive Statistics",
@@ -99,7 +90,7 @@
     "table_path": "./datasets/research/Glioma.csv"
   },
   {
-    "question": "Group patients into clusters based on their mutation profiles (IDH1, TP53, ATRX, PTEN, EGFR) and analyze the characteristics of each cluster.",
+    "question": "Group patients into clusters based on their mutation profiles (No mutations, IDH1 only, ATRX-IDH1-TP53) and analyze the characteristics of each cluster.",
     "ground_truth": "Most common patterns: No mutations (170 patients, avg age 59.94), ATRX-IDH1-TP53 (167 patients, avg age 38.41), IDH1 only (146 patients, avg age 46.38)",
     "derivation": "Complex clustering analysis of mutation patterns",
     "type": "Statistics",
@@ -108,7 +99,7 @@
     "table_path": "./datasets/research/Glioma.csv"
   },
   {
-    "question": "Analyze the trend of mutation frequencies (IDH1, TP53, ATRX) across different age groups.",
+    "question": "Analyze the trend of mutation frequencies (IDH1, TP53, ATRX) across different age groups from below 30, above 60, and groups of 15 in between.",
     "ground_truth": "Age <30: IDH1 (82.9%), TP53 (72.4%), ATRX (63.2%); Age 30-45: IDH1 (83.3%), TP53 (59.8%), ATRX (44.3%); Age 45-60: IDH1 (38.0%), TP53 (30.2%), ATRX (15.3%); Age 60+: IDH1 (14.9%), TP53 (26.3%), ATRX (8.0%)",
     "derivation": "Mutation frequencies calculated by age group using groupBy and frequency counts",
     "type": "Statistics",
@@ -118,7 +109,7 @@
   },
   {
     "question": "Based on the mutation data, what might explain the relationship between IDH1 mutation status and patient age at diagnosis?",
-    "ground_truth": "IDH1 mutated patients are significantly younger (mean 41.67 years) compared to wild-type (mean ~60 years), with different age distributions and clinical characteristics",
+    "ground_truth": "IDH1 mutated patients are significantly younger (mean 41.67 years) compared to wild-type (mean ~60 years)",
     "derivation": "Analysis of age distributions and confidence intervals by mutation status",
     "type": "Information Retrieval",
     "subtype": "Contextual Interpretation and Explanation",

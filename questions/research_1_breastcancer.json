@@ -1,7 +1,7 @@
 [
   {
-    "question": "What is the mean radius of the tumors in the dataset?",
-    "ground_truth": "14.1273 units",
+    "question": "What is the mean radius of the tumors in the dataset? Round to the nearest 4 decimal places.",
+    "ground_truth": "14.1273",
     "derivation": "data.reduce((sum, row) => sum + row.radius_mean, 0) / data.length",
     "type": "Statistics",
     "subtype": "Descriptive Statistics",
@@ -20,12 +20,12 @@
   },
 
   {
-    "question": "Is there a strong correlation between radius_mean and area_mean? Analyze the first few data points.",
-    "ground_truth": "Yes, there appears to be a strong positive correlation. The first five pairs show that larger radii correspond to larger areas: (17.99, 1001), (20.57, 1326), (19.69, 1203), (11.42, 386.1), (20.29, 1297)",
+    "question": "Is there a strong correlation between radius_mean and area_mean? Does this make sense (yes / no) ?",
+    "ground_truth": "Yes, there is a strong positive correlation. Yes, it makes sense since the average radius of the tumor should impact the average area of the tumor.",
     "derivation": "data.map(row => ({radius: row.radius_mean, area: row.area_mean})).slice(0, 5)",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "table_path": "./datasets/research/breastcancer.csv"
   },
 
@@ -40,7 +40,7 @@
   },
 
   {
-    "question": "What is the standard deviation of the symmetry_mean values?",
+    "question": "What is the standard deviation of the symmetry_mean values? Round to the nearest 4 decimal places.",
     "ground_truth": "0.0274",
     "derivation": "Math.sqrt(data.reduce((sum, row) => sum + Math.pow(row.symmetry_mean - symmetryMean, 2), 0) / data.length)",
     "type": "Statistics",
@@ -50,7 +50,7 @@
   },
 
   {
-    "question": "What is the relationship between concavity_mean and diagnosis? Calculate the average concavity for each diagnosis type.",
+    "question": "What is the relationship between concavity_mean and diagnosis? Which one showed higher values? Calculate the average concavity for each diagnosis type to help determine this relationship.",
     "ground_truth": "Malignant tumors (M) have much higher average concavity (0.1608) compared to benign tumors (B) (0.0461)",
     "derivation": "Grouped data by diagnosis and calculated mean of concavity_mean for each group",
     "type": "Statistics",
@@ -61,7 +61,7 @@
 
   {
     "question": "What is the probability of randomly selecting a tumor with area > 1000?",
-    "ground_truth": "0.1617 or approximately 16.17%",
+    "ground_truth": "0.1617 or 16.17%",
     "derivation": "data.filter(row => row.area_mean > 1000).length / data.length",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",
@@ -70,7 +70,7 @@
   },
 
   {
-    "question": "What is the distribution of texture_mean values across the dataset? Compare mean and median.",
+    "question": "What is the distribution of texture_mean values across the dataset? Derive the mean and median of this dataset to help determine this distribution.",
     "ground_truth": "Mean texture is 19.2896 and median is 18.8400, suggesting a slightly right-skewed distribution",
     "derivation": "Calculated mean and median of texture_mean values",
     "type": "Statistics",
@@ -110,8 +110,8 @@
   },
 
   {
-    "question": "What pattern can be observed between radius_mean and radius_worst in the first three samples?",
-    "ground_truth": "radius_worst is consistently higher than radius_mean: (17.99 vs 25.38), (20.57 vs 24.99), (19.69 vs 23.57)",
+    "question": "What pattern can be observed between radius_mean and radius_worst in the first three samples? Does this pattern make sense (yes / no) ?",
+    "ground_truth": "radius_worst is consistently higher than radius_mean: (17.99 vs 25.38), (20.57 vs 24.99), (19.69 vs 23.57). Yes, this makes sense since radius_worst should be the worst radium found in the sample.",
     "derivation": "Compared radius_mean and radius_worst values for first 3 rows",
     "type": "Information Retrieval",
     "subtype": "Pattern and Trend Recognition",
@@ -170,7 +170,7 @@
   },
 
   {
-    "question": "What is the relationship between texture measurements and diagnosis?",
+    "question": "What is the relationship between texture measurements and diagnosis? Which one showed higher values?",
     "ground_truth": "Malignant tumors show higher texture measurements with an average of 21.60, compared to benign tumors with an average of 17.91",
     "derivation": "_.groupBy(data, 'diagnosis').map(group => _.meanBy(group, 'texture_mean'))",
     "type": "Statistics",
@@ -190,7 +190,7 @@
   },
 
   {
-    "question": "How do the worst-case measurements compare between malignant and benign tumors?",
+    "question": "How do the worst-case measurements compare between malignant and benign tumors? Which one showed higher values?",
     "ground_truth": "Malignant tumors consistently show higher worst-case measurements across all features (radius_worst, texture_worst, perimeter_worst)",
     "derivation": "_.groupBy(data, 'diagnosis').map(group => ({radius: _.meanBy(group, 'radius_worst'), texture: _.meanBy(group, 'texture_worst')}))",
     "type": "Information Retrieval",
@@ -198,30 +198,28 @@
     "difficulty": "medium",
     "table_path": "./datasets/research/breastcancer.csv"
   },
-
   {
-    "question": "Is there a non-linear relationship between concavity and area measurements that could indicate distinct stages of tumor progression?",
-    "ground_truth": "Analysis would require calculating the correlation ratio and examining scatter plots with polynomial fitting",
-    "derivation": "data.map(row => ({concavity: row.concavity_mean, area: row.area_mean, diagnosis: row.diagnosis}))",
+    "question": "Is there a non-linear relationship between concavity and area measurements that could indicate distinct stages of tumor progression? If so, identify how many progression stages can be found, and what the area and concavity threshold would be for each of these stages.",
+    "ground_truth": "Yes, there is a clear non-linear relationship with three distinct progression stages: (1) Early stage (area < 443mm²) shows stable low concavity (0.047), (2) Intermediate stage (443-715mm²) shows rapid concavity increase (2.4x increase), and (3) Advanced stage (>715mm²) shows accelerated concavity growth (1.58-1.88x increases). This pattern strongly correlates with malignancy ratios increasing from 2.6% to 99.1% across stages, suggesting a stepwise progression model.",
+    "derivation": "Statistical analysis of binned data showing concavity/area relationships and malignancy ratios across tumor sizes",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",
     "difficulty": "hard",
     "table_path": "./datasets/research/breastcancer.csv"
   },
   {
-    "question": "Can we identify distinct morphological subtypes within malignant cases by clustering based on texture, concavity, and symmetry features?",
-    "ground_truth": "Would require k-means clustering or hierarchical clustering analysis of malignant cases",
-    "derivation": "Perform clustering on filtered data: data.filter(row => row.diagnosis === 'M')",
+    "question": "Can we identify distinct morphological subtypes within malignant cases by clustering based on texture, concavity and symmetry features? If so, identify how many distinct morphological subtypes were found within malignant cases and how each of texture, concavity, and symmetry contribute to these stages.",
+    "ground_truth": "Yes, three distinct morphological subtypes were identified: (1) High-grade aggressive subtype (14.6% of cases) characterized by high concavity (0.64) and symmetry (0.60); (2) Intermediate subtype (48.6% of cases) with moderate concavity (0.37) and symmetry (0.38); and (3) Low-grade subtype (36.8% of cases) with minimal concavity (0.18) and symmetry (0.23). Texture features showed less variation across subtypes (0.37-0.41), suggesting it's less deterministic of subtype classification.",
+    "derivation": "K-means clustering analysis on normalized texture, concavity, and symmetry features of malignant cases (n=212)",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",
     "difficulty": "hard",
     "table_path": "./datasets/research/breastcancer.csv"
   },
-
   {
-    "question": "What is the relationship between measurement variance (SE features) and diagnostic accuracy? Do cases with higher measurement uncertainty correlate with specific morphological patterns?",
-    "ground_truth": "Analysis of SE (standard error) features' correlation with diagnostic accuracy",
-    "derivation": "Correlate SE measurements with diagnosis and morphological features",
+    "question": "What is the relationship between measurement variance (SE features) and diagnostic accuracy? Do cases with higher measurement uncertainty correlate with specific morphological patterns? If, identify the relationship and how the uncertainties seen support the relationship.",
+    "ground_truth": "Analysis reveals three key relationships: (1) Malignant cases show higher measurement uncertainty in size-related features (radius SE/mean: 0.034 vs 0.024, area SE/mean: 0.070 vs 0.048), (2) Positive correlations exist between measurement uncertainty and feature magnitude for size measurements (area: r=0.358, perimeter: r=0.311, radius: r=0.295), but negative correlation for texture (r=-0.083), (3) Shape-related features show highest relative uncertainty (compactness SE/mean: 0.218-0.253, concavity SE/mean: 0.276) regardless of diagnosis, suggesting these are inherently more difficult to measure reliably.",
+    "derivation": "Statistical analysis of SE/mean ratios by diagnosis and correlation analysis between uncertainty and morphological features",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",
     "difficulty": "hard",
@@ -229,17 +227,17 @@
   },
   {
     "question": "Is there evidence of trade-offs between different morphological features (e.g., area vs. symmetry) that might suggest underlying biological constraints in tumor development?",
-    "ground_truth": "Analysis of feature correlations and principal component analysis",
-    "derivation": "Calculate correlation matrix and PCA of morphological features",
+    "ground_truth": "Yes, clear trade-offs exist: (1) Strong positive correlation between compactness and concavity (r=0.883) indicates coordinated membrane deformation, (2) Weak correlation between area and symmetry (r=0.151) shows size growth is largely independent of shape maintenance, (3) Negative correlation between texture and smoothness (r=-0.023) suggests competing surface organization processes. Growth analysis reveals non-uniform scaling: while area increases 174.7% from small to large tumors, symmetry only increases 7.1%, indicating biological constraints on shape maintenance during growth.",
+    "derivation": "Correlation analysis of morphological features and size-dependent growth patterns",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",
     "difficulty": "hard",
     "table_path": "./datasets/research/breastcancer.csv"
   },
   {
-    "question": "Can we identify a set of 'boundary cases' where malignant and benign features overlap, potentially requiring additional diagnostic criteria?",
-    "ground_truth": "Analysis of cases near the decision boundary in feature space",
-    "derivation": "Identify cases within one standard deviation of the boundary between M and B in principal feature space",
+    "question": "Can we identify a set of 'boundary cases' where malignant and benign features overlap, potentially requiring additional diagnostic criteria? What are the three features with the most overlap when analyzed? What are the three features that are the most reliable?",
+    "ground_truth": "Yes, identified 122 boundary cases (21.4% of dataset) with ambiguous features: 56 malignant (26.4% of M cases) and 66 benign (18.5% of B cases). Feature overlap analysis shows symmetry (48.0%), smoothness (40.2%), and texture (37.1%) are most ambiguous, while radius, perimeter, and area show no overlap. Most reliable diagnostic features are perimeter (effect size=2.13), radius (effect size=2.06), and concavity (effect size=1.88).",
+    "derivation": "Statistical analysis of feature distributions, overlap percentages, and effect sizes (Cohen's d) between malignant and benign cases",
     "type": "Information Retrieval",
     "subtype": "Direct Value Retrieval",
     "difficulty": "hard",
@@ -327,7 +325,7 @@
 
   {
     "question": "How can we leverage feature stability patterns across tumor sizes to identify robust biomarkers for early detection?",
-    "ground_truth": "Fractal dimension (stability=0.107) and radius (stability=0.103) show highest stability across size ranges, suggesting they could be reliable early markers. Machine learning models should weigh these stable features more heavily in early detection algorithms",
+    "ground_truth": "Fractal dimension (stability=0.107) and radius (stability=0.103) show highest stability across size ranges, suggesting they could be reliable early markers.",
     "derivation": "Calculated coefficient of variation across size ranges for each feature",
     "type": "Statistics",
     "subtype": "Descriptive Statistics",
@@ -337,7 +335,7 @@
 
   {
     "question": "Which morphological features have the highest prognostic power, and what biological pathways do they represent?",
-    "ground_truth": "Concave points (5.43) and perimeter (4.53) show highest prognostic power ratios, indicating that cell membrane deformation and invasion-related pathways are key discriminative factors. ML models should prioritize these features for progression prediction",
+    "ground_truth": "Concave points (5.43) and perimeter (4.53) show highest prognostic power ratios, indicating that cell membrane deformation and invasion-related pathways are key discriminative factors.",
     "derivation": "Calculated between-class to within-class variance ratios",
     "type": "Statistics",
     "subtype": "Frequency and Distribution Analysis",

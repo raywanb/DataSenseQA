@@ -129,7 +129,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "To standardize the 'Location' column values to the format '(latitude, longitude)', here's a solution:\n\n```python\nimport pandas as pd\nimport numpy as np\n\ndef format_location(row):\n    if pd.isna(row['Latitude']) or pd.isna(row['Longitude']):\n        return np.nan\n    return f\"({row['Latitude']}, {row['Longitude']})\"\n\ndf['Formatted Location'] = df.apply(format_location, axis=1)\nformatted_locations = df['Formatted Location'].head().tolist()\nprint(formatted_locations)\n```\n\nThe expected output would be:\n```\n['(41.7495, -87.6012)', '(41.8962, -87.7286)', nan, nan, '(41.7361, -87.6292)']\n```\n\nThis solution does the following:\n1. Creates a function `format_location` that:\n   - Checks if either Latitude or Longitude is NaN\n   - If not NaN, formats the location as \"(latitude, longitude)\"\n   - If NaN, returns NaN\n2. Applies this function to create a new 'Formatted Location' column\n3. Extracts the first five values of this column\n\nThe key points are:\n- Using `df.apply()` to process each row\n- Handling NaN values\n- Formatting the location as a string in the specified format",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Ensure that timestamps in the 'Date' column are rounded to the nearest minute. Print the first five updated timestamps.",
@@ -184,7 +184,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "The 'District' column has been successfully zero-padded to a 3-digit format, with values like '006', '011', '019', etc.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Print out the Date column of the first five rows of the dataset in JSON format with the Date formatted in the european format (dd/mm/yyyy hh:mm).",
@@ -195,7 +195,7 @@
         "difficulty": "medium",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "{\"0\":\"21/04/2019 12:30 PM\",\"1\":\"17/08/2019 01:14 PM\",\"2\":\"16/03/2019 11:35 AM\",\"3\":\"20/03/2019 01:00 AM\",\"4\":\"21/07/2019 02:00 PM\"}",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Print all values that occur in the column about crime types.",

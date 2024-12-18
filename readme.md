@@ -73,3 +73,51 @@ If these steps did **NOT** work, you have to install the dependencies manually, 
 
 ## 3 Benchmark
 
+### 3.1 Navigate to the `langchain_agent.py` file
+
+This file is where the test agent execution and the evaluation happen. Open the file
+
+### 3.2 Edit the `main` method of `langchain_agent.py`
+
+Within the `langchain_agent.py` file navigate to the `main` function at the bottom of the script.
+It should look something like this:
+
+    if __name__ == "__main__":
+    
+    # DO NOT EDIT
+    questions_folder = "./questions/" 
+    output_folder = "./results_folder/"
+
+    # Edit this to the model you want to test
+    processor = DataFrameAgentProcessor(
+        model_type="anthropic",
+        questions_path="",
+        model="claude-3-5-haiku-latest"          
+    )
+
+    # Edit this path to the question collection you want to execute
+    processor.process_questions_list(
+        ["./questions/statistics_4_hedge_fund_questions.json"],
+        output_folder
+    )
+
+#### Edit the model you want to test 
+
+- Change the `model_type` to the model you want to test (`openai`,`gemini`, `mistral` or `anthropic` )
+- Change the `model` to the specific model you want to test
+
+#### Edit the path to the question set you want to test
+
+Edit the path file and set it to the question set you want to evaluate. All question sets are contained within the question directory.
+
+### 3.3 Run the `main` method of the `langchain_agent.py`file.
+
+After editing the `main` method to the model and question collection you want to test, run the main method.
+
+### 3.4 Check the output in the `results_folder` directory
+
+The results of the model you just ran should appear in the `result_folder` directory.
+
+---
+
+## 4. Result Visualization

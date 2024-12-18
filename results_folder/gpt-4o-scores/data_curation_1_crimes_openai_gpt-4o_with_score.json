@@ -52,7 +52,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "There are 2352 rows where both 'Latitude' and 'Longitude' are missing (NaN).",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Check if there are any duplicate rows and count them.",
@@ -85,7 +85,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "The IDs of the rows where the crime was not Theft in the first ten rows are 11662417, 12990873, 11885224, 13210699, 13211437, 13211898, and 11842146.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Find all the columns that only contain the same value in each row. Print the result as 'Columns with the same value in all rows:' : 'Column Name' or None if no such column exists.",
@@ -107,7 +107,7 @@
         "difficulty": "easy",
         "table_path": "./datasets/research/Crimes_-_2019.csv",
         "result": "There are 156 unique values in the 'Location Description' column.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Identify and count records where the 'Case Number' format does not match the pattern 'XX999999'. Print the count.",
