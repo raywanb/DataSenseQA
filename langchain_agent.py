@@ -255,6 +255,24 @@ class DataFrameAgentProcessor:
                 except Exception as e:
                     print(f"Error processing file {file_name}: {e}")
 
+    def process_questions_list(self, questions_path_list: List[str], output_folder: str):
+        """Runs a list of question path and writes the scored results to output_folder"""
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
+
+        for questions_path in questions_path_list:
+            if questions_path.endswith('.json'):
+                file_name = os.path.basename(questions_path)
+                output_path = os.path.join(output_folder, file_name)
+
+                print(f"Processing file: {questions_path}")
+
+                try:
+                    self.questions_path = questions_path
+                    self.process_questions(output_path)
+                except Exception as e:
+                    print(f"Error processing file {file_name}: {e}")
+
 
 if __name__ == "__main__":
 
