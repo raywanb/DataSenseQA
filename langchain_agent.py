@@ -302,6 +302,6 @@ if __name__ == "__main__":
 
     # Edit this path to the question collection you want to execute
     processor.process_questions_list(
-        ["./questions/data_curation_1_crimes.json"],
+        ["./questions/statistics_3_football.json"],
         output_folder
     )

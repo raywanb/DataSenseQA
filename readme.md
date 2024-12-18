@@ -73,11 +73,13 @@ If these steps did **NOT** work, you have to install the dependencies manually, 
 
 ## 3 Benchmark
 
-### 3.1 Navigate to the `langchain_agent.py` file
+### 3.1 Run Individual Question Sets
+
+#### 3.1.1 Navigate to the `langchain_agent.py` file
 
 This file is where the test agent execution and the evaluation happen. Open the file
 
-### 3.2 Edit the `main` method of `langchain_agent.py`
+#### 3.1.1 Edit the `main` method of `langchain_agent.py`
 
 Within the `langchain_agent.py` file navigate to the `main` function at the bottom of the script.
 It should look something like this:
@@ -101,22 +103,36 @@ It should look something like this:
         output_folder
     )
 
-#### Edit the model you want to test 
+##### Edit the model you want to test 
 
 - Change the `model_type` to the model you want to test (`openai`,`gemini`, `mistral` or `anthropic` )
 - Change the `model` to the specific model you want to test
 
-#### Edit the path to the question set you want to test
+##### Edit the path to the question set you want to test
 
 Edit the path file and set it to the question set you want to evaluate. All question sets are contained within the question directory.
 
-### 3.3 Run the `main` method of the `langchain_agent.py`file.
+#### 3.1.3 Run the `main` method of the `langchain_agent.py`file.
 
 After editing the `main` method to the model and question collection you want to test, run the main method.
 
-### 3.4 Check the output in the `results_folder` directory
+#### 3.1.4 Check the output in the `results_folder` directory
 
 The results of the model you just ran should appear in the `result_folder` directory.
+
+### 3.2 Run All Questions
+
+#### 3.2.1 Navigate to to the `langchain_run_script.ipynb` file
+
+This Jupyter notebook can be executed to run all questions at once
+
+#### 3.2.2 Change the model parameters 
+
+Change the model parameters to the model you want to run
+
+#### 3.2.3 Execute Script
+
+Execute the script and find all questions answered in the `results_folder` directory.
 
 ---
 
