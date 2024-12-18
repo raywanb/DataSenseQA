@@ -285,7 +285,12 @@ if __name__ == "__main__":
         model="claude-3-5-haiku-latest"          
     )
 
-    processor.process_questions_folder(
-        questions_folder=questions_folder,
-        output_folder=output_folder
+    # processor.process_questions_folder(
+    #     questions_folder=questions_folder,
+    #     output_folder=output_folder
+    # )
+
+    processor.process_questions_list(
+        ["./questions/statistics_4_hedge_fund_questions.json"],
+        output_folder
     )
