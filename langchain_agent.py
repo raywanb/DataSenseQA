@@ -295,7 +295,7 @@ if __name__ == "__main__":
 
     # Edit this to the model you want to test
     processor = DataFrameAgentProcessor(
-        model_type="gemini",
+        model_type="mistral",
         questions_path="",
         model="gemini-1.5-pro"
     )

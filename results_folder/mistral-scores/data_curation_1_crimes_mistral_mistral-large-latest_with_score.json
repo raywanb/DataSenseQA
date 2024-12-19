@@ -1,4 +1,4 @@
-[
+ [
     {
         "question": "How many columns does the dataset contain and how many columns contain null values? Print the result as 'Number of Columns' and 'Number of Columns with Null Value'.",
         "ground_truth": "Number of Columns: 22, Number of Columns with Null Value: 7 ",

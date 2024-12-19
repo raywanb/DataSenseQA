@@ -41,7 +41,7 @@
         "type": "statistics",
         "table_path": "./datasets/business/hedge_funds_list.csv",
         "result": "The top 5 most frequent strategies are:\n1. Global Macro (26 occurrences)\n2. Multi Strategy (22 occurrences)\n3. Long/Short (19 occurrences)\n4. Credit (18 occurrences)\n5. Managed Futures (12 occurrences)\n\nSome additional observations:\n- There are 32 unique strategies in the dataset\n- Many strategies appear only once, such as Activist, Insurance, CDO, and European Equity\n- The top 4 strategies account for a significant portion of the total strategy distribution\n- Some strategies like Crypto and Equity have moderate representation (4 occurrences each)\n\nThe analysis was performed by splitting the comma-separated strategies and using `value_counts()` to count their frequencies across all firms in the dataset.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Calculate the percentage of hedge funds with an annual AUM change greater than 0.",
@@ -63,7 +63,7 @@
         "type": "statistics",
         "table_path": "./datasets/business/hedge_funds_list.csv",
         "result": "The correlation between Firm_Name_AUM_in_millions and Firm_Name_annual_change_in_AUM is 0.0529, indicating a very weak, almost non-existent positive correlation between the two variables.",
-        "score": 0
+        "score": 1
     },
     {
         "question": "Identify which country has the highest average AUM across all listed hedge funds.",
