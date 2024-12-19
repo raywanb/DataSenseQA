@@ -4,14 +4,15 @@
 
  by Felix Krumme, Ray Wan, Dimple Amitha Garuadapuri, Manan Dhanuka
 
+(12/18/2024)
 
 -------------
 
 ## 1 Components & Files
 ##
-### 1.1 `[deprecated]` Directory
+### 1.1 `data_analysis` Directory
 
-Contains files that are no longer relevant.
+Contains further data analysis scripts
 
 ### 1.2 `datasets` Directory
 
