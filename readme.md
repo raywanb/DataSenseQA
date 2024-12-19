@@ -2,7 +2,8 @@
 
 ##### Benchmark Track | 4 Units | Group TBD
 
-Felix Krumme, Ray Wan, Dimple Amitha Garuadapuri, Manan Dhanuka
+ by Felix Krumme, Ray Wan, Dimple Amitha Garuadapuri, Manan Dhanuka
+
 
 -------------
 
@@ -22,11 +23,23 @@ The questions directory contains all question collection sets in a JSON format.
 
 ### 1.4 `results_folder` Directory
 
-The questionsets with the scoring from the evaluator are stored here for every tested model.
+The question sets with the scoring from the evaluator are stored here for every tested model.
 
-### 1.5 `test_agents` Directory
+### 1.5 `langchain_agent.py` Script
 
-The scripts for the tested agent framework are contained in this directory
+This script contains the code for the test_agent and the evaluator.
+
+### 1.6 `langchain_run_script.ipynb` Jupyter Notebook
+
+This notebook contains the code to run the benchmark on all questions for a specific LLM
+
+### 1.7 `result_analysis.py` Script
+
+This script contains the code to create general information for the benchmarks results
+
+### 1.8 `visualize.ipynb` Jupyter Notebook
+
+This notebook contains the code to create graphs to visualize the benchmark results
 
 ---------------
 
@@ -135,5 +148,31 @@ Change the model parameters to the model you want to run
 Execute the script and find all questions answered in the `results_folder` directory.
 
 ---
+## 4. Result Analysis
+We provide a script to calculate key metrics to evaluate the benchmark results
 
-## 4. Result Visualization
+### 4.1 Navigate to `result_analysis.py`
+
+This file contains the code to create the comprehensive model comparison.
+
+### 4.1 Run `main` to create the report
+
+Navigate to the `main` method and run it to generate the report `comprehensive_model_comparison.txt`
+
+---
+## 5. Result Visualization
+
+We include a Jupyter notebook to create different graphs that help with visualizing the benchmark results.
+
+### 5.1 Navigate to `visualize.ipynb` 
+
+This file contains the code to visualize the benchmark data
+
+### 5.2 Run `visualize.ipynb` to create graphs
+
+Run the notebook to create graphs that visualize the benchmark results
+
+---
+
+This concludes the DataSense
+Benchmark by Felix Krumme, Ray Wan, Dimple Amitha Garuadapuri, Manan Dhanuka
